@@ -32,4 +32,5 @@ jobs:
           LTD_PASSWORD: ${{ secrets.LTD_PASSWORD }}
           LTD_USERNAME: ${{ secrets.LTD_USERNAME }}
         run: |
+          lander --version
           lander --upload --pdf DMTR-271.pdf --lsstdoc DMTR-271.tex --ltd-product dmtr-271
