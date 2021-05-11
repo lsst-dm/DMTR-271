@@ -7,4 +7,7 @@
 DMTR-271
 ########
 
-LDM-503-GEN3-01: Gen 3 Butler ready for internal DM use
+
+To regenerate from Jira use the github action "docgen from Jira" on your branch. 
+
+For more info see docsteady.lsst.org
