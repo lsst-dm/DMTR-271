@@ -1,21 +1,11 @@
-% generated from JIRA project LVV
-% using template at /usr/local/anaconda3/lib/python3.7/site-packages/docsteady/templates/tpr.latex.jinja2.
-% using docsteady version 2.1.4.post21+gb03ef5c.d20210505
-% Please do not edit -- update information in Jira instead
-\documentclass[dm,lsstdraft,STR,toc]{lsstdoc}
+\documentclass[DM,lsstdraft,STR,toc]{lsstdoc}
 \usepackage{geometry}
 \usepackage{longtable,booktabs}
 \usepackage{enumitem}
 \usepackage{arydshln}
-\usepackage{attachfile}
-\usepackage{array}
-\usepackage{dashrule}
-
-\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}p{#1}}
 
 \input meta.tex
 
-\newcommand{\attachmentsUrl}{https://github.com/\gitorg/\lsstDocType-\lsstDocNum/blob/\gitref/attachments}
 \providecommand{\tightlist}{
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 
@@ -23,26 +13,24 @@
 
 \begin{document}
 
-\def\milestoneName{Gen 3 Butler Acceptance Testing}
-\def\milestoneId{LDM-GEN3}
+\def\milestoneName{Ldm-Gen3: Gen 3 Butler Acceptance Testing}
+\def\milestoneId{LVV-P77}
 \def\product{Software Products}
 
 \setDocCompact{true}
 
-\title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
+\title{ LVV-P77 Ldm-Gen3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2021-05-12 }
+\date{\vcsdate}
+\setDocUpstreamLocation{\url{https://github.com/lsst/lsst-texmf/examples}}
 \author{ Robert Gruendl }
 
-\input{history_and_info.tex}
+\input history_and_info.tex
 
 
 \setDocAbstract{
-This is the test plan and report for
-\textbf{ Gen 3 Butler Acceptance Testing} (LDM-GEN3),
-an LSST milestone pertaining to the Data Management Subsystem.\\
-This document is based on content automatically extracted from the Jira test database on \docDate.
-The most recent change to the document repository was on \vcsDate.
+This is the test plan and report for LVV-P77 (Ldm-Gen3: Gen 3 Butler Acceptance Testing),
+an LSST level 2 milestone pertaining to the Data Management Subsystem.
 }
 
 
@@ -99,47 +87,42 @@ In addition, at the time these tests occur the Gen3 Butler schema be
 considered stable enough that changes no longer occur on a weekly basis
 (i.e force re-ingestion/migration of existing repositories are no longer
 a weekly occurrence). Changes requiring wholesale reingestion/migration
-may still be required but will occur in a regimented manner.\\
-~\\
-\textbf{Applicable Documents:}\\
+may still be required but will occur in a regimented
+manner.\\[2\baselineskip]\textbf{Applicable Documents:}\\
 \citeds{LDM-592}: Data Access Use Cases\\
 \citeds{LDM-556}: Data Management Middleware Requirements\\
-\citeds{LDM-639}: Data Management Acceptance Test Specification\\
-~\\
+\citeds{LDM-639}: Data Management Acceptance Test Specification\\[2\baselineskip]
 
 
 \subsection{Document Overview}
 \label{sect:docoverview}
 
-This document was generated from Jira, obtaining the relevant information from the
-\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77}
+This document was generated from Jira, obtaining the relevant information from the 
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testPlan/LVV-P77}{LVV-P77}
 ~Jira Test Plan and related Test Cycles (
-\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C160}{LVV-C160}
-\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C162}{LVV-C162}
+  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C160}{LVV-C160}
+  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCycle/LVV-C162}{LVV-C162}
 ).
 
 Section \ref{sect:intro} provides an overview of the test campaign, the system under test (\product{}),
 the applicable documentation, and explains how this document is organized.
-Section \ref{sect:testplan} provides additional information about the test plan, like for example the configuration
-used for this test or related documentation.
+Section \ref{sect:configuration}  describes the configuration used for this test.
 Section \ref{sect:personnel} describes the necessary roles and lists the individuals assigned to them.
+%Section \ref{sect:plannedtestactivities} provides the list of planned test cycles and test cases,
+including all relevant information that fully describes the test campaign.
 
 Section \ref{sect:overview} provides a summary of the test results, including an overview in Table \ref{table:summary},
 an overall assessment statement and suggestions for possible improvements.
 Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
 
-The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77} in Jira is \textbf{ Draft }.
+The current status of test plan LVV-P77 in Jira is \textbf{ Draft }.
 
 \subsection{References}
 \label{sect:references}
 \renewcommand{\refname}{}
-\bibliography{lsst,refs,books,refs_ads,local}
-
-
-\newpage
-\section{Test Plan Details}
-\label{sect:testplan}
-
+\bibliography{lsst,refs,books,refs_ads}
+\section{Test Configuration}
+\label{sect:configuration}
 
 \subsection{Data Collection}
 
@@ -156,44 +139,22 @@ can support pipeline execution of Gen3 products.
 
 
 
-\subsection{Related Documentation}
-
-
-No additional documentation provided.
-
-
-\subsection{PMCS Activity}
-
-Primavera milestones related to the test campaign:
-\begin{itemize}
-\item LDM-GEN3
-\end{itemize}
-
-
 \newpage
 \section{Personnel}
 \label{sect:personnel}
 
-The personnel involved in the test campaign is shown in the following table.
+The personnel involved in the test campaign are shown in the following table.
 
-{\small
 \begin{longtable}{p{3cm}p{3cm}p{3cm}p{6cm}}
 \hline
-\multicolumn{2}{r}{T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77} owner:} &
+\multicolumn{2}{r}{Test Plan (LVV-P77) owner:} &
 \multicolumn{2}{l}{\textbf{ Robert Gruendl } }\\\hline
-\multicolumn{2}{r}{T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C160}{LVV-C160} owner:} &
+\multicolumn{2}{r}{ LVV-C160 owner:} &
 \multicolumn{2}{l}{\textbf{
-Robert Gruendl }
+    Robert Gruendl
+}
 } \\\hline
-\textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1985}{LVV-T1985}
-& {\small Leanne Guy } & {\small  } &
-\begin{minipage}[]{6cm}
-\smallskip
-{\small  }
-\medskip
-\end{minipage}
-\\ \hline
+\textbf{Test Case} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1984}{LVV-T1984}
 & {\small Leanne Guy } & {\small  } &
 \begin{minipage}[]{6cm}
@@ -218,14 +179,6 @@ Robert Gruendl }
 \medskip
 \end{minipage}
 \\ \hline
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1986}{LVV-T1986}
-& {\small Leanne Guy } & {\small  } &
-\begin{minipage}[]{6cm}
-\smallskip
-{\small  }
-\medskip
-\end{minipage}
-\\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1983}{LVV-T1983}
 & {\small Leanne Guy } & {\small  } &
 \begin{minipage}[]{6cm}
@@ -234,13 +187,14 @@ Robert Gruendl }
 \medskip
 \end{minipage}
 \\ \hline
-\multicolumn{2}{r}{T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C162}{LVV-C162} owner:} &
+\multicolumn{2}{r}{ LVV-C162 owner:} &
 \multicolumn{2}{l}{\textbf{
-Undefined }
+    Undefined
+}
 } \\\hline
-\textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2007}{LVV-T2007}
-& {\small Gabriele Comoretto [X] } & {\small  } &
+\textbf{Test Case} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1985}{LVV-T1985}
+& {\small Leanne Guy } & {\small  } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -248,7 +202,6 @@ Undefined }
 \end{minipage}
 \\ \hline
 \end{longtable}
-}
 
 \newpage
 
@@ -258,84 +211,67 @@ Undefined }
 \subsection{Summary}
 \label{sect:summarytable}
 
-{\small
-\begin{longtable}{p{2cm}cp{2.3cm}p{8.6cm}p{2.3cm}}
+\begin{longtable}{p{2cm}p{2.5cm}p{9cm}p{2.5cm}}
 \toprule
-\multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-GEN3: Gen 3 Butler Acceptance Testing }} & Draft \\\hline
-\multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C160}{LVV-C160}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3-01: Gen 3 Butler Acceptance Testing }} & Not Executed \\\hline
-\textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1985}{LVV-T1985}
-&  1
-& Not Executed &
-\begin{minipage}[]{9cm}
-\smallskip
+\multicolumn{3}{p{13.5cm}}{ Test Plan {\bf LVV-P77: LDM-GEN3: Gen 3 Butler Acceptance Testing }} & Draft \\\hline
 
-\medskip
-\end{minipage}
-&   \\\hline
+  \multicolumn{3}{p{13.5cm}}{ Test Cycle {\bf LVV-C160: LDM-503-GEN3-01: Gen 3 Butler Acceptance Testing }} & Not Executed \\\hline
+
+  {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} & {\bf \footnotesize issues} \\\toprule
+
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1984}{LVV-T1984}
-&  1
-& Not Executed &
-\begin{minipage}[]{9cm}
-\smallskip
-
-\medskip
-\end{minipage}
-&   \\\hline
+    & Not Executed &
+    \begin{minipage}[]{9cm}
+    \smallskip
+    
+    \medskip
+    \end{minipage}
+    &
+    \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1982}{LVV-T1982}
-&  1
-& Not Executed &
-\begin{minipage}[]{9cm}
-\smallskip
-
-\medskip
-\end{minipage}
-&   \\\hline
+    & Not Executed &
+    \begin{minipage}[]{9cm}
+    \smallskip
+    
+    \medskip
+    \end{minipage}
+    &
+    \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1987}{LVV-T1987}
-&  1
-& Not Executed &
-\begin{minipage}[]{9cm}
-\smallskip
-
-\medskip
-\end{minipage}
-&   \\\hline
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1986}{LVV-T1986}
-&  1
-& Not Executed &
-\begin{minipage}[]{9cm}
-\smallskip
-
-\medskip
-\end{minipage}
-&   \\\hline
+    & Not Executed &
+    \begin{minipage}[]{9cm}
+    \smallskip
+    
+    \medskip
+    \end{minipage}
+    &
+    \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1983}{LVV-T1983}
-&  1
-& Not Executed &
-\begin{minipage}[]{9cm}
-\smallskip
+    & Not Executed &
+    \begin{minipage}[]{9cm}
+    \smallskip
+    
+    \medskip
+    \end{minipage}
+    &
+    \\\hline
 
-\medskip
-\end{minipage}
-&   \\\hline
-\multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C162}{LVV-C162}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3-01: Gen 3 Ingest ComCam raw dataset }} & Not Executed \\\hline
-\textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2007}{LVV-T2007}
-&  1
-& Not Executed &
-\begin{minipage}[]{9cm}
-\smallskip
+  \multicolumn{3}{p{13.5cm}}{ Test Cycle {\bf LVV-C162: LDM-503-GEN3-01: Gen 3 Ingest raw dataset }} & Not Executed \\\hline
 
-\medskip
-\end{minipage}
-&   \\\hline
+  {\bf \footnotesize test case} & {\bf \footnotesize status} & {\bf \footnotesize comment} & {\bf \footnotesize issues} \\\toprule
+
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1985}{LVV-T1985}
+    & Not Executed &
+    \begin{minipage}[]{9cm}
+    \smallskip
+    
+    \medskip
+    \end{minipage}
+    &
+    \\\hline
 \caption{Test Campaign Summary}
 \label{table:summary}
 \end{longtable}
-}
 
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
@@ -355,22 +291,36 @@ Not yet available.
 
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C160}{LDM-503-GEN3-01: Gen 3 Butler Acceptance Testing}} in Jira.
 
-Test Cycle name: LDM-503-GEN3-01: Gen 3 Butler Acceptance Testing\\
+LDM-503-GEN3-01: Gen 3 Butler Acceptance Testing\\
 Status: Not Executed
 
-Tests that Gen3 software maturity now supports development across the DM
-project.\\
-~\\
+This test cycle is meant to demonstrate that the Gen3 butler and
+associated database and pipeline interfaces have matured to the point
+where they can replace the Gen2 butler. ~The test cases outlined here:
+
+\begin{enumerate}
+\tightlist
+\item
+  use a series of modest pipeline executions to show that the Gen3
+  software can support all future pipeline development, ~
+\item
+  those pipeline executions also show that a batch processing system
+  (BPS) is available to enable that processing, and
+\item
+  demonstrate through inspection that documentation for developers
+  exists.
+\end{enumerate}
+
 {[}GCM{]}\\
 I see here 2 main groups of test:\\
 i- ingestion of different raw dataset:\\
-\hspace*{0.333em} ~ ~ ~ in case we have one single test case for
-ingestion of data in Gen3 (T1985), we need to have one test cycle for
-each type of raw data ingested\\
+in case we have one single test case for ingestion of data in Gen3
+(T1985), we need to have one test cycle for each type of raw data
+ingested\\
 ii- various pipeline processing\\
-\hspace*{0.333em} ~ ~ ~all these test cases can be part of a single test
-cycle. In case T1985 is divided in many test cases, one per dataset,
-those tests can also be included here.\\
+all these test cases can be part of a single test cycle. In case T1985
+is divided in many test cases, one per dataset, those tests can also be
+included here.\\
 \hspace*{0.333em} ~ ~ ~These test cases seem to be generic Science
 Pipelines test cases, ae we sure they have not already been defined and
 executed?
@@ -384,66 +334,14 @@ Gen3 Butler repositories with test data are available within DBB spaces.
 
 \subsubsection{Test Cases in LVV-C160 Test Cycle}
 
-\paragraph{ LVV-T1985 - Verify daf\_butler raw data ingest }\mbox{}\\
+\paragraph{Test Case LVV-T1984 - Demonstrate documentation/examples of Gen3 usage and cp\_pipe
+equivalent. }\mbox{}\\
 
-Version \textbf{1}.
-Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1985}{\textit{ LVV-T1985 } }
-test case in Jira.
-
-Demonstrate that a raw data type can be successfully ingested into a
-Butler repository.\\
-~\\
-There should be the following steps:\\
-- verify that the Gen3 repository is available\\
-- ingest the raw data defined in the test cycle (to be divided in
-multiple steps in case it makes sense)\\
-- verify that the raw data is available in the repository as expected\\
-In the case that the second step is different, depending on the raw
-dataset, at this point it is necessary to have a different test case for
-each of them, and multiple test cycles are not needed.\\
-~\\
-To note that, the original name "Ingest all the raw datasets that are
-currently hosted at NCSA..." looks more to be a milestone, than a test
-case definition.
-
-\textbf{ Preconditions}:\\
-In order to run this test, a Gen3 daf butler should be deployed and
-ready to use, with access to the filesystems where the raw data to
-ingest is stored.
-
-Execution status: {\bf Not Executed }
-
-Final comment:\\
-
-
-Detailed steps results:
-
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
-
-}
-
-\paragraph{ LVV-T1984 - Provide a recipe and example for a cp\_pipe equivalent }\mbox{}\\
-
-Version \textbf{1}.
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1984}{\textit{ LVV-T1984 } }
 test case in Jira.
 
-
+Demonstrate the existence of fundamental documentation necessary to aid
+Gen2 users with the transition to Gen3 use.
 
 \textbf{ Preconditions}:\\
 
@@ -455,28 +353,36 @@ Final comment:\\
 
 Detailed steps results:
 
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
 
-}
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
-\paragraph{ LVV-T1982 - Run a pipeline on a single node using pipetask. }\mbox{}\\
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-Version \textbf{1}.
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+\end{longtable}
+
+\paragraph{Test Case LVV-T1982 - Run a pipeline on a single node using pipetask. }\mbox{}\\
+
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1982}{\textit{ LVV-T1982 } }
 test case in Jira.
 
@@ -496,33 +402,44 @@ Final comment:\\
 
 Detailed steps results:
 
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
 
-}
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
-\paragraph{ LVV-T1987 - Run Calibration Products Processing (CPP) }\mbox{}\\
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-Version \textbf{1}.
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+\end{longtable}
+
+\paragraph{Test Case LVV-T1987 - Run Calibration Products Processing (CPP) }\mbox{}\\
+
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1987}{\textit{ LVV-T1987 } }
 test case in Jira.
 
-Tests should be run at scales corresponding to appropriate ~scales (e.g
-DC2, RC2)
+Demonstrate that basic calibration processing from Gen2 era has been
+enabled within Gen3 environment. ~ This test is not concerned with large
+scales but merely demonstrates that Gen3 capability to generate
+calibration products (i.e. they are no longer required to be generated
+in Gen2 and then migrated to Gen3).
 
 \textbf{ Preconditions}:\\
 
@@ -534,70 +451,45 @@ Final comment:\\
 
 Detailed steps results:
 
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
-
-}
-
-\paragraph{ LVV-T1986 - Run DC2-like processing (not necessarily full-scale) }\mbox{}\\
-
-Version \textbf{1}.
-Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1986}{\textit{ LVV-T1986 } }
-test case in Jira.
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
 
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
-\textbf{ Preconditions}:\\
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
-Execution status: {\bf Not Executed }
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
 
-Final comment:\\
+ & Status: \textbf{ Not Executed } \\ \hline
 
+\end{longtable}
 
-Detailed steps results:
+\paragraph{Test Case LVV-T1983 - Mini RC2 processing capability }\mbox{}\\
 
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
-
-}
-
-\paragraph{ LVV-T1983 - Run a 3 tract dataset (RC2) in under a week on NCSA Condor system using
-BPS }\mbox{}\\
-
-Version \textbf{1}.
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1983}{\textit{ LVV-T1983 } }
 test case in Jira.
 
-
+Demonstrate that a typical 3-tract RC2 data processing is possible using
+the Gen3 system and the nascent Batch Production Service (BPS). ~This
+test is meant to demonstrate that Gen3 + BPS systems are capable of
+supporting future DM development by demonstrating that processing
+routinely used by developers for benchmarking/testing improvements can
+be performed in a reasonable time. ~
 
 \textbf{ Preconditions}:\\
 
@@ -609,70 +501,87 @@ Final comment:\\
 
 Detailed steps results:
 
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
 
-}
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
 
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+\end{longtable}
 
 \subsection{Test Cycle LVV-C162 }
 
-Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C162}{LDM-503-GEN3-01: Gen 3 Ingest ComCam raw dataset}} in Jira.
+Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C162}{LDM-503-GEN3-01: Gen 3 Ingest raw dataset}} in Jira.
 
-Test Cycle name: LDM-503-GEN3-01: Gen 3 Ingest ComCam raw dataset\\
+LDM-503-GEN3-01: Gen 3 Ingest raw dataset\\
 Status: Not Executed
 
 In the context of the milestone LDM-503-GEN3-01, Gen 3 Butler readiness,
 this test cycle is defining the configuration and the dataset for
 running a generic \textbf{Raw Data Ingestion Into Gen3 Butler} test
-case, using specifically ComCam raw data.
+case. ~ There are currently 5 data sources that require verification as
+they are the central products that will be produced by Rubin or are used
+as precursor sets in the development/verification of the data management
+software systems. ~The current raw data products that are deemed central
+to DM development and testing are those from AuxTel/LATISS, ComCam, and
+~precursor data from HyperSuprimeCam (HSC). ~Note, further tests using
+LSSTCam (currently only preliminary BOT data from the SLAC test stand
+are available) or precursor sets from the Dark Energy Camera (DECam)
+could be added but since these types do not exactly fit the central
+model used for LSST they are not tied directly to requirements.
 
 \subsubsection{Software Version/Baseline}
-Not provided.
+LSST DM Stack with Gen3 Butler.
 
 \subsubsection{Configuration}
-Not provided.
+Three separate raw data type, those from: AuxTel/LATISS, ComCam, and HSC
+(e.g. a CI\_HSC raw) should be ingested when this test is executed.
 
 \subsubsection{Test Cases in LVV-C162 Test Cycle}
 
-\paragraph{ LVV-T2007 - Raw Data Ingestion Into Gen3 Butler }\mbox{}\\
+\paragraph{Test Case LVV-T1985 - Verify daf\_butler raw data ingest }\mbox{}\\
 
-Version \textbf{1}.
-Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2007}{\textit{ LVV-T2007 } }
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1985}{\textit{ LVV-T1985 } }
 test case in Jira.
 
-With this test case we prove that the ingestion of raw data is Gen3
-Butler is working as expected.\\
-~\\
-We are not specifying any raw dataset type or version, nor we are
-reffing to a specific version of Gen3 Butler software.\\
-~\\
-The raw dataset type and version shall be specified in the Test Cycle
-where this test case is included. It is assumed that the ingestion
-procedure in a Gen3 repository do not depend from the raw dataset
-type.\\
-~\\
-The Gen3 Butler version shall be specified in the Test Plan, which
-defines the test campaign and corresponds to the test milestone to be
-fulfilled.
+Demonstrate that a raw data type can be successfully ingested into a
+Butler repository.\\[2\baselineskip]There should be the following
+steps:\\
+- verify that the Gen3 repository is available\\
+- ingest the raw data defined in the test cycle (to be divided in
+multiple steps in case it makes sense)\\
+- verify that the raw data is available in the repository as expected\\
+In the case that the second step is different, depending on the raw
+dataset, at this point it is necessary to have a different test case for
+each of them, and multiple test cycles are not
+needed.\\[2\baselineskip]To note that, the original name ``Ingest all
+the raw datasets that are currently hosted at NCSA\ldots{}'' looks more
+to be a milestone, than a test case definition.
 
 \textbf{ Preconditions}:\\
-A Gen3 Butler instance has been created and is ready to use with
-sufficient resources
+In order to run this test, a Gen3 daf butler should be deployed and
+ready to use, with access to the filesystems where the raw data to
+ingest is stored.
 
 Execution status: {\bf Not Executed }
 
@@ -681,65 +590,390 @@ Final comment:\\
 
 Detailed steps results:
 
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
+\begin{longtable}{p{1cm}p{15cm}}
+\hline
+{Step} & Step Details\\ \hline
+1 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
-Verify that the repository where to ingest the data is available (create
-it if it is not)
+Verify that a Butler repository is available for the {HSC RC2}⁠~\\
+(Note this either needs to be a test repository or if an existing
+repository is used then the raw data should not already be present.)
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{HSC RC2}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Repository or {HSC RC2}⁠ ~is available
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+2 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
+Verify that a Butler repository is available for the {AuxTel/LATISS}⁠~\\
+(Note this either needs to be a test repository or if an existing
+repository is used then the raw data should not already be present.)
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{AuxTel/LATISS}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Repository or {AuxTel/LATISS}⁠ ~is available
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+3 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
+Verify that a Butler repository is available for the {ComCam}⁠~\\
+(Note this either needs to be a test repository or if an existing
+repository is used then the raw data should not already be present.)
 
-}
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{ComCam}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Repository or {ComCam}⁠ ~is available
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+4 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
-Ingest the raw dataset following the instruction in the example code
+Verify that a Butler repository is available for the {DESC DC2}⁠~\\
+(Note this either needs to be a test repository or if an existing
+repository is used then the raw data should not already be present.)
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{DESC DC2}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Repository or {DESC DC2}⁠ ~is available
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+5 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
+Ingest {HSC RC2}⁠~raw data into repo
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{HSC RC2}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Tool reports data ingest successful for {HSC RC2}⁠
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+6 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
+Ingest {AuxTel/LATISS}⁠~raw data into repo
 
-}
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{AuxTel/LATISS}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Tool reports data ingest successful for {AuxTel/LATISS}⁠
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+7 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
-Check that the raw dataset is available in the Gen3 repository
+Ingest {ComCam}⁠~raw data into repo
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{ComCam}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Tool reports data ingest successful for {ComCam}⁠
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+8 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
+Ingest {DESC DC2}⁠~raw data into repo
 
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{DESC DC2}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+Tool reports data ingest successful for {DESC DC2}⁠
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+9 & Description \\
+ & \begin{minipage}[t]{15cm}
 {\footnotesize
+Query repository to verify that ingestion of {HSC RC2}⁠~ occurred.
 
-}
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
 
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{HSC RC2}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{HSC RC2}⁠ data are found by query.~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+10 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Query repository to verify that ingestion of {AuxTel/LATISS}⁠~ occurred.
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{AuxTel/LATISS}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{AuxTel/LATISS}⁠ data are found by query.~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+11 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Query repository to verify that ingestion of {ComCam}⁠~ occurred.
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{ComCam}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{ComCam}⁠ data are found by query.~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+12 & Description \\
+ & \begin{minipage}[t]{15cm}
+{\footnotesize
+Query repository to verify that ingestion of {DESC DC2}⁠~ occurred.
+
+\medskip }
+\end{minipage}
+\\ \cdashline{2-2}
+
+ & Test Data \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{DESC DC2}⁠~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Expected Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+{DESC DC2}⁠ data are found by query.~
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Actual Result \\
+ & \begin{minipage}[t]{15cm}{\footnotesize
+
+\medskip }
+\end{minipage} \\ \cdashline{2-2}
+
+ & Status: \textbf{ Not Executed } \\ \hline
+
+\end{longtable}
 
 
 \input{appendix.tex}
