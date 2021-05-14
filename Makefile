@@ -1,5 +1,7 @@
 DOCTYPE = DMTR
 DOCNUMBER = 271
+PLAN= LVV-P77
+NAMESPACE= DM
 DOCNAME = $(DOCTYPE)-$(DOCNUMBER)
 JOBNAME = $(DOCNAME)
 TEX = $(filter-out $(wildcard *acronyms.tex) , $(wildcard *.tex))
@@ -31,7 +33,11 @@ meta.tex: Makefile .FORCE
 	/bin/echo '\newcommand{\lsstDocNum}{$(DOCNUMBER)}' >>$@
 	/bin/echo '\newcommand{\vcsrevision}{$(GITVERSION)$(GITDIRTY)}' >>$@
 	/bin/echo '\newcommand{\vcsDate}{$(GITDATE)}' >>$@
+	/bin/echo '\newcommand{\vcsdate}{$(GITDATE)}' >>$@
 
+
+generate: .FORCE
+	docsteady --namespace $(NAMESPACE) generate-tpr $(PLAN) $(DOCNAME).tex
 
 #Traditional acronyms are better in this document
 acronyms.tex : ${TEX} myacronyms.txt skipacronyms.txt
