@@ -668,21 +668,25 @@ Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Verify that a Butler repository is available for the {HSC RC2}⁠~\\
-(Note this either needs to be a test repository or if an existing
-repository is used then the raw data should not already be present.)
+Identify data for ingestion~{HSC RC2}⁠ and make ~a copy at a location
+for the test. ~While a suggestion is provided in
+{/project/shared/hsc/COSMOS/2014-03-27/}⁠ for a location where such data
+can be found, the actual data used can be left to the discretion of the
+person(s) executing the test with the added suggestion that relatively
+recent data are more likely to reflect the current observatory system
+state.\\[2\baselineskip]
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{HSC RC2}⁠~
+{/project/shared/hsc/COSMOS/2014-03-27/}⁠~⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
-Repository or {HSC RC2}⁠ ~is available
+One or more raw data sets are identified and made available.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -696,21 +700,25 @@ Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Verify that a Butler repository is available for the {AuxTel/LATISS}⁠~\\
-(Note this either needs to be a test repository or if an existing
-repository is used then the raw data should not already be present.)
+Identify data for ingestion~{AuxTel/LATISS}⁠ and make ~a copy at a
+location for the test. ~While a suggestion is provided in
+{/project/shared/auxTel/\_parent/raw/2021-03-23/}⁠ for a location where
+such data can be found, the actual data used can be left to the
+discretion of the person(s) executing the test with the added suggestion
+that relatively recent data are more likely to reflect the current
+observatory system state.\\[2\baselineskip]
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{AuxTel/LATISS}⁠~
+{/project/shared/auxTel/\_parent/raw/2021-03-23/}⁠~⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
-Repository or {AuxTel/LATISS}⁠ ~is available
+One or more raw data sets are identified and made available.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -724,21 +732,25 @@ Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Verify that a Butler repository is available for the {ComCam}⁠~\\
-(Note this either needs to be a test repository or if an existing
-repository is used then the raw data should not already be present.)
+Identify data for ingestion~{ComCam}⁠ and make ~a copy at a location for
+the test. ~While a suggestion is provided in
+{/project/shared/comCam/\_parent/raw/2021-05-14/2021051400003/}⁠ for a
+location where such data can be found, the actual data used can be left
+to the discretion of the person(s) executing the test with the added
+suggestion that relatively recent data are more likely to reflect the
+current observatory system state.\\[2\baselineskip]
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{ComCam}⁠~
+{/project/shared/comCam/\_parent/raw/2021-05-14/2021051400003/}⁠~⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
-Repository or {ComCam}⁠ ~is available
+One or more raw data sets are identified and made available.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -752,21 +764,28 @@ Step 4 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Verify that a Butler repository is available for the {DESC DC2}⁠~\\
-(Note this either needs to be a test repository or if an existing
-repository is used then the raw data should not already be present.)
+Verify that Butler repository is available for the {HSC RC2}⁠ (Note this
+needs to be a test repository rather than the central repository as the
+raw data should not already be present in the repository for this test.)
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{DESC DC2}⁠~
+{url 1}⁠~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\# create empty Gen3 repo (for ComCam data)\\[2\baselineskip]butler
+create repo\\
+butler register-instrument repo lsst.obs.lsst.LsstComCam
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
-Repository or {DESC DC2}⁠ ~is available
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -780,19 +799,29 @@ Step 5 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Ingest {HSC RC2}⁠~raw data into repo
+Verify that Butler repository is available for the {AuxTel/LATISS}⁠
+(Note this needs to be a test repository rather than the central
+repository as the raw data should not already be present in the
+repository for this test.)
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{HSC RC2}⁠~
+{url 2}⁠~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\# create empty Gen3 repo (for ComCam data)\\[2\baselineskip]butler
+create repo\\
+butler register-instrument repo lsst.obs.lsst.LsstComCam
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
-Tool reports data ingest successful for {HSC RC2}⁠
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -806,19 +835,28 @@ Step 6 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Ingest {AuxTel/LATISS}⁠~raw data into repo
+Verify that Butler repository is available for the {ComCam}⁠ (Note this
+needs to be a test repository rather than the central repository as the
+raw data should not already be present in the repository for this test.)
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{AuxTel/LATISS}⁠~
+{url 3}⁠~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\# create empty Gen3 repo (for ComCam data)\\[2\baselineskip]butler
+create repo\\
+butler register-instrument repo lsst.obs.lsst.LsstComCam
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
-Tool reports data ingest successful for {AuxTel/LATISS}⁠
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -832,19 +870,25 @@ Step 7 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Ingest {ComCam}⁠~raw data into repo
+Ingest {HSC RC2}⁠~raw data into repo
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{ComCam}⁠~
+{url 1}⁠~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+butler ingest-raws repo raw
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
-Tool reports data ingest successful for {ComCam}⁠
+Tool reports data ingest successful for {HSC RC2}⁠ into {url 1}⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -858,19 +902,25 @@ Step 8 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Ingest {DESC DC2}⁠~raw data into repo
+Ingest {AuxTel/LATISS}⁠~raw data into repo
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{DESC DC2}⁠~
+{url 2}⁠~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+butler ingest-raws repo raw
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
-Tool reports data ingest successful for {DESC DC2}⁠
+Tool reports data ingest successful for {AuxTel/LATISS}⁠ into {url 2}⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -884,13 +934,45 @@ Step 9 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Ingest {ComCam}⁠~raw data into repo
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Test Data \\
+ {\footnotesize
+{url 3}⁠~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+butler ingest-raws repo raw
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Expected Result \\
+{\footnotesize
+Tool reports data ingest successful for {ComCam}⁠ into {url 3}⁠~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Actual Result \\
+{\footnotesize
+
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 10 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+\end{tabular}
+ Description \\
+{\footnotesize
 Query repository to verify that ingestion of {HSC RC2}⁠~ occurred.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{HSC RC2}⁠~
+{url 1}⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -906,7 +988,7 @@ Query repository to verify that ingestion of {HSC RC2}⁠~ occurred.
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 10 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 11 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -916,7 +998,7 @@ Query repository to verify that ingestion of {AuxTel/LATISS}⁠~ occurred.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{AuxTel/LATISS}⁠~
+{url 2}⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -932,7 +1014,7 @@ Query repository to verify that ingestion of {AuxTel/LATISS}⁠~ occurred.
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 11 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 12 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -942,39 +1024,13 @@ Query repository to verify that ingestion of {ComCam}⁠~ occurred.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{ComCam}⁠~
+{url 3}⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
 {ComCam}⁠ data are found by query.~
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
-
-}
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 12 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
-{\footnotesize
-Query repository to verify that ingestion of {DESC DC2}⁠~ occurred.
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Test Data \\
- {\footnotesize
-{DESC DC2}⁠~
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-{DESC DC2}⁠ data are found by query.~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
