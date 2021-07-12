@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2021-07-01 }
+\date{ 2021-07-12 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -376,11 +376,15 @@ Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Identify document(s), web-pages, archived presentations, or example
+notebooks that provide documentation and/or examples of Gen3
+functionality.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+Document reference(s) or URL(s) for such documentation.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -417,11 +421,20 @@ Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Setup stack, identify inputs, pipetask execution of standard ci\_hsc
+run.
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Test Data \\
+ {\footnotesize
+ci\_hsc raw repository within a Gen3 Butler repo
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+Pipeline executes standard reduction without failure.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -500,11 +513,65 @@ Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+setup environment\\
+identify input data products
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Test Data \\
+ {\footnotesize
+RC2 raw repo
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\# for example on lsstdev-* resources at NCSA\\[2\baselineskip]export
+lsstsw\_root=/software/lsstsw/stack\\
+export EUPS\_TAG=``w\_2020\_46''\\[2\baselineskip]source
+/opt/rh/devtoolset-8/enable\\
+source \$\{lsstsw\_root\}/loadLSST.bash\\
+setup lsst\_distrib -t \$\{EUPSTAG\}\\[2\baselineskip]
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+software environment ready for job submission\\[2\baselineskip]
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Actual Result \\
+{\footnotesize
+
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+\end{tabular}
+ Description \\
+{\footnotesize
+BPS pipeline submission
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+pipetask qgraph -d ``tract = 9615 and instrument='HSC' and
+skymap='hsc\_rings\_v1''' \textbackslash{}\\
+-b \{gen3\_repo\}/\{version\}/butler.yaml \textbackslash{}\\
+-i HSC/calib,HSC/raw/all,HSC/masks,refcats,skymaps \textbackslash{}\\
+-p /home/madamow/gen2-to-gen3/bps/HSC-RC2.yaml \textbackslash{}\\
+-q
+/home/madamow/gen2-to-gen3/bps/submit/RC2/w\_2020\_42/DM-27244/20201102T10h22m03s/RC2\_w\_2020\_42\_DM-27244\_20201102T10h22m03s.pickle
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Expected Result \\
+{\footnotesize
+Pipeline execution is successful. ~An estimate of ~the compute resources
+used (\# cores, memory, wall time) for each execution should be
+reported.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
