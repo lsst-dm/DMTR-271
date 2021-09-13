@@ -1,6 +1,6 @@
 % generated from JIRA project LVV
 % using template at /usr/share/miniconda/envs/docsteady-env/lib/python3.7/site-packages/docsteady/templates/tpr.latex.jinja2.
-% using docsteady version 2.2.2
+% using docsteady version 2.2.3
 % Please do not edit -- update information in Jira instead
 \documentclass[dm,lsstdraft,STR,toc]{lsstdoc}
 \usepackage{geometry}
@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2021-08-23 }
+\date{ 2021-09-13 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -186,6 +186,14 @@ The personnel involved in the test campaign is shown in the following table.
 Robert Gruendl }
 } \\\hline
 \textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2264}{LVV-T2264}
+& {\small Leanne Guy } & {\small  } &
+\begin{minipage}[]{6cm}
+\smallskip
+{\small  }
+\medskip
+\end{minipage}
+\\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1984}{LVV-T1984}
 & {\small Leanne Guy } & {\small  } &
 \begin{minipage}[]{6cm}
@@ -250,6 +258,15 @@ Undefined }
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C160}{LVV-C160}:} &
 \multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3: Gen 3 Butler Acceptance Testing }} & Not Executed \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
+\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2264}{LVV-T2264}
+&  1
+& Not Executed &
+\begin{minipage}[]{9cm}
+\smallskip
+
+\medskip
+\end{minipage}
+&   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1984}{LVV-T1984}
 &  1
 & Not Executed &
@@ -338,7 +355,10 @@ where they can replace the Gen2 butler. ~The test cases outlined here:
   (BPS) is available to enable that processing, and
 \item
   demonstrate through inspection that documentation for developers
-  exists.
+  exists
+\item
+  confirm that pipeline developers do not know of blockers if all future
+  development assumes Gen3 Butler.
 \end{enumerate}
 
 \subsubsection{Software Version/Baseline}
@@ -349,6 +369,45 @@ Gen3 Butler repositories with test data are available within DBB spaces.
 ~Weekly DM stack has Gen3 and BPS elements present for tests.
 
 \subsubsection{Test Cases in LVV-C160 Test Cycle}
+
+\paragraph{ LVV-T2264 - Butler Gen3 maturity sufficient to support future pipeline development. }\mbox{}\\
+
+Version \textbf{1}.
+Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2264}{\textit{ LVV-T2264 } }
+test case in Jira.
+
+This test is meant to verify that Butler Gen3 maturity is sufficient to
+provide comparable (or better) pipeline capabilities and results to
+those available under Butler Gen2.
+
+\textbf{ Preconditions}:\\
+
+
+Execution status: {\bf Not Executed }
+
+Final comment:\\
+
+
+Detailed steps results:
+
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+\end{tabular}
+ Description \\
+{\footnotesize
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Expected Result \\
+{\footnotesize
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Actual Result \\
+{\footnotesize
+
+}
 
 \paragraph{ LVV-T1984 - Demonstrate documentation/examples of Gen3 usage and cp\_pipe
 equivalent. }\mbox{}\\
