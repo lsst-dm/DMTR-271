@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-01-28 }
+\date{ 2022-02-09 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -160,7 +160,19 @@ can support pipeline execution of Gen3 products.
 \subsection{Related Documentation}
 
 
-No additional documentation provided.
+\begin{longtable}{rp{10cm}l}
+\multicolumn{3}{c}{Jira Attachments} \\ \hline
+ To LVV-C160 results &
+  DM-Gen2MiddlewareRemovalPlanning-080222-2302-1360.pdf & \attachfile{attachments/DM-Gen2MiddlewareRemovalPlanning-080222-2302-1360.pdf}\\ \hline
+  To LVV-C160 results &
+  DRP.yaml & \attachfile{attachments/DRP.yaml}\\ \hline
+To LVV-C160 results &
+  DRP-RC2.yaml & \attachfile{attachments/DRP-RC2.yaml}\\ \hline
+                                                                     \end{longtable}
+
+All documents provided as attachments in Jira are downloaded to Github and linked here for convenience.
+However, since they are not properly versioned, they should be considered informal and therefore
+not be part of the verification baseline.
 
 
 \subsection{PMCS Activity}
@@ -188,7 +200,7 @@ Robert Gruendl }
 } \\\hline
 \textbf{Test Cases} & \textbf{Assigned to} & \textbf{Executed by} & \textbf{Additional Test Personnel} \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2264}{LVV-T2264}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -196,7 +208,7 @@ Robert Gruendl }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1984}{LVV-T1984}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -204,7 +216,7 @@ Robert Gruendl }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1982}{LVV-T1982}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -734,11 +746,11 @@ Jeffrey Carlin }
 \multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77}:} &
 \multicolumn{2}{p{10.9cm}}{\textbf{ LDM-GEN3: Gen 3 Butler Acceptance Testing }} & Draft \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C160}{LVV-C160}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3: Gen 3 Butler Acceptance Testing }} & Not Executed \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3: Gen 3 Butler Acceptance Testing }} & In Progress \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2264}{LVV-T2264}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -747,7 +759,7 @@ Jeffrey Carlin }
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1984}{LVV-T1984}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -756,10 +768,11 @@ Jeffrey Carlin }
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1982}{LVV-T1982}
 &  1
-& Not Executed &
+& In Progress &
 \begin{minipage}[]{9cm}
 \smallskip
-
+Working on lsst-devl02, in directory
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing.
 \medskip
 \end{minipage}
 &   \\\hline
@@ -1351,7 +1364,7 @@ Not yet available.
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C160}{LDM-503-GEN3: Gen 3 Butler Acceptance Testing}} in Jira.
 
 Test Cycle name: LDM-503-GEN3: Gen 3 Butler Acceptance Testing\\
-Status: Not Executed
+Status: In Progress
 
 This test cycle is meant to demonstrate that the Gen3 butler and
 associated database and pipeline interfaces have matured to the point
@@ -1395,7 +1408,7 @@ those available under Butler Gen2.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -1404,20 +1417,30 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Poll DM developers leads for Data Release and Alert Processing to verify
+that blockers do not exist if all future development assumed Gen3
+Butler's use with Gen2 Butler to be deprecated in the near future.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+No known blockers.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Jim Bosch (product owner of DM Middleware) polled both the Science
+Pipelines team and the Change Control Board to gather feedback. A record
+of the planning process for deprecation of Gen2 middleware, and
+comments/feedback on the process, is contained in a Confluence page at
+\url{https://confluence.lsstcorp.org/display/DM/Gen2+Middleware+Removal+Planning},
+a PDF copy of which is attached to this test execution.
 
 }
 
@@ -1434,7 +1457,7 @@ Gen2 users with the transition to Gen3 use.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -1443,13 +1466,19 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
 Identify document(s), web-pages, archived presentations, or example
 notebooks that provide documentation and/or examples of Gen3
 functionality.
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Test Data \\
+ {\footnotesize
+https://pipelines.lsst.io/v/weekly/modules/lsst.cp.pipe/constructing-calibrations.html
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -1461,6 +1490,21 @@ Document reference(s) or URL(s) for such documentation.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Usage of the butler and its functionalities is well documented at:\\
+\url{https://pipelines.lsst.io/modules/lsst.daf.butler/index.html}\\[2\baselineskip]Additionally,
+there is a middleware ``frequently asked questions'' on the
+documentation site:\\
+\url{https://pipelines.lsst.io/middleware/index.html}\\[2\baselineskip]A
+basic data processing tutorial is given in the
+\href{https://pipelines.lsst.io/index.html\#getting-started}{getting
+started} section of pipelines.lsst.io. In support of Data Preview 0.1,
+the Community Engagement Team has produced a number of tutorial
+notebooks demonstrating many functionalities of the pipelines and
+middleware, all of which are based on the Gen3 Butler:\\
+\url{https://github.com/rubin-dp0/tutorial-notebooks}\\[2\baselineskip]A
+detailed guide on how to construct calibrations using cp\_pipe is found
+at:\\
+\url{https://pipelines.lsst.io/modules/lsst.cp.pipe/constructing-calibrations.html}
 
 }
 
@@ -1479,16 +1523,17 @@ have been integrated. ~It further requires (in spirit) that gen3 schema
 stability has been reached to facilitate comparison of pipeline results
 with further stack development can be compared.
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf In Progress }
 
-Final comment:\\
+Final comment:\\Working on lsst-devl02, in directory
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing.
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ In Progress } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -1511,6 +1556,133 @@ Pipeline executes standard reduction without failure.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+First, set up the science pipelines:\\[2\baselineskip]source
+/software/lsstsw/stack/loadLSST.bash\\
+source scl\_source enable devtoolset-8\\
+setup -t w\_2022\_05 lsst\_distrib\\[2\baselineskip]Git clone the
+testdata\_ci\_hsc and ci\_hsc\_gen3 repositories (in this case,
+testdata\_ci\_hsc is in /project/jcarlin/repos/, and ci\_hsc\_gen3 is
+cloned into the working directory for this test
+campaign).\\[2\baselineskip]Checkout the proper tagged version of
+ci\_hsc\_gen3 by typing `git checkout w.2022.05`\\[2\baselineskip]Set up
+the repositories:\\
+setup -j -r /project/jcarlin/repos/testdata\_ci\_hsc/\\
+setup -j -r
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/ci\_hsc\_gen3/\\[2\baselineskip]Now,
+from the latter of these two directories, execute `scons`, which will
+run the full end-to-end processing of ci\_hsc\_gen3:\\
+scons 2\textgreater{}\&1 \textbar{} tee
+ci\_hsc\_log\_w\_2022\_05.log\\[2\baselineskip](note that the portions
+after ``scons'' serve to pipe the screen output to a log
+file)\\[2\baselineskip]After the execution completed, we examine the
+output data products and logs to verify that requirements are being
+met.\\[2\baselineskip]\textbf{LVV-19748: DMS-MWBT-REQ-0020-V-01: Sky
+Tile Definition}\\[2\baselineskip]From the output log, we see these
+lines:\\[2\baselineskip]python
+/software/lsstsw/stack\_20220125/stack/miniconda3-py38\_4.9.2-1.0.0/Linux64/daf\_butler/g1a2eac586c+199d7ac1b3/bin/butler
+register-skymap
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/ci\_hsc\_gen3/DATA
+-C
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/ci\_hsc\_gen3/configs/skymap.py\\
+lsst.pipe.tasks.script.registerSkymap INFO:~sky~map has 1 tracts\\
+lsst.pipe.tasks.script.registerSkymap INFO: tract 0 has corners
+(321.860, -1.179), (318.875, -1.179), (318.874, 1.806), (321.861, 1.806)
+(RA, Dec deg) and 16 x 16 patches\\[2\baselineskip]This demonstrates how
+the sky tiling was defined programmatically. Examine the skymap object
+in the repository:\\[2\baselineskip](lsst-scipipe)
+{[}jcarlin@lsst-devl02 ci\_hsc\_gen3{]}\$ ipython\\
+In {[}1{]}: from lsst.daf.butler import Butler\\
+In {[}2{]}: butler = Butler('DATA/',
+collections={[}'HSC/runs/ci\_hsc'{]})\\
+\emph{Load the skymap:\\
+}In {[}3{]}: skymap = butler.get('skyMap')\\
+In {[}4{]}: skymap\\
+Out{[}4{]}: \textless{}lsst.skymap.discreteSkyMap.DiscreteSkyMap at
+0x7f6e0ab3ea60\textgreater{}\\
+\emph{Generate a tract using this skymap to confirm that it is
+well-formed:\\
+}In {[}10{]}: tract = skymap.generateTract(0)\\
+In {[}11{]}: tract\\
+Out{[}11{]}: TractInfo(id=0, ctrCoord={[}0.770139958995028,
+-0.6378515275139028, 0.00546556559902794{]})\\[2\baselineskip]We have
+successfully demonstrated that a skymap (i.e., a ``tiling of the sky'')
+can be added programmatically.\\[2\baselineskip]\textbf{LVV-19785:
+DMS-MWBT-REQ-0046-V-01: External Data Ingest~}\\
+\textbf{LVV-19767: DMS-MWBT-REQ-0047-V-01: External Data Ingest and
+Serve\\
+}\\
+Confirm that the raw images from the HSC dataset were ingested. First,
+check the butler registry:\\[2\baselineskip]butler query-datasets DATA
+raw\\[2\baselineskip]type run id band instrument detector
+physical\_filter exposure\\
+---- ----------- ------------------------------------ ---- ----------
+-------- --------------- --------\\
+raw HSC/raw/all 57e68524-8eff-5787-ad73-9fc0c35fbe41 r HSC 16 HSC-R
+903334\\
+raw HSC/raw/all b7ed320f-47ec-5a26-baef-39e2a5fc0dc2 r HSC 22 HSC-R
+903334\\
+(output truncated)\\[2\baselineskip]The registry knows about the data.
+Now confirm that the images can be retrieved via the
+butler:\\[2\baselineskip]In {[}18{]}: raw = butler.get('raw',
+\{'detector':16, `exposure':903334\})\\
+In {[}19{]}:~raw\\
+Out{[}19{]}: \textless{}lsst.afw.image.exposure.ExposureU at
+0x7f6df91c8d30\textgreater{}\\
+\emph{The image exists as a ``ExposureU'' object in the repository.
+Check some of its properties:\\
+}In {[}22{]}:~raw.getDimensions()\\
+Out{[}22{]}:~Extent2I(2144, 4241)\\
+In {[}23{]}:~raw.image.array.mean()\\
+Out{[}23{]}: 1417.2363656619636\\
+In {[}24{]}:~raw.image.array.std()\\
+Out{[}24{]}: 650.7810120700118\\[2\baselineskip]This confirms that the
+full array of pixel values has been ingested, and that they have (on
+average) non-zero values.\\[2\baselineskip]\textbf{LVV-19774:
+DMS-MWST-REQ-0005-V-01: Pipeline configuration\\
+}\\
+The attached file ``DRP.yaml'' is the pipeline specification for
+ci\_hsc\_gen3 (note that it begins by importing another pipeline). It
+illustrates the configuration of individual tasks' parameters within the
+pipeline, thus verifying that this requirement is
+met.\\[2\baselineskip]\textbf{LVV-19795: DMS-MWST-REQ-0004-V-01:
+Pipeline specification}\\
+\textbf{LVV-19863: DMS-MWST-REQ-0008-V-01: Use of Tasks and
+configurations}\\[2\baselineskip]The attached file ``DRP-RC2.yaml'' is
+the pipeline that specifies all of the tasks that are run in
+ci\_hsc\_gen3. By examination, it is clear that the pipeline
+specification satisfies the requirement that it specify the units of
+code that are to be run, and the order in which they should be
+executed.\\[2\baselineskip]Furthermore, the requirement in
+DMS-MWST-REQ-0008 that the middleware support organization of work
+within a step via configurable Tasks is clearly demonstrated by
+inspection of the attached file ``DRP-RC2.yaml'', which has been
+successfully executed as part of this
+test.\\[3\baselineskip]Requirements that have not yet been verified:\\
+LVV-19742: DMS-MWST-REQ-0013-V-01: I/O via Butler -- This one seems to
+be about design. Could it be demonstrated by showing code snippets +
+explanation?\\
+LVV-19750: DMS-MWST-REQ-0014-V-01: Butler dataset type configuration --
+I don't see specific examples of this in either DRP.yaml within
+ci\_hsc\_gen3, or DRP-RC2.yaml in drp\_pipe. There are examples in faro
+pipelines?\\
+LVV-19850: DMS-MWST-REQ-0006-V-01: Dataset grouping -- This specifies
+that the pipeline shall designate how datasets should be grouped. Isn't
+this done via Connections rather than in the Pipelines?\\
+LVV-19859: DMS-MWST-REQ-0007-V-01: Changes of parallelization -- By
+stating that steps in a pipeline can have different dataset grouping, is
+this simply referring to the fact that the Connections (and thus the
+quantum dimensions) can be different for each step?\\
+LVV-19796: DMS-MWST-REQ-0011-V-01: Phases of execution -- Is it
+sufficient for the DAG to be generated during ci\_hsc\_gen3 but not
+persisted, or should this be demonstrated by persisting a quantum graph
+and then separately reading it in to do the processing?\\
+LVV-19809: DMS-MWST-REQ-0012-V-01: Implied inputs -- What does it mean
+to ``support resolution of full DataId specifications for ``implied
+inputs''"?\\
+LVV-19864: DMS-MWST-REQ-0017-V-01: Pipeline specification definition --
+I simply don't understand what this one means.\\
+LVV-19861: DMS-MWST-REQ-0010-V-01: Executable by supervisory framework
+-- Also not sure how to interpret this one.\\[2\baselineskip]
 
 }
 
