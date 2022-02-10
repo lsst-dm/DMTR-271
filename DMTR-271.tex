@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-02-09 }
+\date{ 2022-02-10 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -168,6 +168,8 @@ can support pipeline execution of Gen3 products.
   DRP.yaml & \attachfile{attachments/DRP.yaml}\\ \hline
 To LVV-C160 results &
   DRP-RC2.yaml & \attachfile{attachments/DRP-RC2.yaml}\\ \hline
+To LVV-C160 results &
+  DRP-ci\_hsc+fakes.yaml & \attachfile{attachments/DRP-ci_hsc+fakes.yaml}\\ \hline
                                                                      \end{longtable}
 
 All documents provided as attachments in Jira are downloaded to Github and linked here for convenience.
@@ -1657,32 +1659,88 @@ DMS-MWST-REQ-0008 that the middleware support organization of work
 within a step via configurable Tasks is clearly demonstrated by
 inspection of the attached file ``DRP-RC2.yaml'', which has been
 successfully executed as part of this
-test.\\[3\baselineskip]Requirements that have not yet been verified:\\
-LVV-19742: DMS-MWST-REQ-0013-V-01: I/O via Butler -- This one seems to
-be about design. Could it be demonstrated by showing code snippets +
-explanation?\\
-LVV-19750: DMS-MWST-REQ-0014-V-01: Butler dataset type configuration --
-I don't see specific examples of this in either DRP.yaml within
-ci\_hsc\_gen3, or DRP-RC2.yaml in drp\_pipe. There are examples in faro
-pipelines?\\
-LVV-19850: DMS-MWST-REQ-0006-V-01: Dataset grouping -- This specifies
-that the pipeline shall designate how datasets should be grouped. Isn't
-this done via Connections rather than in the Pipelines?\\
-LVV-19859: DMS-MWST-REQ-0007-V-01: Changes of parallelization -- By
-stating that steps in a pipeline can have different dataset grouping, is
-this simply referring to the fact that the Connections (and thus the
-quantum dimensions) can be different for each step?\\
+test.\\[2\baselineskip]\textbf{LVV-19864: DMS-MWST-REQ-0017-V-01:
+Pipeline specification definition\\
+}\\
+The ability to construct a pipeline specification via configuration is
+illustrated by the attached file ``DRP-RC2.yaml,'' which fully specifies
+an end-to-end pipeline for processing of the HSC-RC2 dataset (whose
+processing has been demonstrated earlier in this test
+execution).\\[2\baselineskip]The requirement that a pipeline
+specification may be constructed programmatically via Python API is
+technically met by the `Pipeline` class in `pipe\_base` (see
+\url{https://github.com/lsst/pipe_base/blob/main/python/lsst/pipe/base/pipeline.py}).
+In practice, this is rarely used, as it is much more convenient and
+flexible to construct pipelines via
+configuration.\\[2\baselineskip]\textbf{LVV-19861:
+DMS-MWST-REQ-0010-V-01: Executable by supervisory framework\\
+}\\
+Interpreting this to mean that any pipeline should be executable by the
+same system, we demonstrate that this requirement is satisfied by our
+nightly continuous integration (CI) processing jobs that execute in the
+Jenkins environment. These include `ci\_hsc\_gen3` (full end-to-end
+processing of a small HSC dataset, which has been demonstrated as part
+of this test execution; see
+\url{https://ci.lsst.codes/blue/organizations/jenkins/scipipe\%2Fci_hsc/activity}),
+and `ap\_verify` (nightly processing of DECam data through the full
+alert production processing; see
+\url{https://ci.lsst.codes/blue/organizations/jenkins/scipipe\%2Fap_verify/activity}).
+Both are run in the same execution environment, but are completely
+different and independent pipelines.\\[2\baselineskip]\textbf{LVV-19742:
+DMS-MWST-REQ-0013-V-01: I/O via Butler\\
+}\\
+This requirement is satisfied by the design of `pipelineTask` (see the
+base class at
+\url{https://github.com/lsst/pipe_base/blob/main/python/lsst/pipe/base/pipelineTask.py}).
+Examination of the code within that base class demonstrates that the
+butler I/O is handled by `pipelineTask`. In particular, the `runQuantum`
+method provides a (quoting the docstring from the code) ``method to do
+butler I/O and/or transforms to provide in-memory objects for tasks' run
+methods.''\\[2\baselineskip]\textbf{LVV-19750: DMS-MWST-REQ-0014-V-01:
+Butler dataset type configuration\\
+}\\
+An example of specifying input/output dataset types within configuration
+is seen in the attached pipeline ``DRP-ci\_hsc+fakes.yaml'' (see online
+\href{https://github.com/lsst/drp_pipe/blob/main/pipelines/HSC/DRP-ci_hsc\%2Bfakes.yaml}{at
+this link}). This pipeline is executed nightly as part of the `ci\_hsc`
+processing. In particular, note the ``deblend'' task of that pipeline,
+where the input dataset is specified via `connections.inputCoaddName:
+``fakes\_deep''`, and the output via `connections.outputCoaddName:
+``fakes\_deep''`. Additional examples can be seen in the `faro` package,
+where the
+\href{https://github.com/lsst/faro/blob/main/pipelines/preparation/preparation_matched_jointcal_fgcm.yaml}{preparation\_matched\_jointcal\_fgcm.yaml}
+pipeline specifies output dataset types, which are subsequently
+specified as inputs to tasks in
+\href{https://github.com/lsst/faro/blob/main/pipelines/measurement/measurement_matched.yaml}{measurement\_matched.yaml}.\\[2\baselineskip]\textbf{LVV-19850:
+DMS-MWST-REQ-0006-V-01: Dataset grouping\\
+}\\
+The grouping of datasets is typically specified for a given
+`pipelineTask` in its Connections class, but these connections are also
+configurable via pipeline specifications. For example, in the pipeline
+found in `drp\_pipe/ingredients/DRP.yaml` (see
+\url{https://github.com/lsst/drp_pipe/blob/main/ingredients/DRP.yaml}),
+the ``transformDiaSourceCat'' task definition (lines 65-73) specifies
+the coaddName, diaSourceSchema, diaSourceCat, diffIm, and
+diaSourceTable. By examination of the source code
+(\url{https://github.com/lsst/ap_association/blob/78c54e57d4d6669e639377797599f186d046457c/python/lsst/ap/association/transformDiaSourceCatalog.py\#L41-L68}),
+one can see that the values in the pipeline are explicit configuration
+overrides to the connection defaults that are already defined in the
+Connections class for the `transformDiaSourceCatalog`
+task.\\[2\baselineskip]\textbf{LVV-19859: DMS-MWST-REQ-0007-V-01:
+Changes of parallelization\\
+}\\
+Make and attach a quantum graph that illustrates
+this?\\[2\baselineskip]Requirements that have not yet been verified:\\
+-- By stating that steps in a pipeline can have different dataset
+grouping, is this simply referring to the fact that the Connections (and
+thus the quantum dimensions) can be different for each step?\\
 LVV-19796: DMS-MWST-REQ-0011-V-01: Phases of execution -- Is it
 sufficient for the DAG to be generated during ci\_hsc\_gen3 but not
 persisted, or should this be demonstrated by persisting a quantum graph
 and then separately reading it in to do the processing?\\
 LVV-19809: DMS-MWST-REQ-0012-V-01: Implied inputs -- What does it mean
 to ``support resolution of full DataId specifications for ``implied
-inputs''"?\\
-LVV-19864: DMS-MWST-REQ-0017-V-01: Pipeline specification definition --
-I simply don't understand what this one means.\\
-LVV-19861: DMS-MWST-REQ-0010-V-01: Executable by supervisory framework
--- Also not sure how to interpret this one.\\[2\baselineskip]
+inputs''"?\\[2\baselineskip]
 
 }
 
