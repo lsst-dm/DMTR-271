@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-02-10 }
+\date{ 2022-04-07 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -170,6 +170,12 @@ To LVV-C160 results &
   DRP-RC2.yaml & \attachfile{attachments/DRP-RC2.yaml}\\ \hline
 To LVV-C160 results &
   DRP-ci\_hsc+fakes.yaml & \attachfile{attachments/DRP-ci_hsc+fakes.yaml}\\ \hline
+To LVV-C160 results &
+  pipeline\_detail.png & \attachfile{attachments/pipeline_detail.png}\\ \hline
+To LVV-C160 results &
+  pipeline.png & \attachfile{attachments/pipeline.png}\\ \hline
+To LVV-C160 results &
+  ci\_hsc\_log\_w\_2022\_05.log & \attachfile{attachments/ci_hsc_log_w_2022_05.log}\\ \hline
                                                                      \end{longtable}
 
 All documents provided as attachments in Jira are downloaded to Github and linked here for convenience.
@@ -226,7 +232,7 @@ Robert Gruendl }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1987}{LVV-T1987}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -770,7 +776,7 @@ Jeffrey Carlin }
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1982}{LVV-T1982}
 &  1
-& In Progress &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 Working on lsst-devl02, in directory
@@ -780,7 +786,7 @@ Working on lsst-devl02, in directory
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1987}{LVV-T1987}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1525,7 +1531,7 @@ have been integrated. ~It further requires (in spirit) that gen3 schema
 stability has been reached to facilitate comparison of pipeline results
 with further stack development can be compared.
 
-Execution status: {\bf In Progress }
+Execution status: {\bf Pass }
 
 Final comment:\\Working on lsst-devl02, in directory
 /project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing.
@@ -1535,7 +1541,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ In Progress } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -1729,18 +1735,114 @@ Connections class for the `transformDiaSourceCatalog`
 task.\\[2\baselineskip]\textbf{LVV-19859: DMS-MWST-REQ-0007-V-01:
 Changes of parallelization\\
 }\\
-Make and attach a quantum graph that illustrates
-this?\\[2\baselineskip]Requirements that have not yet been verified:\\
--- By stating that steps in a pipeline can have different dataset
-grouping, is this simply referring to the fact that the Connections (and
-thus the quantum dimensions) can be different for each step?\\
-LVV-19796: DMS-MWST-REQ-0011-V-01: Phases of execution -- Is it
-sufficient for the DAG to be generated during ci\_hsc\_gen3 but not
-persisted, or should this be demonstrated by persisting a quantum graph
-and then separately reading it in to do the processing?\\
-LVV-19809: DMS-MWST-REQ-0012-V-01: Implied inputs -- What does it mean
-to ``support resolution of full DataId specifications for ``implied
-inputs''"?\\[2\baselineskip]
+The attached file ``pipeline\_detail.png'' shows a portion of the
+directed acyclic graph for the ci\_hsc\_gen3 pipeline (the full figure
+is attached as ``pipeline.png''). Each step in the processing is
+illustrated by a box in this figure, with the required data dimensions
+given in each box. The different groupings of dataset types (and
+dimensions) in various steps of the processing demonstrates that the
+Pipeline specification permits each step to have a different required
+data grouping, as required.\\[2\baselineskip]\textbf{LVV-19796:
+DMS-MWST-REQ-0011-V-01: Phases of execution\\
+}\\
+The attached log (``ci\_hsc\_log\_w\_2022\_05.log'') of the
+ci\_hsc\_gen3 processing, as well as the visualization of the processing
+pipeline in ``pipeline.png,'' illustrate that the ``pre-flight'' phase
+in which a quantum graph (i.e., DAG) is generated is followed by the
+``run'' phase in which the tasks are executed in
+succession.\\[2\baselineskip]\textbf{LVV-19809: DMS-MWST-REQ-0012-V-01:
+Implied inputs\\
+}\\
+To demonstrate that implied inputs can be accessed using fully resolved
+references retrieved from the quantum graph (DAG), first run `pipetask
+qgraph\ldots{}` to persist the quantum graph.\\[2\baselineskip]pipetask
+qgraph -b ``\$CI\_HSC\_GEN3\_DIR''/DATA/butler.yaml -p
+``\$DRP\_PIPE\_DIR/pipelines/HSC/DRP-ci\_hsc.yaml'' -d
+``skymap='discrete/ci\_hsc' AND tract=0 AND patch=69'' -i HSC/defaults
+-o test\_qgraph\_gen --save-qgraph
+ci\_hsc\_gen3\_qgraph.qgraph\\[2\baselineskip]Now, in an ipython
+terminal (with the Science Pipelines set up):\\[2\baselineskip]In
+{[}1{]}: from lsst.pipe.base import QuantumGraph\\
+In {[}2{]}: from lsst.daf.butler import
+DimensionUniverse\\[2\baselineskip]\emph{Read the persisted quantum
+graph:\\
+}\\
+In {[}3{]}: qg = QuantumGraph.loadUri('ci\_hsc\_gen3\_qgraph.qgraph',
+universe=DimensionUniverse())\\[2\baselineskip]\emph{``Implied inputs''
+are dataset types that are typically specified as PrerequisiteInputs in
+connections classes. One place where this occurs is in
+\href{https://github.com/lsst/ip_isr/blob/4a3d635c009a8da912cf40a0f3e9dc6c4bec7eb4/python/lsst/ip/isr/isrTask.py}{isrTask},
+which requires a bias, crosstalk object, dark frame, and other
+PrerequisiteInputs (i.e., ``implied inputs''). For this test, we will
+show that the bias is retrievable based on datarefs in the DAG we have
+persisted.\\
+}\\
+In {[}4{]}: ctquanta =
+qg.findQuantaWithDSType('bias')\\[2\baselineskip]In {[}5{]}: for q in
+ctquanta:\\
+\ldots{}: print(q)\\
+\ldots{}:\\
+Quantum(taskName=lsst.ip.isr.isrTask.IsrTask, dataId=\{instrument:
+`HSC', detector: 1, exposure: 904014, \ldots{}\})\\
+Quantum(taskName=lsst.ip.isr.isrTask.IsrTask, dataId=\{instrument:
+`HSC', detector: 18, exposure: 903338, \ldots{}\})\\
+Quantum(taskName=lsst.ip.isr.isrTask.IsrTask, dataId=\{instrument:
+`HSC', detector: 1, exposure: 903346, \ldots{}\})\\
+Quantum(taskName=lsst.ip.isr.isrTask.IsrTask, dataId=\{instrument:
+`HSC', detector: 0, exposure: 903344, \ldots{}\})\\
+Quantum(taskName=lsst.ip.isr.isrTask.IsrTask, dataId=\{instrument:
+`HSC', detector: 4, exposure: 904010, \ldots{}\})\\
+\ldots{}\\[2\baselineskip]\emph{This demonstrates that the quanta using
+a ``bias'' dataset type can be accessed. A similar query can be done to
+see the tasks that use the biases:\\
+}\\
+In {[}6{]}: cttasks = qg.tasksWithDSType('bias')\\[2\baselineskip]In
+{[}7{]}: for t in cttasks:\\
+\ldots{}: print(t)\\
+\ldots{}:\\
+TaskDef(lsst.ip.isr.isrTask.IsrTask,
+label=isr)\\[2\baselineskip]\emph{As expected, IsrTask uses the biases.
+Now extract one of these quanta for further exploration:\\
+}\\
+In {[}8{]}: q0 = ctquanta.pop()\\[2\baselineskip]In {[}9{]}: q0.dataId\\
+Out{[}9{]}: \{instrument: `HSC', detector: 1, exposure: 904014,
+\ldots{}\}\\[2\baselineskip]\emph{Instantiate a butler pointing to the
+ci\_hsc\_gen3 repository:\\
+}\\
+In {[}10{]}: from lsst.daf.butler import Butler\\
+In {[}11{]}: butler = Butler('DATA/butler.yaml',
+collections={[}'HSC/runs/ci\_hsc'{]})\\[2\baselineskip]\emph{Now, for
+the quantum of interest, we can get the `DatasetRef` of the input bias,
+then load the bias from the butler using this dataset reference:\\
+}\\
+In {[}12{]}: (ref,) = q0.inputs{[}``bias''{]}\\
+In {[}13{]}: bias = butler.getDirect(ref)\\[2\baselineskip]In {[}14{]}:
+bias\\
+Out{[}14{]}: \textless{}lsst.afw.image.exposure.ExposureF at
+0x7f6f3c12be70\textgreater{}\\[2\baselineskip]\emph{This confirms that
+the bias we have retrieved is an ``ExposureF'' type object. Confirm that
+it has non-zero values and an associated bounding box:\\
+}\\
+In {[}15{]}: bias.image\\
+Out{[}15{]}:\\
+lsst.afw.image.image.ImageF={[}{[} 2.7007866 -0.14668204 0.69989073
+\ldots{} 0.71999675 0.25799465\\
+2.7209432 {]}\\
+{[} 2.3166523 0.3923351 -0.19359061 \ldots{} 0.79756474 -0.5102319\\
+2.9523087 {]}\\
+{[} 3.4711118 -0.63503593 0.31618226 \ldots{} -0.04773628 -0.12536396\\
+3.0303118 {]}\\
+\ldots{}\\
+{[} 2.9787798 -0.2536826 0.13162205 \ldots{} 0.87448245 -0.5876055\\
+4.1830816 {]}\\
+{[} 2.7134619 -0.40717614 0.15982895 \ldots{} 0.9519046 0.38719296\\
+3.375857 {]}\\
+{[} 3.67328 0.5943649 0.5933383 \ldots{} 1.5677603 0.33683997\\
+2.7228777 {]}{]}, bbox=(minimum=(0, 0), maximum=(2047,
+4175))\\[2\baselineskip]In {[}16{]}: bias.getDimensions()\\
+Out{[}16{]}: Extent2I(2048, 4176)\\[2\baselineskip]We have thus
+demonstrated that the DAG contains fully resolved references to implied
+inputs related to the `IsrTask`.
 
 }
 
@@ -1759,7 +1861,7 @@ in Gen2 and then migrated to Gen3).
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -1768,7 +1870,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -1792,11 +1894,26 @@ A Gen3 repo with appropriate raw data products.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+We use calibrations from LATISS that are stored in the shared repository
+at NCSA.\\[2\baselineskip]First, we identify a set of exposures to use
+as inputs from the repository:\\[2\baselineskip]`butler
+query-dimension-records /repo/main exposure --where
+``instrument='LATISS' AND exposure.observation\_type='bias' AND
+exposure.target\_name='Park position' AND exposure.exposure\_time=0.0
+AND exposure.dark\_time \textless{} 0.1 AND exposure.day\_obs
+\textgreater{} 20210101''`\\[2\baselineskip]We will use ``rerun''
+20210702a, and select a subset from the list of all bias exposures
+returned by the command above: 2021012000020, 2021012000032,
+2021012000055, 2021012000061, 2021012100060,
+2021031100010\\[2\baselineskip]List of dark exposures: 2021021700078,
+2021021700080, 2021021800057, 2021030900054, 2021030900060\\
+List of flats (with ``RG610'' filter):~2021052500077, 2021052500078,
+2021052500079, 2021052500080, 2021052500081
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -1812,6 +1929,116 @@ A master bias, dark, and flat calibration product.\\[2\baselineskip]
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+For this test, we follow examples documented at
+\url{https://pipelines.lsst.io/v/daily/modules/lsst.cp.pipe/constructing-calibrations.html}.
+To confirm that each combined calibration frame is well-formed, we use
+the `cp\_verify` package, which determines the quality of newly produced
+calibrations in an automated way rather than visual
+inspection.\\[2\baselineskip]Create the master
+bias:\\[2\baselineskip]pipetask --long-log run -b /repo/main/butler.yaml
+-p \$CP\_PIPE\_DIR/pipelines/Latiss/cpBias.yaml -i
+LATISS/raw/all,LATISS/calib -o u/jcarlin/biasGen.20210702a -d
+``instrument='LATISS' AND detector=0 AND exposure IN (2021012000020,
+2021012000032, 2021012000055, 2021012000061, 2021012100060,
+2021031100010)'' -c isr:doDefect=False -c isr:doEmpiricalReadNoise=True
+2\textgreater{}\&1 \textbar{} tee
+bias.20210702a.log\\[2\baselineskip]Verify the
+bias:\\[2\baselineskip]pipetask run -b /repo/main/butler.yaml -p
+\$CP\_VERIFY\_DIR/pipelines/VerifyBias.yaml\\
+-i u/jcarlin/biasGen.20210702a,LATISS/raw/all,LATISS/calib -o
+u/jcarlin/verifyBias.20210702a\\
+-d "instrument='LATISS' AND detector=0 AND\\
+exposure IN (2021012000020, 2021012000032, 2021012000055, 2021012000061,
+2021012100060, 2021031100010)"\\[2\baselineskip]Certify the
+bias:\\[2\baselineskip]Usage: butler certify-calibrations {[}OPTIONS{]}
+REPO INPUT\_COLLECTION\\
+OUTPUT\_COLLECTION DATASET\_TYPE\_NAME\\
+We'll use INPUT\_COLLECTION=u/jcarlin/biasGen.20210702a and
+OUTPUT\_COLLECTION=u/jcarlin/LATISS/calib\\[2\baselineskip]butler
+certify-calibrations /repo/main/butler.yaml u/jcarlin/biasGen.20210702a
+u/jcarlin/LATISS/calib --begin-date 2020-01-01 --end-d\textbackslash{}\\
+ate 2050-01-01 bias\\[2\baselineskip]Construct the defects
+mask:\\[2\baselineskip]pipetask --long-log run -b /repo/main/butler.yaml
+-p \$CP\_PIPE\_DIR/pipelines/Latiss/findDefects.yaml -i
+LATISS/raw/all,u/jcarlin/biasGen.20210702a,u/jcarlin/LATISS/calib -o
+u/jcarlin/defectGen.20210706h -d ``instrument='LATISS' AND detector=0
+AND exposure IN (2021012000020, 2021012000032, 2021012000055,
+2021012000061, 2021012100060, 2021031100010)'' 2\textgreater{}\&1
+\textbar{} tee defect.20210706h.log\\[2\baselineskip]Verify the
+defects:\\[2\baselineskip]pipetask --long-log run -b
+/repo/main/butler.yaml -p \$CP\_VERIFY\_DIR/pipelines/VerifyDefect.yaml
+-i LATISS/raw/all,u/jcarlin/defectGen\textbackslash{}\\
+.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/LATISS/calib -o
+u/jcarlin/verifyDefect.20210706h -d "instrument='LATISS' AND
+detecto\textbackslash{}\\
+r=0 AND exposure IN (2021012000020, 2021012000032, 2021012000055,
+2021012000061, 2021012100060, 2021031100010)" 2\textgreater{}\&1
+\textbar{} tee defectVerify.20210706h.log\\[2\baselineskip]Rerun bias
+verification with the new defects:\\[2\baselineskip]pipetask --long-log
+run -b /repo/main/butler.yaml -p
+\$CP\_VERIFY\_DIR/pipelines/VerifyBias.yaml \textbackslash{}\\
+-i
+LATISS/raw/all,u/jcarlin/defectGen.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/LATISS/calib
+\textbackslash{}\\
+-o u/jcarlin/verifyBias.20210706h \textbackslash{}\\
+-d "instrument='LATISS' AND detector=0 AND\\
+exposure IN (2021012000020, 2021012000032, 2021012000055, 2021012000061,
+2021012100060, 2021031100010)" \textbackslash{}\\
+-c verifyBiasApply:doDefect=True 2\textgreater{}\&1 \textbar{} tee
+biasVerify.20210706h.log\\[2\baselineskip]Certify the new bias for
+use:\\[2\baselineskip]butler certify-calibrations /repo/main/butler.yaml
+u/jcarlin/defectGen.20210706h u/jcarlin/LATISS/calib \textbackslash{}\\
+--begin-date 2020-01-01 --end-date 2050-01-01
+defects\\[2\baselineskip]Construct the dark
+frame:\\[2\baselineskip]pipetask --long-log run -b
+/repo/main/butler.yaml -p \$CP\_PIPE\_DIR/pipelines/cpDark.yaml
+\textbackslash{}\\
+-i
+LATISS/raw/all,u/jcarlin/defectGen.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/LATISS/calib
+\textbackslash{}\\
+-o u/jcarlin/darkGen.20210707a\\
+-d "instrument='LATISS' AND detector=0 AND\\
+exposure IN (2021021700078, 2021021700080, 2021021800057, 2021030900054,
+2021030900060)" \textbackslash{}\\
+-c isr:doCrosstalk=False 2\textgreater{}\&1 \textbar{} tee
+dark.20210707a.log\\[2\baselineskip]Verify the
+dark:\\[2\baselineskip]pipetask --long-log run -b /repo/main/butler.yaml
+-p \$CP\_VERIFY\_DIR/pipelines/VerifyDark.yaml \textbackslash{}\\
+-i
+LATISS/raw/all,u/jcarlin/darkGen.20210707a,u/jcarlin/defectGen.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/LATISS/calib
+\textbackslash{}\\
+-o u/jcarlin/verifyDark.20210707a -d "instrument='LATISS' AND detector=0
+AND\\
+exposure IN (2021021700078, 2021021700080, 2021021800057, 2021030900054,
+2021030900060)" \textbackslash{}\\
+-j 4 2\textgreater{}\&1 \textbar{} tee
+./darkVerify.20170707a.log\\[2\baselineskip]Certify the
+dark:\\[2\baselineskip]butler certify-calibrations
+/repo/main/butler.yaml u/jcarlin/darkGen.20210707a
+u/jcarlin/LATISS/calib \textbackslash{}\\
+--begin-date 2020-01-01 --end-date 2050-01-01
+dark\\[2\baselineskip]Construct the flat frame:\\
+pipetask --long-log run -b /repo/main/butler.yaml -p
+\$CP\_PIPE\_DIR/pipelines/Latiss/cpFlat.yaml -i
+LATISS/raw/all,u/jcarlin/defectGen.\textbackslash{}\\
+20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/darkGen.20210707a,u/jcarlin/LATISS/calib
+-o u/jcarlin/flatGen.20210707a -d "instrumen\textbackslash{}\\
+t='LATISS' AND detector=0 AND exposure IN (2021052500077, 2021052500078,
+2021052500079, 2021052500080, 2021052500081)" -j 4 2\textgreater{}\&1
+\textbar{} tee flat.20210707a.log\\[2\baselineskip]Verify the
+flat:\\[2\baselineskip]pipetask --long-log run -b /repo/main/butler.yaml
+-p \$CP\_VERIFY\_DIR/pipelines/VerifyFlat.yaml -i
+LATISS/raw/all,u/jcarlin/defectGen.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/darkGen.20210707a,u/jcarlin/flatGen.20210707a,u/jcarlin/LATISS/calib
+-o u/jcarlin/verifyFlat.20210707a -d ``instrument='LATISS' AND
+detector=0 AND exposure in (2021052500077, 2021052500078, 2021052500079,
+2021052500080, 2021052500081)'' -j 4 2\textgreater{}\&1 \textbar{} tee
+./flatVerify.20210707a.log\\[2\baselineskip]Certify the
+flat:\\[2\baselineskip]butler certify-calibrations
+/repo/main/butler.yaml u/jcarlin/flatGen.20210707a
+u/jcarlin/LATISS/calib --begin-date 2020-01-01 --end-date 2050-01-01
+flat\\[2\baselineskip]We have now successfully processed raw calibration
+frames to produce a master bias, dark, and flat calibration product, and
+verified that these are well-formed and suitable for use.
 
 }
 
