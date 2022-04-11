@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-04-07 }
+\date{ 2022-04-11 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -240,7 +240,7 @@ Robert Gruendl }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1983}{LVV-T1983}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -754,7 +754,7 @@ Jeffrey Carlin }
 \multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77}:} &
 \multicolumn{2}{p{10.9cm}}{\textbf{ LDM-GEN3: Gen 3 Butler Acceptance Testing }} & Draft \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C160}{LVV-C160}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3: Gen 3 Butler Acceptance Testing }} & In Progress \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3: Gen 3 Butler Acceptance Testing }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2264}{LVV-T2264}
 &  1
@@ -795,10 +795,14 @@ Working on lsst-devl02, in directory
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1983}{LVV-T1983}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+For this test execution, we will use the regular monthly (re-)processing
+of the RC2 dataset to demonstrate the capabilities. The most recent
+processing was executed with weekly release `w\_2022\_12` on the NCSA
+lsst-devl machines, submitted from
+path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/DM-34125.
 \medskip
 \end{minipage}
 &   \\\hline
@@ -1372,7 +1376,7 @@ Not yet available.
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C160}{LDM-503-GEN3: Gen 3 Butler Acceptance Testing}} in Jira.
 
 Test Cycle name: LDM-503-GEN3: Gen 3 Butler Acceptance Testing\\
-Status: In Progress
+Status: Done
 
 This test cycle is meant to demonstrate that the Gen3 butler and
 associated database and pipeline interfaces have matured to the point
@@ -2058,16 +2062,20 @@ be performed in a reasonable time. ~
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\For this test execution, we will use the regular monthly (re-)processing
+of the RC2 dataset to demonstrate the capabilities. The most recent
+processing was executed with weekly release `w\_2022\_12` on the NCSA
+lsst-devl machines, submitted from
+path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/DM-34125.
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2101,11 +2109,31 @@ software environment ready for job submission\\[2\baselineskip]
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+A setup script containing the following lines was first
+executed:\\[2\baselineskip]EUPSTAG=w\_2022\_12\\
+lsstsw\_root=/software/lsstsw/stack\\
+\#lsstsw\_root=/software/lsstsw/stack\_20210520\\[2\baselineskip]echo
+\$\{EUPSTAG\}\\
+source /opt/rh/devtoolset-8/enable\\
+source \$\{lsstsw\_root\}/loadLSST.bash\\
+setup lsst\_distrib -t \$\{EUPSTAG\}\\[2\baselineskip]export
+OMP\_NUM\_THREADS=1\\[2\baselineskip]auth\_path=/home/brendal4/.lsstauth\\[2\baselineskip]\#
+Postgres\\
+export LSST\_DB\_AUTH=\$auth\_path/db-auth-rc.yaml\\
+\#export DAF\_BUTLER\_CONFIG\_PATH=`pwd`\\
+export PGPASSFILE=\$auth\_path/.pgpass\\[2\baselineskip]\# HTCondor
+API\\
+export
+PYTHONPATH=\$PYTHONPATH:/usr/lib64/python3.6/site-packages\\[2\baselineskip]Now,
+we confirm that the correct weekly pipeline version is set
+up:\\[2\baselineskip]\$ eups list -s lsst\_distrib\\
+g64fc59b30a+c0e88c3db7 w\_2022\_12 setup\\[2\baselineskip]This
+demonstrates that the pipelines from w\_2022\_12 were properly set up.
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2135,6 +2163,44 @@ reported.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The processing is executed in a series of ``steps'' -- an example script
+for ``step 2'' of the pipeline looks
+like:\\[2\baselineskip]\#\#\#\#\#\#\#\#\#\#\#\#\#\#\\
+\#BPS OPERATOR\\
+\#\#\#\#\#\#\#\#\#\#\#\#\#\#\\[2\baselineskip]pipelineYaml:
+``\$OBS\_SUBARU\_DIR/pipelines/DRP.yaml\#step2''\\[2\baselineskip]bpsUseShared:
+True\\[2\baselineskip]campaign: ``G3W12''\\
+computeSite: ncsapool\\
+requestMemory: 2048\\
+requestCpus: 1\\[2\baselineskip]payload:\\
+payloadName: rc2\\
+butlerConfig: /repo/main/butler.yaml\\
+inCollection: HSC/RC2/defaults\\
+output: ``HSC/runs/RC2/w\_2022\_12/DM-34125''\\
+dataQuery: ``''\\
+\# dataQuery: ``instrument='HSC' and skymap='hsc\_rings\_v1' and
+detector!=9 and
+detector.purpose='SCIENCE'''\\[2\baselineskip]\#createQuantumGraph:
+pipetask qgraph -d ``\{dataQuery\}'' -b \{butlerConfig\} -i
+\{inCollection\} --output \{output\} --output-run \{outCollection\} -p
+\{pipelineYaml\} -q \{qgraphFile\} --qgraph-dot
+\{qgraphFile\}.dot\\[2\baselineskip]extraRunQuantumOptions:
+--no-versions\\
+extraInitOptions: --no-versions\\[2\baselineskip]pipetask:\\
+assembleCoadd:\\
+requestMemory: 8192\\
+\# makeWarp:\\
+\# requestMemory: 85000\\
+jointcal:\\
+requestMemory: 21000\\
+skyCorr:\\
+requestMemory: 15500\\
+deblend:\\
+requestMemory: 15500\\[2\baselineskip]After executing all steps, the
+following table shows (a) that all tasks completed successfully, and (b)
+summary statistics of the number of quanta for each task, the runtime,
+and maximum memory
+request.\\[2\baselineskip]\includegraphics[width=3.12500in]{jira_imgs/2294.png}
 
 }
 
