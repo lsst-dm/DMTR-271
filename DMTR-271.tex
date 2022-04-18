@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-04-11 }
+\date{ 2022-04-18 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -586,7 +586,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2460}{LVV-T2460}
-& {\small Jeffrey Carlin } & {\small  } &
+& {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -658,7 +658,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2452}{LVV-T2452}
-& {\small Jeffrey Carlin } & {\small  } &
+& {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -819,7 +819,7 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 \end{minipage}
 &   \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C190}{LVV-C190}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ \citeds{LDM-556}: Middleware Acceptance Testing }} & Not Executed \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ \citeds{LDM-556}: Middleware Acceptance Testing }} & In Progress \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2503}{LVV-T2503}
 &  1
@@ -1183,10 +1183,11 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2460}{LVV-T2460}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+Working on lsst-devl machines in a cloned `pipe\_base` repository
+at~/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/pipe\_base
 \medskip
 \end{minipage}
 &   \\\hline
@@ -1264,10 +1265,12 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2452}{LVV-T2452}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+Working with a cloned `daf\_butler` repository
+at~/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/daf\_butler
+on the lsst-devl machines.
 \medskip
 \end{minipage}
 &   \\\hline
@@ -2639,7 +2642,7 @@ Query repository to verify that ingestion of {ComCam}⁠~ occurred.
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C190}{\citeds{LDM-556}: Middleware Acceptance Testing}} in Jira.
 
 Test Cycle name: \citeds{LDM-556}: Middleware Acceptance Testing\\
-Status: Not Executed
+Status: In Progress
 
 
 
@@ -2651,7 +2654,7 @@ Not provided.
 
 \subsubsection{Test Cases in LVV-C190 Test Cycle}
 
-\paragraph{ LVV-T2503 - Verify Outouts from Test Processing Runs }\mbox{}\\
+\paragraph{ LVV-T2503 - Verify Outputs from Test Processing Runs }\mbox{}\\
 
 Version \textbf{1}.
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2503}{\textit{ LVV-T2503 } }
@@ -4676,16 +4679,17 @@ with the nodes in the DAG being the units of work to be executed.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\Working on lsst-devl machines in a cloned `pipe\_base` repository
+at~/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/pipe\_base
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4700,6 +4704,68 @@ Satisfied by existence of QuantumGraph generation code.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+First execute the unit test of a simple graph
+builder:\\[2\baselineskip]pytest -s -vv --no-header --cache-clear
+tests/test\_graphBuilder.py\\[2\baselineskip]Result:\\[2\baselineskip]tests/test\_graphBuilder.py::FLAKE8~PASSED\\
+tests/test\_graphBuilder.py::GraphBuilderTestCase::testAddInstrumentMismatch~PASSED\\
+tests/test\_graphBuilder.py::GraphBuilderTestCase::testDefault
+PASSED\\[2\baselineskip]Now execute the unit test that more thoroughly
+tests quantum graph generation and usage:\\
+pytest -s -vv --no-header --cache-clear tests/test\_quantumGraph.py
+\textbar{} tee
+test\_QG\_log.txt\\[2\baselineskip]tests/test\_quantumGraph.py::FLAKE8
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testAllDatasetTypes
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testContains PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testDetermineAnsestorsOfQuantumNode
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testDetermineConnectionsOfQuantum
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testDetermineOutputsOfQuantumNode
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testFindCycle
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testFindQuantaWIthDSType
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testFindTaskDefByLabel
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testFindTaskDefByName
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testFindTasksWithInput
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testFindTasksWithOutput
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testGetNodesForTask
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testGetQuantaForTask
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testGetQuantumNodeByNodeId
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testGraph PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testInputQuanta
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testLength PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testOutputtQuanta
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testPickle PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testSaveLoad PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testSaveLoadUri
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testSaveLoadUriS3
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testSubset PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testSubsetToConnected
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testTaskGraph
+PASSED\\
+tests/test\_quantumGraph.py::QuantumGraphTestCase::testTaskWithDSType
+PASSED\\
+tests/test\_quantumGraph.py::MyMemoryTestCase::testFileDescriptorLeaks
+\textless{}-
+../../../../../software/lsstsw/stack\_20220215/stack/miniconda3-py38\_4.9.2-2.0.0/Linux64/utils/g617c0b0dc2+9633a190c8/python/lsst/utils/tests.py
+PASSED\\[2\baselineskip]All passed. This demonstrates that functional
+code is in place for DAG generation.\\[2\baselineskip]
 
 }
 
@@ -5033,16 +5099,18 @@ for a POSIX file system.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\Working with a cloned `daf\_butler` repository
+at~/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/daf\_butler
+on the lsst-devl machines.
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -5059,6 +5127,54 @@ Unit test passes
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Executed the unit test via: ``pytest -s -vv --no-header
+tests/test\_butler.py''\\[2\baselineskip]Results:\\[2\baselineskip]tests/test\_butler.py::PosixDatastoreButlerTestCase::testBasicPutGet
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testButlerRewriteDataId
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testCompositePutGetConcrete
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testCompositePutGetVirtual
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testConstructor
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testDeferredCollectionPassing
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testExportTransferCopy
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testGetDatasetTypes
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testImportExport
+Root:
+file:///project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/daf\_butler/tests/tmpdke1g8no/\\
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testImportExportVirtualComposite
+Root:
+file:///project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/daf\_butler/tests/tmpdd9i5by4/\\
+XFAIL\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testIngest PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testMakeRepo
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testPathConstructor
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testPickle PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testPruneCollections
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testPruneDatasets
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testPutTemplates
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testPytypeCoercion
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testPytypePutCoercion
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testRemoveRuns
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testStringification
+PASSED\\
+tests/test\_butler.py::PosixDatastoreButlerTestCase::testTransaction
+PASSED\\[2\baselineskip]All of the tests in PosixDatastoreButlerTestCase
+have passed.
 
 }
 
