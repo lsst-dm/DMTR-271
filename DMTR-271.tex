@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-04-20 }
+\date{ 2022-04-21 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -522,7 +522,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2468}{LVV-T2468}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -538,7 +538,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2467}{LVV-T2467}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -546,7 +546,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2464}{LVV-T2464}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -1111,7 +1111,7 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2468}{LVV-T2468}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1129,16 +1129,18 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2467}{LVV-T2467}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+We will verify this by demonstrating that all dataset overlapping a
+given tract/patch combination (and thus a specific sky region) can be
+readily discovered.~
 \medskip
 \end{minipage}
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2464}{LVV-T2464}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -4351,7 +4353,7 @@ Collections as a single coherent logical repository
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -4360,7 +4362,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4376,6 +4378,34 @@ with multiple input collections.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+This will be demonstrated by showing that datasets of type
+`objectTable\_tract` can be retrieved by a butler query from multiple
+collections.\\[2\baselineskip]Execute the following query to retrieve
+`objectTable\_tract` from RC2 reprocessing collections corresponding to
+weekly pipelines from w\_2022\_08 and
+w\_2022\_12:\\[2\baselineskip]butler query-datasets /repo/main
+objectTable\_tract --collections
+HSC/runs/RC2/w\_2022\_12/DM-34125,HSC/runs/RC2/w\_2022\_08/DM-33741\\[2\baselineskip]This
+returns the following
+table:\\[2\baselineskip]\includegraphics[width=7.91667in]{jira_imgs/2313.png}type
+run id skymap tract-----------------
+------------------------------------------------
+------------------------------------ ------------ -----\\
+objectTable\_tract HSC/runs/RC2/w\_2022\_08/DM-33741/20220222T202737Z
+e19f9def-3d4a-4fd1-b7f1-ebbc53cb74ea hsc\_rings\_v1~~9615\\
+objectTable\_tract HSC/runs/RC2/w\_2022\_08/DM-33741/20220222T202737Z
+dec24ba7-0e8f-467c-b609-281abadf2378 hsc\_rings\_v1~~9697\\
+objectTable\_tract HSC/runs/RC2/w\_2022\_08/DM-33741/20220222T202737Z
+fba3b879-57f4-4f35-8c56-daee1c65f5cf hsc\_rings\_v1~~9813\\
+objectTable\_tract HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z
+f97c9384-826c-4306-86c6-a6250d68271f hsc\_rings\_v1~~9615\\
+objectTable\_tract HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z
+d3f6cc84-782e-4d1b-975b-715798124e33 hsc\_rings\_v1~~9697\\
+objectTable\_tract HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z
+f4877483-d603-4c53-9a42-cd5d5fa7b5d8 hsc\_rings\_v1
+9813\\[2\baselineskip]We have thus demonstrated that datasets from
+multiple collections can be retrieved by the butler as a single coherent
+unit.\\[2\baselineskip]
 
 }
 
@@ -4433,16 +4463,18 @@ given DatasetType with known DataUnits.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\We will verify this by demonstrating that all dataset overlapping a
+given tract/patch combination (and thus a specific sky region) can be
+readily discovered.~
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4457,6 +4489,16 @@ Run `butler query-datasets` against any major repo (e.g. `/repo/main`).
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+This query returns a list of all `calexp` datasets overlapping an
+arbitrarily chosen tract (known a priori to contain data in the HSC RC2
+dataset), patch combination (9615, 43).\\[2\baselineskip]butler
+query-datasets /repo/main calexp --where ``tract=9615 AND patch=43 AND
+skymap='hsc\_rings\_v1''' --collections
+HSC/runs/RC2/w\_2022\_12/DM-34125 \textbar{} less\\[2\baselineskip]The
+first few lines of the returned table are captured in this
+screenshot:\\[2\baselineskip]\includegraphics[width=8.14583in]{jira_imgs/2312.png}\\
+We have thus demonstrated that dataset discovery by a given set of
+DataUnits is enabled by the butler.
 
 }
 
@@ -4472,7 +4514,7 @@ different sky tilings simultaneously\\[2\baselineskip]
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -4481,7 +4523,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4500,7 +4542,7 @@ Make empty repo.
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4519,7 +4561,7 @@ Run `butler register-skymap`.
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4534,11 +4576,14 @@ Run `butler register-skymap` a second time
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+We will start with an existing repository that has more than one
+existing skymap. In particular, we will select a repo with recent
+reprocessing of the RC2 dataset.
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 4 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 4 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4553,6 +4598,32 @@ Verify that mappings to both tile definitions are valid
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+On lsst-devl at NCSA, with the science pipelines set up, opened python
+and typed the following:\\[2\baselineskip]import lsst.daf.butler as
+dafButler\\
+repo =~``/repo/main''\\
+butler = dafButler.Butler(repo,
+collections={[}``HSC/runs/RC2/w\_2022\_12/DM-34125''{]})\\
+registry = butler.registry\\
+for d~in registry.queryDimensionRecords(``skymap''):\\
+\hspace*{0.333em} ~ print(d)\\[2\baselineskip]This results in the
+following screen output:\\[2\baselineskip]skymap:\\
+\hspace*{0.333em}\hspace*{0.333em}name: `hsc\_rings\_v1'\\
+\hspace*{0.333em}\hspace*{0.333em}hash:
+b'\textbackslash{}xe2\textbackslash{}x9f\textbackslash{}xe9\textbackslash{}xf1\textbackslash{}x00\textbackslash{}x8e5\textbackslash{}x9f6\textbackslash{}xa3g\textasciitilde{}\}i\textbackslash{}xccC\textbackslash{}x93v\textbackslash{}xd1\textbackslash{}xe6'\\
+\hspace*{0.333em}\hspace*{0.333em}tract\_max: 18938\\
+\hspace*{0.333em}\hspace*{0.333em}patch\_nx\_max: 9\\
+\hspace*{0.333em}\hspace*{0.333em}patch\_ny\_max: 9\\
+skymap:\\
+\hspace*{0.333em}\hspace*{0.333em}name: `hsc\_rings\_cells\_v1'\\
+\hspace*{0.333em}\hspace*{0.333em}hash:
+b'\textbackslash{}xde\textbackslash{}x85\textbackslash{}x13\textbackslash{}xb0q\textbackslash{}x11\textbackslash{}x1e\textbackslash{}x81a\textbackslash{}x9e\textbackslash{}\textbackslash{}\textbackslash{}x06\textbackslash{}x1f\textbackslash{}x02mA\textbackslash{}xf7h\textbackslash{}xe6\textbackslash{}xd4'\\
+\hspace*{0.333em}\hspace*{0.333em}tract\_max: 18938\\
+\hspace*{0.333em}\hspace*{0.333em}patch\_nx\_max: 11\\
+\hspace*{0.333em} patch\_ny\_max: 11\\[2\baselineskip]This demonstrates
+that this single collection (``HSC/runs/RC2/w\_2022\_12/DM-34125'')
+contains two sky maps with different numbers of patches (i.e., with
+different values of patch\_nx\_max and patch\_ny\_max).
 
 }
 
