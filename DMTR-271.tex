@@ -498,7 +498,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2471}{LVV-T2471}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -506,7 +506,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2470}{LVV-T2470}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -514,7 +514,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2469}{LVV-T2469}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -1084,7 +1084,7 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2471}{LVV-T2471}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1093,19 +1093,23 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2470}{LVV-T2470}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+We verify this with the same query as used in LVV-T2469, but instead
+specifying ``findFirst=True'' to override the default behavior.
 \medskip
 \end{minipage}
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2469}{LVV-T2469}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+We verify this by demonstrating that a `deepCoadd\_calexp` can be
+retrieved for the same tract, patch, band combination, but from
+different collections (i.e., data processed with different pipeline
+versions).
 \medskip
 \end{minipage}
 &   \\\hline
@@ -4228,7 +4232,7 @@ based upon specified filters that need non-DatasetRef database entries
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -4237,7 +4241,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4253,6 +4257,18 @@ with a WHERE expression involving some dimension metadata fields.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+We demonstrate this using the same query as in LVV-T2467. This query
+includes a ``WHERE'' clause to select `calexp` datasets based on tract
+and patch criteria. Because tract/patch are not dimensions of a
+`calexp`, this demonstrates the use of dimension metadata for
+selection.\\[2\baselineskip]butler query-datasets /repo/main calexp
+--where ``tract=9615 AND patch=43 AND skymap='hsc\_rings\_v1'''
+--collections HSC/runs/RC2/w\_2022\_12/DM-34125 \textbar{}
+less\\[2\baselineskip]The first few lines of the returned table are
+captured in this screenshot:\\
+\includegraphics[width=7.16667in]{jira_imgs/2314.png}\\[2\baselineskip]This
+demonstrates the use of dimension metadata for filtering search results
+from the butler.
 
 }
 
@@ -4269,16 +4285,17 @@ retrieval.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\We verify this with the same query as used in LVV-T2469, but instead
+specifying ``findFirst=True'' to override the default behavior.
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4295,6 +4312,12 @@ DatasetRefs, with findFirst=True.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+butler query-datasets /repo/main deepCoadd\_calexp --collections
+HSC/runs/RC2/w\_2022\_12/DM-34125,HSC/runs/RC2/w\_2022\_08/DM-33741
+--where ``tract=9615 AND patch=43 AND band='i' AND
+skymap='hsc\_rings\_v1'''
+--find-first\\[2\baselineskip]\includegraphics[width=6.60417in]{jira_imgs/2319.png}\\
+As expected, this query returns a single result -- the ``first.''
 
 }
 
@@ -4312,16 +4335,19 @@ same data reduced with multiple different stacks.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\We verify this by demonstrating that a `deepCoadd\_calexp` can be
+retrieved for the same tract, patch, band combination, but from
+different collections (i.e., data processed with different pipeline
+versions).
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4338,6 +4364,12 @@ DatasetRefs, with findFirst=False
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+butler query-datasets /repo/main deepCoadd\_calexp --collections
+HSC/runs/RC2/w\_2022\_12/DM-34125,HSC/runs/RC2/w\_2022\_08/DM-33741
+--where ``tract=9615 AND patch=43 AND band='i' AND
+skymap='hsc\_rings\_v1'''\\[2\baselineskip]\includegraphics[width=6.48958in]{jira_imgs/2318.png}\\
+This demonstrates that the butler can identify the same logical Dataset
+(`deepCoadd\_calexp`) from different collections in the same query.
 
 }
 
@@ -4387,24 +4419,9 @@ w\_2022\_12:\\[2\baselineskip]butler query-datasets /repo/main
 objectTable\_tract --collections
 HSC/runs/RC2/w\_2022\_12/DM-34125,HSC/runs/RC2/w\_2022\_08/DM-33741\\[2\baselineskip]This
 returns the following table:\\
-\includegraphics[width=5.63542in]{jira_imgs/2315.png}type run id skymap
-tract----------------- ------------------------------------------------
------------------------------------- ------------ -----\\
-objectTable\_tract HSC/runs/RC2/w\_2022\_08/DM-33741/20220222T202737Z
-e19f9def-3d4a-4fd1-b7f1-ebbc53cb74ea hsc\_rings\_v1~~9615\\
-objectTable\_tract HSC/runs/RC2/w\_2022\_08/DM-33741/20220222T202737Z
-dec24ba7-0e8f-467c-b609-281abadf2378 hsc\_rings\_v1~~9697\\
-objectTable\_tract HSC/runs/RC2/w\_2022\_08/DM-33741/20220222T202737Z
-fba3b879-57f4-4f35-8c56-daee1c65f5cf hsc\_rings\_v1~~9813\\
-objectTable\_tract HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z
-f97c9384-826c-4306-86c6-a6250d68271f hsc\_rings\_v1~~9615\\
-objectTable\_tract HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z
-d3f6cc84-782e-4d1b-975b-715798124e33 hsc\_rings\_v1~~9697\\
-objectTable\_tract HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z
-f4877483-d603-4c53-9a42-cd5d5fa7b5d8 hsc\_rings\_v1
-9813\\[2\baselineskip]We have thus demonstrated that datasets from
-multiple collections can be retrieved by the butler as a single coherent
-unit.\\[2\baselineskip]
+\includegraphics[width=5.63542in]{jira_imgs/2315.png}\\
+We have thus demonstrated that datasets from multiple collections can be
+retrieved by the butler as a single coherent unit.\\[2\baselineskip]
 
 }
 
