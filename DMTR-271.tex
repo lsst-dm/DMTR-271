@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-04-21 }
+\date{ 2022-04-27 }
 \author{ Robert Gruendl }
 
 \input{history_and_info.tex}
@@ -322,7 +322,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2495}{LVV-T2495}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -410,7 +410,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2482}{LVV-T2482}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -426,7 +426,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2480}{LVV-T2480}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -434,7 +434,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2479}{LVV-T2479}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -682,7 +682,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2446}{LVV-T2446}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -886,7 +886,7 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2495}{LVV-T2495}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -985,7 +985,7 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2482}{LVV-T2482}
 &  1
-& Not Executed &
+& In Progress &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1003,7 +1003,7 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2480}{LVV-T2480}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1012,7 +1012,7 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2479}{LVV-T2479}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1301,7 +1301,7 @@ on the lsst-devl machines.
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2446}{LVV-T2446}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -3020,7 +3020,7 @@ datasets into a single file in a Scientific Data Format
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -3029,20 +3029,92 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Examine a `calexp` stored as a FITS file to confirm that its components
+(e.g., WCS, PSF, photocalib) are all contained within the same FITS file
+containing the image.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+A FITs file with multiple extensions containing the various pieces of
+the composite `calexp` Dataset.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+On lsst-devl, with Science Pipelines set up, open an ipython session,
+then do the following.\\[2\baselineskip]Choose an arbitrary `calexp`
+FITS file from the RC2 dataset in /repo/main:\\
+In {[}\textbf{50}{]}: calexp\_path =
+``/repo/main/HSC/runs/RC2/w\_2022\_12/DM-34125/20220319T213338Z/calexp/20150116/z/HSC-Z/17926/''\\
+In {[}\textbf{51}{]}: calexp\_filename =
+``calexp\_HSC\_z\_HSC-Z\_17926\_1\_53\_HSC\_runs\_RC2\_w\_2022\_12\_DM-34125\_20220319T213338Z.fits''\\[2\baselineskip]Open
+this FITS file with the Astropy IO tools:\\
+In {[}\textbf{52}{]}:~\textbf{from} \textbf{astropy.io} \textbf{import}
+fits\\
+In {[}\textbf{53}{]}: hdu = fits.open(calexp\_path +
+calexp\_filename)\\[2\baselineskip]Print the file's info to confirm that
+the FITS file contains multiple extensions with Datasets that make up
+the composite `calexp` dataset:\\
+In {[}\textbf{54}{]}:~hdu.info()\\
+Filename:
+/repo/main/HSC/runs/RC2/w\_2022\_12/DM-34125/20220319T213338Z/calexp/20150116/z/HSC-Z/17926/calexp\_HSC\_z\_HSC-Z\_17926\_1\_53\_HSC\_runs\_RC2\_w\_2022\_12\_DM-34125\_20220319T213338Z.fits\\
+No.~ ~~Name~ ~ ~~Ver~ ~~Type~ ~ ~~Cards ~~Dimensions ~~Format\\
+\hspace*{0.333em}\hspace*{0.333em}0~~IMAGE ~ ~ ~ ~~1 PrimaryHDU ~ ~~216
+~~() ~ ~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}1~~IMAGE ~ ~ ~ ~~1 CompImageHDU ~ ~~82
+~~(2048, 4176) ~~float32~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}2~~MASK~ ~ ~ ~ ~~1 CompImageHDU ~ ~~92
+~~(2048, 4176) ~~int32~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}3~~VARIANCE~ ~ ~~1 CompImageHDU ~ ~~82
+~~(2048, 4176) ~~float32~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}4~~ARCHIVE\_INDEX~ ~~1 BinTableHDU ~
+~~41 ~~313R x 7C ~~{[}1J, 1J, 1J, 1J, 1J, 64A, 64A{]}~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}5~~FilterLabel~ ~~1 BinTableHDU ~ ~~28
+~~1R x 3C ~~{[}2X, 32A, 32A{]}~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}6~~Detector~ ~ ~~1 BinTableHDU~ ~~106
+~~1R x 20C ~~{[}1QA(4), 1J, 1J, 1QA(1), 1J, 1J, 1J, 1J, 1D, 1D, 1D, 1D,
+1D, 1D, 1D, 1D, 1D, 1J, 1QE(0), 1QA(3){]}~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}7~~TransformMap~ ~~1 BinTableHDU ~
+~~33 ~~226R x 5C ~~{[}1QA(10), 1QA(4), 1QA(18), 1QA(4), 1J{]}~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}8~~ExposureSummaryStats~ ~~1
+BinTableHDU ~ ~~18 ~~228R x 1C ~~{[}1QB(13854){]}~ ~\\
+\hspace*{0.333em}\hspace*{0.333em}9~~Detector~ ~ ~~1 BinTableHDU~ ~~200
+~~4R x 38C ~~{[}3X, 1QA(1), 1J, 1J, 1J, 1J, 1D, 1D, 1D, 1D, 1J, 1QD(4),
+1QA(7), 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J, 1J,
+1J, 1J, 1J, 1J, 1J, 1J, 1D, 1D, 1QA(1){]}~ ~\\
+\hspace*{0.333em}10~~ProductTransmissionCurve~ ~~1 BinTableHDU ~ ~~21
+~~5R x 2C ~~{[}1J, 1J{]}~ ~\\
+\hspace*{0.333em}11~~TransformedTransmissionCurve~ ~~1 BinTableHDU ~
+~~21 ~~1R x 2C ~~{[}1J, 1J{]}~ ~\\
+\hspace*{0.333em}12~~SpatiallyConstantTransmissionCurve~ ~~1 BinTableHDU
+~ ~~30 ~~5R x 4C ~~{[}1D, 1D, 1QD(1000), 1QD(1000){]}~ ~\\
+\hspace*{0.333em}13~~RadialTransmissionCurve~ ~~1 BinTableHDU ~ ~~34
+~~1R x 5C ~~{[}1D, 1D, 1QD(10353), 1QD(357), 1QD(29){]}~ ~\\
+\hspace*{0.333em}14~~Polygon ~ ~ ~~1 BinTableHDU ~ ~~21 ~~8R x 2C
+~~{[}1D, 1D{]}~ ~\\
+\hspace*{0.333em}15~~SkyWcs~ ~ ~ ~~1 BinTableHDU ~ ~~17 ~~1R x 1C
+~~{[}1QB(11112){]}~ ~\\
+\hspace*{0.333em}16~~PsfexPsf~ ~ ~~1 BinTableHDU ~ ~~52 ~~1R x 9C
+~~{[}1J, 1J, 1J, 1J, 1J, 1J, 1D, 1D, 1E{]}~ ~\\
+\hspace*{0.333em}17~~PsfexPsf~ ~ ~~1 BinTableHDU ~ ~~45 ~~1R x 8C
+~~{[}2J, 1J, 6D, 6D, 3J, 39366E, 2D, 2D{]}~ ~\\
+\hspace*{0.333em}18~~PhotoCalib~ ~~1 BinTableHDU ~ ~~36 ~~1R x 5C
+~~{[}1X, 1D, 1D, 1J, 1J{]}~ ~\\
+\hspace*{0.333em}19~~ChebyshevBoundedField~ ~~1 BinTableHDU ~ ~~41 ~~32R
+x 6C ~~{[}1J, 1J, 1J, 1J, 1J, 1D{]}~ ~\\
+\hspace*{0.333em}20~~ApCorrMap ~ ~~1 BinTableHDU ~ ~~21 ~~62R x 2C
+~~{[}64A, 1J{]}~ ~\\
+21 ChebyshevBoundedField 1 BinTableHDU 41 31R x 6C {[}1J, 1J, 1J, 1J,
+1J, 9D{]}\\[2\baselineskip]We have confirmed that the facility is
+available to serve composite datasets within a single scientific data
+file.
 
 }
 
@@ -3629,14 +3701,14 @@ Version \textbf{1}.
 Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2482}{\textit{ LVV-T2482 } }
 test case in Jira.
 
-Verify that ~is possible for the Data Input System to construct a
+Verify that it is possible for the Data Input System to construct an
 InMemoryDataset from a set of files stored locally on disk (without a
 remote database connection)
 
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf In Progress }
 
 Final comment:\\
 
@@ -3645,7 +3717,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -3660,6 +3732,13 @@ Manually create QG with execution butler
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Create the quantum graph and execution butler for three visits from
+tract 9813 in HSC RC2 data located in /repo/main at
+NCSA.\\[2\baselineskip]pipetask qgraph -b /repo/main/butler.yaml -p
+\$OBS\_SUBARU\_DIR/pipelines/DRP.yaml\#step1\\
+\hspace*{0.333em} -i HSC/runs/RC2/w\_2022\_12/DM-34125 -o
+u/jcarlin/qgraph\_test\_LDM556 -d ``visit in (1230, 1232, 1240)''\\
+-q test.qgraph --save-execution-butler test\_execution\_butler
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
@@ -3679,6 +3758,7 @@ Run `butler.get` against execution butler.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+cd test\_execution\_butler/\\[3\baselineskip]
 
 }
 
@@ -3772,7 +3852,7 @@ Dataset without loading the full Dataset.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -3781,7 +3861,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -3796,6 +3876,42 @@ Use a butler to read a component (e.g. WCS), against any repo.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+On lsst-devl machines at NCSA, with Science Pipelines set
+up:\\[2\baselineskip]Open an ipython session:\\[2\baselineskip]\$
+ipython\\[2\baselineskip]Import the butler, initialize it for a
+collection containing RC2 processing:\\[2\baselineskip]In
+{[}\textbf{1}{]}:~\textbf{from} \textbf{lsst.daf.butler} \textbf{import}
+Butler\\
+In {[}\textbf{2}{]}: butler = Butler(``/repo/main'',
+collections={[}``HSC/runs/RC2/w\_2022\_12/DM-34125''{]})\\[2\baselineskip]Select
+a random dataId:\\
+In {[}\textbf{3}{]}: dataid = \{``visit'': 1230, ``instrument'':
+``HSC'', ``detector'': 43\}\\[2\baselineskip]Retrieve the `calexp` and
+its associated `wcs`:\\
+In {[}\textbf{4}{]}:~calexp = butler.get(``calexp'', dataId=dataid)\\
+In {[}\textbf{5}{]}: wcs = butler.get(``calexp.wcs'',
+dataId=dataid)\\[2\baselineskip]Examine the `calexp` and `wcs` to
+confirm that they are different:\\
+In {[}\textbf{6}{]}:~calexp\\
+Out{[}\textbf{6}{]}: \textless{}lsst.afw.image.exposure.ExposureF at
+0x7f8db02f4f30\textgreater{}\\[2\baselineskip]In {[}\textbf{7}{]}:~wcs\\
+Out{[}\textbf{7}{]}:~\\
+FITS standard SkyWcs:\\
+Sky Origin: (149.8520271457, +2.0585702399)\\
+Pixel Origin: (1003.05, 2415.24)\\
+Pixel Scale: 0.16713 arcsec/pixel\\[2\baselineskip]They clearly differ
+(the `calexp` is an ExposureF type object, while the `wcs` is a FITS
+standard SkyWcs). Now confirm that the `wcs` is an item contained within
+the composite `calexp` dataset:\\[2\baselineskip]In
+{[}\textbf{8}{]}:~calexp.wcs\\
+Out{[}\textbf{8}{]}:~\\
+FITS standard SkyWcs:\\
+Sky Origin: (149.8520271457, +2.0585702399)\\
+Pixel Origin: (1003.05, 2415.24)\\
+Pixel Scale: 0.16713 arcsec/pixel\\[2\baselineskip]This is identical to
+the `wcs` retrieved above, thus demonstrating that the `wcs` item
+contained within the composite `calexp` dataset can be retrieved alone,
+without loading the entire `calexp`.
 
 }
 
@@ -3811,7 +3927,7 @@ a Dataset without loading the full Dataset.\\[2\baselineskip]
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -3820,7 +3936,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -3835,6 +3951,43 @@ Use a butler to read a subimage via get parameters against any repo.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+On lsst-devl machines at NCSA, with Science Pipelines set
+up:\\[2\baselineskip]Open an ipython session:\\[2\baselineskip]\$
+ipython\\[2\baselineskip]Import the butler, initialize it for a
+collection containing RC2 processing:\\[2\baselineskip]In
+{[}\textbf{1}{]}: \textbf{from} \textbf{lsst.daf.butler} \textbf{import}
+Butler\\
+In {[}\textbf{2}{]}: butler = Butler(``/repo/main'',
+collections={[}``HSC/runs/RC2/w\_2022\_12/DM-34125''{]})\\[2\baselineskip]Select
+a random dataId:\\
+In {[}\textbf{3}{]}: dataid = \{``visit'': 1230, ``instrument'':
+``HSC'', ``detector'': 43\}\\[2\baselineskip]Retrieve the `calexp` and
+its associated `wcs`:\\
+In {[}\textbf{4}{]}:~calexp = butler.get(``calexp'', dataId=dataid)\\
+In {[}\textbf{5}{]}: wcs = butler.get(``calexp.wcs'',
+dataId=dataid)\\[2\baselineskip]What are the dimensions of this
+calexp?\\
+In {[}\textbf{32}{]}:~calexp.getDimensions()\\
+Out{[}\textbf{32}{]}: Extent2I(2048, 4176)\\[2\baselineskip]Look up the
+sky origin of this`calexp`:\\
+In {[}\textbf{33}{]}:~wcs.getSkyOrigin()\\
+Out{[}\textbf{33}{]}:~SpherePoint(149.85202714570465*degrees,
+2.058570239877529*degrees)\\[2\baselineskip]Now, import the ``geom''
+package, and create a position slightly shifted from the sky origin on
+which to center a cutout image:\\
+In {[}\textbf{41}{]}: \textbf{import} \textbf{lsst.geom} \textbf{as}
+\textbf{geom}\\
+In {[}\textbf{42}{]}: pos = geom.SpherePoint(149.8525, 2.06,
+geom.degrees)\\[2\baselineskip]Extract a cutout image with extent of 140
+pixels:\\
+In {[}\textbf{43}{]}: cutout = butler.get(``calexp'',
+dataId=dataid).getCutout(pos,
+geom.Extent2I(140))\\[2\baselineskip]Confirm that we have obtained an
+image that is smaller than the original `calexp`:\\
+In {[}\textbf{44}{]}:~cutout.getDimensions()\\
+Out{[}\textbf{44}{]}: Extent2I(140, 140)\\[2\baselineskip]We have thus
+demonstrated that a parameterized subset (in this case, a sub-image) of
+a Dataset can be loaded into memory without loading the full Dataset.
 
 }
 
@@ -5595,7 +5748,7 @@ are created
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -5604,10 +5757,12 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Execute `butler query-collections` to show that collections are
+registered and searchable.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -5618,6 +5773,59 @@ Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+On lsst-devl machines at NCSA, set up the Science Pipelines, then
+run:\\[2\baselineskip]butler query-collections /repo/main
+*DM-341*\\[2\baselineskip]The glob ``*DM-341*'' should locate any
+collection with that string in its name or path. (This is an arbitrarily
+chosen string that should find collections related to Jira tickets with
+ticket numbers DM-341??.)\\[2\baselineskip]Here is a portion of the
+output from this query:\\[2\baselineskip]Name Type\\
+------------------------------------------------------- -----------\\
+HSC/runs/RC2/w\_2022\_12/DM-34125 CHAINED\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220324T205113Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220325T213046Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220325T211319Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220323T173939Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T153517Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220319T213338Z RUN\\
+HSC/raw/RC2/9615 TAGGED\\
+HSC/raw/RC2/9697 TAGGED\\
+HSC/raw/RC2/9813 TAGGED\\
+HSC/calib/DM-32378 CALIBRATION\\
+HSC/calib/gen2/20180117 CALIBRATION\\
+HSC/calib/DM-28636 CALIBRATION\\
+HSC/calib/gen2/20180117/unbounded RUN\\
+HSC/calib/DM-28636/unbounded RUN\\
+HSC/masks/s18a RUN\\
+HSC/fgcmcal/lut/RC2/DM-28636 RUN\\
+refcats/DM-28636 RUN\\
+skymaps RUN\\
+refcats/DM-33444 RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220319T213338Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T153517Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220323T173939Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220324T205113Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220325T211319Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220325T213046Z RUN\\
+u/yusra/RC2/w\_2022\_12/DM-34125 CHAINED\\
+u/yusra/RC2/w\_2022\_12/DM-34125/20220404T154651Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220325T213046Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220325T211319Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220324T205113Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220323T173939Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T222013Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220321T153517Z RUN\\
+HSC/runs/RC2/w\_2022\_12/DM-34125/20220319T213338Z RUN\\
+HSC/raw/RC2/9615 TAGGED\\
+HSC/raw/RC2/9697 TAGGED\\
+HSC/raw/RC2/9813 TAGGED\\
+HSC/calib/DM-32378 CALIBRATION\\
+HSC/calib/gen2/20180117 CALIBRATION\\
+HSC/calib/DM-28636 CALIBRATION\\[2\baselineskip]We have thus
+demonstrated that Collections are registered in butler
+databases.\\[2\baselineskip]
 
 }
 
