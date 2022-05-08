@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-05-05 }
+\date{ 2022-05-08 }
 \author{ Jeffrey Carlin }
 
 \input{history_and_info.tex}
@@ -442,7 +442,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2478}{LVV-T2478}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -450,7 +450,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2477}{LVV-T2477}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -610,7 +610,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2455}{LVV-T2455}
-& {\small Jeffrey Carlin } & {\small  } &
+& {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -1022,7 +1022,7 @@ Working on lsst-devl machines in a cloned `daf\_butler` repository at
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2478}{LVV-T2478}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1031,7 +1031,7 @@ Working on lsst-devl machines in a cloned `daf\_butler` repository at
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2477}{LVV-T2477}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1219,7 +1219,7 @@ at~/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/pipe\_base
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2455}{LVV-T2455}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -2307,7 +2307,7 @@ Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 {\footnotesize
 Identify data for ingestion~{AuxTel/LATISS}⁠ and make ~a copy at a
 location for the test. ~While a suggestion is provided in
-{/project/shared/auxTel/\_parent/raw/2021-03-23/}⁠ for a location where
+{/project/shared/auxTel/\_parent/raw/2022-4-06/}⁠ for a location where
 such data can be found, the actual data used can be left to the
 discretion of the person(s) executing the test with the added suggestion
 that relatively recent data are more likely to reflect the current
@@ -2317,7 +2317,7 @@ observatory system state.\\[2\baselineskip]
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{/project/shared/auxTel/\_parent/raw/2021-03-23/}⁠~⁠~
+{/project/shared/auxTel/\_parent/raw/2022-4-06/}⁠~⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -4439,7 +4439,7 @@ cloud-based storage engines.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -4448,7 +4448,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4463,11 +4463,35 @@ Make an empty repo with an S3 datastore,
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Logged into the Science Platform at the IDF. From the command line in a
+terminal, executed the following:\\[2\baselineskip]Set up the LSST
+Science Pipelines:\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$
+source /opt/lsst/software/stack/loadLSST.bash\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$
+setup lsst\_distrib\\[2\baselineskip]Make a directory into which we'll
+clone some data:\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$
+mkdir repos\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$
+cd repos/\\[2\baselineskip]Git clone the test data that is used for
+`ci\_hsc`:\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$
+git clone
+https://github.com/lsst/testdata\_ci\_hsc.git\\[2\baselineskip]Change
+directory to the top level, then create a new butler repo:\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin raw{]}\$ cd\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$
+butler create repo\_LVV-T2478\\[2\baselineskip]Register the HSC
+instrument with the butler:\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$
+butler register-instrument /home/jeffcarlin/repo\_LVV-T2478
+lsst.obs.subaru.HyperSuprimeCam\\[2\baselineskip]
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4482,6 +4506,31 @@ Run `butler ~get/put`
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Rather than `butler.put`, we will use `ingest-raws` to demonstrate I/O.
+Execute `butler ingest-raws`, pointing to the empty repo we just
+created, giving it the path to the raw data files we
+cloned:\\[2\baselineskip](lsst-scipipe-3.0.0)
+{[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$ butler ingest-raws
+/home/jeffcarlin/repo\_LVV-T2478
+/home/jeffcarlin/repos/testdata\_ci\_hsc/raw\\
+lsst.ingest INFO: Successfully extracted metadata from 33 files with 0
+failures\\
+lsst.ingest INFO: Exposure HSC:HSCA90398800 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90334600 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90334200 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90333400 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90333600 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90399000 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90401000 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90333800 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90398600 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90401400 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90334400 ingested successfully\\
+lsst.ingest INFO: Successfully processed data from 11 exposures with 0
+failures from exposure registration and 0 failures from file ingest.\\
+lsst.ingest INFO: Ingested 33 distinct Butler
+datasets\\[2\baselineskip]With the successful ingest, we have
+demonstrated that the Input/Output system can use cloud storage.
 
 }
 
@@ -4497,7 +4546,7 @@ from/to distributed file systems.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -4506,7 +4555,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4521,11 +4570,23 @@ Make an empty repo with a POSIX datastore
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Working on the lsst-devl machines at NCSA, in directory
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing, with the
+LSST Science Pipelines set up.\\[2\baselineskip]Create a new butler
+repo:\\
+(lsst-scipipe) {[}jcarlin@lsst-devl02
+gen3\_middleware\_acceptance\_testing{]}\$ butler create
+repo\_LVV-T2477\\[2\baselineskip]Register the HSC instrument with the
+butler:\\
+(lsst-scipipe) {[}jcarlin@lsst-devl02
+gen3\_middleware\_acceptance\_testing{]}\$ butler register-instrument
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/repo\_LVV-T2477
+lsst.obs.subaru.HyperSuprimeCam\\[2\baselineskip]
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -4540,6 +4601,31 @@ Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Rather than `butler.put`, we will use `ingest-raws` to demonstrate I/O.
+Execute `butler ingest-raws`, pointing to the empty repo we just
+created, giving it the path to a directory with some raw data
+files.\\[2\baselineskip](lsst-scipipe) {[}jcarlin@lsst-devl02
+gen3\_middleware\_acceptance\_testing{]}\$ butler ingest-raws
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/repo\_LVV-T2477
+/project/jcarlin/repos/testdata\_ci\_hsc/raw\\[2\baselineskip]lsst.ingest
+INFO: Successfully extracted metadata from 33 files with 0 failures\\
+lsst.ingest INFO: Exposure HSC:HSCA90334600 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90334400 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90333800 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90401000 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90398600 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90401400 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90334200 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90398800 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90333600 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90333400 ingested successfully\\
+lsst.ingest INFO: Exposure HSC:HSCA90399000 ingested successfully\\
+lsst.ingest INFO: Successfully processed data from 11 exposures with 0
+failures from exposure registration and 0 failures from file ingest.\\
+lsst.ingest INFO: Ingested 33 distinct Butler
+datasets\\[2\baselineskip]With the successful ingest, we have
+demonstrated that the Input/Output system can use a distributed file
+system.
 
 }
 
@@ -6157,7 +6243,7 @@ Python API.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -6166,20 +6252,43 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Execute tutorial notebook
+\href{https://github.com/rubin-dp0/tutorial-notebooks/blob/main/05_Intro_to_Source_Detection.ipynb}{Intro
+to Source Detection} on the RSP. This notebook demonstrates importing a
+pipeline task, initializing its configuration and setting configuration
+parameters, and executing the run method of the task within the
+notebook.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+Measurements and data products resulting from the task that was executed
+(e.g., a source table from SingleFrameMeasurementTask).
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Logged into the RSP at \href{http://data.lsst.cloud}{data.lsst.cloud},
+and executed the notebook. In this test we will focus on
+SourceDetectionTask, which is imported in the notebook
+via:\\[2\baselineskip]from lsst.meas.algorithms.detection import
+SourceDetectionTask\\[2\baselineskip]The code must initialize a basic
+schema before execution:\\
+\includegraphics[width=5.97917in]{jira_imgs/2355.png}After executing
+some other tasks, the notebook initialized the configuration for
+`SourceDetectionTask` and changes some configuration values:\\
+\includegraphics[width=6.02083in]{jira_imgs/2356.png}Finally, the .run
+method of `SourceDetectionTask` is executed on an input `calexp`, and
+returns a Struct containing the source table and related objects:\\
+\includegraphics[width=6.85417in]{jira_imgs/2357.png}\\
+We have thus demonstrated that the Pipeline interface can be accessed
+via Python API.
 
 }
 
