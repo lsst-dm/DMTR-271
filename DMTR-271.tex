@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-05-08 }
+\date{ 2022-05-10 }
 \author{ Jeffrey Carlin }
 
 \input{history_and_info.tex}
@@ -386,7 +386,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2485}{LVV-T2485}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -402,7 +402,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2483}{LVV-T2483}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -618,7 +618,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2454}{LVV-T2454}
-& {\small Jeffrey Carlin } & {\small  } &
+& {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -714,7 +714,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2441}{LVV-T2441}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -959,7 +959,7 @@ Working on lsst-devl machines in a cloned `daf\_butler` repository at
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2485}{LVV-T2485}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -977,7 +977,7 @@ Working on lsst-devl machines in a cloned `daf\_butler` repository at
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2483}{LVV-T2483}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1228,7 +1228,7 @@ at~/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/pipe\_base
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2454}{LVV-T2454}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1338,7 +1338,7 @@ on the lsst-devl machines.
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2441}{LVV-T2441}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -3881,7 +3881,7 @@ The specs are similar enough that the same test can be used
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -3890,7 +3890,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -3906,15 +3906,22 @@ repo).
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Working at the Interim Data Facility
+(at~\href{http://data.lsst.cloud}{data.lsst.cloud}), on which all repos
+are S3-backed, and caching is enabled. In a Jupyter notebook, initialize
+the butler pointed to an S3 bucket, and switch the cacheManager log
+level to
+DEBUG:\\[2\baselineskip]\includegraphics[width=6.68750in]{jira_imgs/2366.png}
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
 Run butler.get twice, check (e.g. trace logs) that the second comes from
+the cache
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -3925,6 +3932,16 @@ Run butler.get twice, check (e.g. trace logs) that the second comes from
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Run butler.get() to extract the `calexp` for the dataId defined in Step
+1, inserting timing statements between subsequent calls to demonstrate
+speed-up from
+caching:\\[2\baselineskip]\includegraphics[width=6.19792in]{jira_imgs/2367.png}The
+output from this cell is as follows:\\
+\includegraphics[width=5.67708in]{jira_imgs/2368.png}\\
+Note that the timing for the first butler.get() was 2.85 seconds, and
+for the second it was 1.11 seconds. The log statements demonstrate that
+this is the case because it found the cached file the second time. We
+have thus demonstrated local caching of remote resources.
 
 }
 
@@ -3974,7 +3991,7 @@ Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
  Description \\
 {\footnotesize
 Run `butler.get` twice, check (e.g. trace logs) that the second comes
-from
+from the cache.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -4001,7 +4018,7 @@ location
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -4010,11 +4027,11 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Manually create QG with execution butler.\\
+Create a butler repo and ingest some data.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -4025,25 +4042,66 @@ Manually create QG with execution butler.\\
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+For this test, we will use the repository we created for
+\href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCase/2873}{LVV-T2478}.
+For that test execution, we created an empty Butler repository on the
+IDF (called ``repo\_LVV-T2478''), then ingested some raw HSC images into
+that repo. Here is a brief snapshot of some contents of that
+repo:\\[2\baselineskip]\includegraphics[width=7.58333in]{jira_imgs/2370.png}\\
+From the command line, list all of the files in one of the
+directories:\\[2\baselineskip](lsst-scipipe-3.0.0)
+{[}jeffcarlin@nb-jeffcarlin repo\_LVV-T2478{]}\$ ls
+HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_*.fits\\
+HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_26\_HSC\_raw\_all.fits\\
+HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_27\_HSC\_raw\_all.fits\\
+HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_30\_HSC\_raw\_all.fits\\
+HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_31\_HSC\_raw\_all.fits\\[2\baselineskip]Remove
+all of the .fits files from that
+directory:\\[2\baselineskip](lsst-scipipe-3.0.0)
+{[}jeffcarlin@nb-jeffcarlin repo\_LVV-T2478{]}\$ rm
+HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_*.fits\\
+rm: remove regular file
+`HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_26\_HSC\_raw\_all.fits'?
+y\\
+rm: remove regular file
+`HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_27\_HSC\_raw\_all.fits'?
+y\\
+rm: remove regular file
+`HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_30\_HSC\_raw\_all.fits'?
+y\\
+rm: remove regular file
+`HSC/raw/all/raw/20130617/HSCA90333400/raw\_HSC\_HSC-R\_HSCA90333400\_0\_31\_HSC\_raw\_all.fits'?
+y\\[2\baselineskip]
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-~Run `butler.get` against execution butler for ref that does not exist.
+Run `butler.get` against the butler for a datasetRef that does not
+exist.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+Failure (with error message)
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Open a new notebook, and initialize the butler pointed to this repo.
+Provide the dataId for one of the files from Step1. Attempt to retrieve
+that file using
+butler.get:\\[2\baselineskip]\includegraphics[width=6.81250in]{jira_imgs/2371.png}\\
+\ldots{}\\
+\includegraphics[width=7.63542in]{jira_imgs/2372.png}\\
+As expected, we get a FileNotFoundError, thus demonstrating that the
+middleware can be required to fail if a requested file is not found at
+its expected location.
 
 }
 
@@ -6305,7 +6363,7 @@ captured for purposes of provenance recording.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -6314,20 +6372,125 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Execute a set of pipeline tasks (e.g., ``step1'') on some data with
+default config from DRP-RC2.yaml
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+Run results written to ``collection1''
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Working on lsst-devl machines at NCSA, set up the Science Pipelines,
+then set up the `rc2\_subset` repo.\\[2\baselineskip]Copy the
+``default'' RC2 pipeline to the local directory:\\
+cp \$DRP\_PIPE\_DIR/pipelines/HSC/DRP-RC2.yaml
+./\\[2\baselineskip]Execute ``step1'' from this pipeline, choosing only
+a single detector and two visits:\\
+pipetask run -j 8 -b \$RC2\_SUBSET\_DIR/SMALL\_HSC/butler.yaml -p
+DRP-RC2.yaml\#step1 -i HSC/RC2/defaults -o
+u/jcarlin/pipetask\_config\_test1\_LDM556 -d ``detector in (42) AND
+visit in (11690, 11698)''
+
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
+\end{tabular}
+ Description \\
+{\footnotesize
+Change a configuration option (in a version saved as DRP-RC2\_v2.yaml),
+then execute the same pipeline tasks as in step 1, writing to a
+different output collection.
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Expected Result \\
+{\footnotesize
+Run results written to ``collection2''
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Actual Result \\
+{\footnotesize
+Copy the pipeline file to DRP-RC2\_v2.yaml and add the following lines
+to change the detection threshold in
+characterizeImageTask:\\[2\baselineskip]```\\
+tasks:\\
+\hspace*{0.333em} characterizeImage:\\
+\hspace*{0.333em} ~ class:
+lsst.pipe.tasks.characterizeImage.CharacterizeImageTask\\
+\hspace*{0.333em} ~ config:\\
+\hspace*{0.333em} ~ ~ detection.thresholdValue: 10.0\\
+```\\[2\baselineskip]Execute this pipeline on the same data as in step
+1, but with a different output collection:\\
+pipetask run -j 8 -b \$RC2\_SUBSET\_DIR/SMALL\_HSC/butler.yaml -p
+DRP-RC2\_v2.yaml\#step1 -i HSC/RC2/defaults -o
+u/jcarlin/pipetask\_config\_test2\_LDM556 -d ``detector in (42) AND
+visit in (11690, 11698)''
+
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
+\end{tabular}
+ Description \\
+{\footnotesize
+Retrieve resulting datasets and configurations using the butler and
+confirm that the configuration change is persisted, and that it has
+altered the results from processing.
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Expected Result \\
+{\footnotesize
+Configurations persisted in collection1 and collection2 differ, and the
+results of processing also differ between the two runs.
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Actual Result \\
+{\footnotesize
+In LVV-T2454.py:\\[2\baselineskip]from lsst.daf.butler import
+Butler\\[2\baselineskip]\# Initialize the butler separately with each
+collection:\\
+butler=Butler('/project/jcarlin/repos/rc2\_subset/SMALL\_HSC/',
+collections={[}'u/jcarlin/pipetask\_config\_test1\_LDM556'{]})\\
+butler2=Butler('/project/jcarlin/repos/rc2\_subset/SMALL\_HSC/',
+collections={[}'u/jcarlin/pipetask\_config\_test2\_LDM556'{]})\\[2\baselineskip]\#
+Pick a single visit/detector:\\
+dataId1 = \{'visit':11690, `detector':42,
+`instrument':'HSC'\}\\[2\baselineskip]\# Extract the source tables for
+the two runs:\\
+src1 = butler.get('src', dataId1)\\
+src2 = butler2.get('src', dataId1)\\[2\baselineskip]\# Print the length
+of the source tables:\\
+print('src1 length: ', len(src1))\\
+print('src2 length: ', len(src2))\\[2\baselineskip]\# Extract the
+configs for each run\\
+cfg1 = butler.get('characterizeImage\_config', dataId1).toDict()\\
+cfg2 = butler2.get('characterizeImage\_config',
+dataId1).toDict()\\[2\baselineskip]\# Print the
+detection.thresholdValue, since that's what we changed between the two
+configs:\\
+print('run1 threshold: `, cfg1{[}'detection'{]}{[}'thresholdValue'{]})\\
+print('run2 threshold: `,
+cfg2{[}'detection'{]}{[}'thresholdValue'{]})\\[2\baselineskip]Executing
+this prints the following to the screen:\\
+python LVV-T2454.py\\[2\baselineskip]src1 length: 3447\\
+src2 length: 3369\\
+run1 threshold: 5.0\\
+run2 threshold: 10.0\\[2\baselineskip]We have demonstrated that the
+configuration options can be overridden in specification, and that these
+are persisted in the output repository.
 
 }
 
@@ -7417,7 +7580,7 @@ Data Input/Output System interfaces.\\[2\baselineskip]
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -7426,7 +7589,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -7442,11 +7605,19 @@ dataset IDs).\\[2\baselineskip]
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+We demonstrate this capability via the
+\href{https://github.com/lsst/obs_subaru/blob/main/tests/test_convert2to3.py}{unit
+test} for the task to convert HSC data from Gen2 to
+Gen3.\\[2\baselineskip]First, clone and set up the `testdata\_subaru`
+repository:\\
+git clone https://github.com/lsst/testdata\_subaru.git\\
+cd testdata\_subaru\\
+setup -j -r .
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -7462,11 +7633,12 @@ one.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The script is executed in the next step.\\[2\baselineskip]
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -7481,6 +7653,53 @@ Verify that the features are migrated correctly
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+In a cloned version of `obs\_subaru` on the lsst-devl machines at NCSA,
+execute the unit test by entering:\\
+pytest -s -vv --no-header --cache-clear
+tests/test\_convert2to3.py\\[2\baselineskip]The output is as
+follows:\\[2\baselineskip]\textbf{============ test session starts
+===================}\\
+\textbf{collected 2 items ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
+~}\\[2\baselineskip]tests/test\_convert2to3.py::FLAKE8~PASSED\\
+tests/test\_convert2to3.py::ConvertGen2To3TestCase::test\_convert
+\textless{}-
+../../../../software/lsstsw/stack\_20220215/stack/miniconda3-py38\_4.9.2-2.0.0/Linux64/obs\_base/g7a69c27ea0+bead29cdf2/python/lsst/obs/base/gen2to3/convertTests.py
+Running command: hscIngestImages.py /tmp/tmphkuzq0l6
+/project/jcarlin/repos/testdata\_subaru/hsc/raw/HSCA90402512.fits.gz\\
+root INFO: Loading config overrride file
+`/software/lsstsw/stack\_20220215/stack/miniconda3-py38\_4.9.2-2.0.0/Linux64/obs\_subaru/gfa9d5d4668+fd2f82045d/config/ingest.py'\\
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/pipe\_base/python/lsst/pipe/base/argumentParser.py:782:
+FutureWarning: Gen2 Butler has been deprecated (Butler). It will be
+removed sometime after v23.0 but no earlier than the end of 2021.\\
+namespace.butler = dafPersist.Butler(outputs=outputs)\\
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/pipe\_base/python/lsst/pipe/base/argumentParser.py:782:
+FutureWarning: Gen2 Butler has been deprecated (HscMapper). It will be
+removed sometime after v23.0 but no earlier than the end of 2021.\\
+namespace.butler = dafPersist.Butler(outputs=outputs)\\
+HscMapper WARN: Unable to find calib root directory\\
+lsst.CameraMapper INFO: Loading Posix exposure registry from
+/tmp/tmphkuzq0l6\\
+lsst.ingest INFO:
+/project/jcarlin/repos/testdata\_subaru/hsc/raw/HSCA90402512.fits.gz
+--\textless{}link\textgreater{}--\textgreater{}
+/tmp/tmphkuzq0l6/STRIPE82L/2013-11-02/00671/HSC-I/HSC-0904024-050.fits\\
+lsst.CameraMapper INFO: Loading exposure registry from
+/tmp/tmphkuzq0l6/registry.sqlite3\\
+lsst.CameraMapper INFO: Loading calib registry from
+/project/jcarlin/repos/testdata\_subaru/hsc/calib/calibRegistry.sqlite3\\
+lsst.CameraMapper INFO: Loading exposure registry from
+/tmp/tmphkuzq0l6/registry.sqlite3\\
+lsst.CameraMapper INFO: Loading exposure registry from
+/tmp/tmphkuzq0l6/registry.sqlite3\\
+lsst.afw.image.MaskedImageFitsReader WARN: Expected extension type not
+found: IMAGE\\
+lsst.afw.image.MaskedImageFitsReader WARN: Expected extension type not
+found: IMAGE\\
+PASSED\\[2\baselineskip]================ 2 passed, \textbf{6 warnings}
+in 141.18s (0:02:21) =============\\[2\baselineskip]The unit test has
+passed, demonstrating a successful migration of a Gen2 repo to Gen3.
 
 }
 
