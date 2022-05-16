@@ -1,6 +1,6 @@
 % generated from JIRA project LVV
 % using template at /usr/share/miniconda/envs/docsteady-env/lib/python3.7/site-packages/docsteady/templates/tpr.latex.jinja2.
-% using docsteady version 2.2.4
+% using docsteady version 2.2.6
 % Please do not edit -- update information in Jira instead
 \documentclass[dm,lsstdraft,STR,toc]{lsstdoc}
 \usepackage{geometry}
@@ -31,8 +31,8 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ \today }
-\author{Jeff Carlin, Robert Gruendl, Leanne Guy }
+\date{ 2022-05-16 }
+\author{ Jeffrey Carlin }
 
 \input{history_and_info.tex}
 
@@ -187,7 +187,7 @@ not be part of the verification baseline.
 
 Primavera milestones related to the test campaign:
 \begin{itemize}
-\item LDM-503-GEN3-01
+\item LDM-GEN3
 \end{itemize}
 
 
@@ -490,7 +490,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2472}{LVV-T2472}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -530,7 +530,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2466}{LVV-T2466}
-& {\small Jeffrey Carlin } & {\small  } &
+& {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -554,7 +554,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2465}{LVV-T2465}
-& {\small Jeffrey Carlin } & {\small  } &
+& {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -570,7 +570,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2463}{LVV-T2463}
-& {\small Jeffrey Carlin } & {\small  } &
+& {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -594,7 +594,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2457}{LVV-T2457}
-& {\small Jeffrey Carlin } & {\small  } &
+& {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -807,14 +807,16 @@ path~/scratch/brendal4/bps-gen3-rc2/w\_2022\_12/submit/HSC/runs/RC2/w\_2022\_12/
 \end{minipage}
 &   \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C162}{LVV-C162}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3: Gen 3 Ingest raw dataset }} & Not Executed \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3: Gen 3 Ingest raw dataset }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T1985}{LVV-T1985}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+The test can all be executed by running the script in the test plan and
+report github repository: ~https://github.com/lsst-dm/\citeds{DMTR-271}/,
+\citeds{DMTR-271}/scripts/LVV-T1985.sh on the lsst development machines at NCSA
 \medskip
 \end{minipage}
 &   \\\hline
@@ -1076,7 +1078,7 @@ Working on lsst-devl machines in a cloned `daf\_butler` repository at
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2472}{LVV-T2472}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1125,7 +1127,7 @@ versions).
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2466}{LVV-T2466}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1154,7 +1156,7 @@ readily discovered.~
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2465}{LVV-T2465}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1172,7 +1174,7 @@ readily discovered.~
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2463}{LVV-T2463}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1201,10 +1203,12 @@ at~/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/pipe\_base
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2457}{LVV-T2457}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+More detail about I/O handling via pipetask and runQuantum can be found
+by
+examining~\url{https://github.com/lsst/ctrl_mpexec/blob/main/python/lsst/ctrl/mpexec/singleQuantumExecutor.py}.
 \medskip
 \end{minipage}
 &   \\\hline
@@ -2221,7 +2225,7 @@ request.\\[2\baselineskip]\includegraphics[width=5.96875in]{jira_imgs/2294.png}
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C162}{LDM-503-GEN3: Gen 3 Ingest raw dataset}} in Jira.
 
 Test Cycle name: LDM-503-GEN3: Gen 3 Ingest raw dataset\\
-Status: Not Executed
+Status: Done
 
 In the context of the milestone LDM-503-GEN3, Gen 3 Butler readiness,
 this test cycle is defining the configuration and the dataset for
@@ -2260,16 +2264,18 @@ In order to run this test, a Gen3 daf butler should be deployed and
 ready to use, with access to the filesystems where the raw data to
 ingest is stored.
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\The test can all be executed by running the script in the test plan and
+report github repository: ~https://github.com/lsst-dm/\citeds{DMTR-271}/,
+\citeds{DMTR-271}/scripts/LVV-T1985.sh on the lsst development machines at NCSA
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2297,17 +2303,19 @@ One or more raw data sets are identified and made available.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The dataset identified for testing is
+{/project/shared/hsc/COSMOS/2014-03-27/}‚Ā† ‚Ā†
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
 Identify data for ingestion~{AuxTel/LATISS}⁠ and make ~a copy at a
 location for the test. ~While a suggestion is provided in
-{/project/shared/auxTel/\_parent/raw/2022-4-06/}⁠ for a location where
+{/project/shared/auxTel/\_parent/raw/2022-04-06}⁠ for a location where
 such data can be found, the actual data used can be left to the
 discretion of the person(s) executing the test with the added suggestion
 that relatively recent data are more likely to reflect the current
@@ -2317,7 +2325,7 @@ observatory system state.\\[2\baselineskip]
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{/project/shared/auxTel/\_parent/raw/2022-4-06/}⁠~⁠~
+{/project/shared/auxTel/\_parent/raw/2022-04-06}⁠~⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -2329,17 +2337,22 @@ One or more raw data sets are identified and made available.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The dataset identified for testing is
+/project/shared/auxTel/\_parent/raw/2022-04-06, which points to raw data
+files at /lsstdata/offline/instrument/LATISS/storage/2022-04-06. A copy
+was made to the directory used for this test. This dataset is kess than
+one month old and contains calibration images and science images
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
 Identify data for ingestion~{ComCam}⁠ and make ~a copy at a location for
 the test. ~While a suggestion is provided in
-{/project/shared/comCam/\_parent/raw/2021-05-14/2021051400003/}⁠ for a
+{/project/shared/comCam/\_parent/raw/2022-05-05/2022050500005}⁠ for a
 location where such data can be found, the actual data used can be left
 to the discretion of the person(s) executing the test with the added
 suggestion that relatively recent data are more likely to reflect the
@@ -2349,7 +2362,7 @@ current observatory system state.\\[2\baselineskip]
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Test Data \\
  {\footnotesize
-{/project/shared/comCam/\_parent/raw/2021-05-14/2021051400003/}⁠~⁠~
+{/project/shared/comCam/\_parent/raw/2022-05-05/2022050500005}⁠~⁠~
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -2361,11 +2374,109 @@ One or more raw data sets are identified and made available.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The dataset identified for testing is
+~/project/shared/comCam/\_parent/raw/2022-05-05/202205050000005/ ⁠\\
+, which points to raw data files at ~
+/lsstdata/offline/instrument/LSSTComCam/storage/20220505/000005/. A copy
+was made to the directory used for this test. This dataset is less than
+one month old and contains calibration images and science images
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 4 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 4 & Step Execution Status: \textbf{ Pass } \\ \hline
+\end{tabular}
+ Description \\
+{\footnotesize
+Create or identify an existing Butler repository for testing. If a
+repository as already been created for a dataset used in this test,
+reuse that repository.~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\# Create empty Gen3 repo\\
+butler create repo\\
+butler config-dump repo --file repo.config
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Expected Result \\
+{\footnotesize
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Actual Result \\
+{\footnotesize
+repository created and configuration file dumped~
+
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 5 & Step Execution Status: \textbf{ Pass } \\ \hline
+\end{tabular}
+ Description \\
+{\footnotesize
+Create or identify an existing Butler repository for testing. If a
+repository as already been created for a dataset used in this test,
+reuse that repository.~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\# Create empty Gen3 repo\\
+butler create repo\\
+butler config-dump repo --file repo.config
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Expected Result \\
+{\footnotesize
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Actual Result \\
+{\footnotesize
+The repository~ created in the preious step was used for this instrument
+as well.
+
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 6 & Step Execution Status: \textbf{ Pass } \\ \hline
+\end{tabular}
+ Description \\
+{\footnotesize
+Create or identify an existing Butler repository for testing. If a
+repository as already been created for a dataset used in this test,
+reuse that repository.~
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\# Create empty Gen3 repo\\
+butler create repo\\
+butler config-dump repo --file repo.config
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Expected Result \\
+{\footnotesize
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Actual Result \\
+{\footnotesize
+The repository created in the preious step was used for this instrument
+as well.
+
+}
+\begin{tabular}{p{2cm}p{14cm}}
+\toprule
+Step 7 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2383,9 +2494,12 @@ raw data should not already be present in the repository for this test.)
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Example Code \\
 {\footnotesize
-\# create empty Gen3 repo (for ComCam data)\\[2\baselineskip]butler
-create repo\\
-butler register-instrument repo lsst.obs.lsst.LsstComCam
+butler register-instrument repo \textless{}instrument\textgreater{}\\
+butler write-curated-calibrations repo
+\textless{}instrument\textgreater{}\\[2\baselineskip]\# Check the
+outputs\\
+butler query-dimenstion-records repo instrument\\
+butler query-collections~ repo --chains=tree
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -2396,11 +2510,31 @@ butler register-instrument repo lsst.obs.lsst.LsstComCam
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\textgreater{} butler query-dimension-records repo
+instrument\\[2\baselineskip]name visit\_max exposure\_max detector\_max
+class\_name\\
+---- --------- ------------ ------------
+-------------------------------\\
+HSC 21474800 21474800 200
+lsst.obs.subaru.HyperSuprimeCam\\[3\baselineskip]\textgreater{} butler
+query-collections repo--chains=tree\\
+\hspace*{0.333em} ~ ~ ~ ~ ~ ~ ~Name ~ ~ ~ ~ ~ ~ ~ ~ ~ ~Type ~\\
+---------------------------------- -----------\\
+HSC/calib CALIBRATION\\
+HSC/calib/curated/19700101T000000Z RUN\\
+HSC/calib/curated/20130131T000000Z RUN\\
+HSC/calib/curated/20140403T000000Z RUN\\
+HSC/calib/curated/20140601T000000Z RUN\\
+HSC/calib/curated/20151106T000000Z RUN\\
+HSC/calib/curated/20160401T000000Z RUN\\
+HSC/calib/curated/20161122T000000Z RUN\\
+HSC/calib/curated/20161223T000000Z RUN\\
+HSC/calib/unbounded RUN\\[5\baselineskip]
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 5 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 8 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2419,9 +2553,12 @@ repository for this test.)
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Example Code \\
 {\footnotesize
-\# create empty Gen3 repo (for ComCam data)\\[2\baselineskip]butler
-create repo\\
-butler register-instrument repo lsst.obs.lsst.LsstComCam
+butler register-instrument repo \textless{}instrument\textgreater{}\\
+butler write-curated-calibrations repo
+\textless{}instrument\textgreater{}\\[2\baselineskip]\# Check the
+outputs\\
+butler query-dimenstion-records repo instrument\\
+butler query-collections~ repo --chains=tree
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -2432,11 +2569,26 @@ butler register-instrument repo lsst.obs.lsst.LsstComCam
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+butler create repo\\
+butler register-instrument repo lsst.obs.lsst.Latiss\\
+butler query-dimenstion-records repo instrument\\[2\baselineskip]name
+visit\_max exposure\_max detector\_max class\_name\\
+------ ------------- ------------- ------------ --------------------\\
+LATISS 6050123199999 6050123199999 0 lsst.obs.lsst.Latiss\\
+(lsst-scipipe) {[}lguy@lsst-devl03 repo{]}\$ butler register-instrument
+\$REPO lsst.obs.lsst.Latiss\\[3\baselineskip]butler query-collections
+repo --chains=tree\\[2\baselineskip]Name Type\\
+------------------------------------- -----------\\
+LATISS/calib CALIBRATION\\
+LATISS/calib/curated/19700101T000000Z RUN\\
+LATISS/calib/curated/20180101T000000Z RUN\\
+LATISS/calib/unbounded RUN\\[2\baselineskip]Check that both curated and
+unbounded calibration collections are created
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 6 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 9 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2454,9 +2606,12 @@ raw data should not already be present in the repository for this test.)
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Example Code \\
 {\footnotesize
-\# create empty Gen3 repo (for ComCam data)\\[2\baselineskip]butler
-create repo\\
-butler register-instrument repo lsst.obs.lsst.LsstComCam
+butler register-instrument repo \textless{}instrument\textgreater{}\\
+butler write-curated-calibrations repo
+\textless{}instrument\textgreater{}\\[2\baselineskip]\# Check the
+outputs\\
+butler query-dimenstion-records repo instrument\\
+butler query-collections~ repo --chains=tree
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -2467,11 +2622,26 @@ butler register-instrument repo lsst.obs.lsst.LsstComCam
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\textgreater{} butler create repo\\
+\textgreater{} butler register-instrument lsst.obs.lsst.LsstComCam\\
+\textgreater{} butler write-curated-calibrations repo
+lsst.obs.lsst.LsstComCam\\[2\baselineskip]\textgreater{} buter
+query-dimension-records repo lsst.obs.lsst.LsstComCam\\
+name visit\_max exposure\_max detector\_max class\_name\\
+---------- ------------- ------------- ------------
+------------------------\\
+LSSTComCam 6050123199999 6050123199999 1000
+lsst.obs.lsst.LsstComCam\\[2\baselineskip]\textgreater{} butler
+query-collections repo --chains=tree\\
+\hspace*{0.333em} ~ ~ ~ ~ ~Name ~ ~ ~ ~ ~ ~ ~ ~Type ~\\
+-------------------------- -----------\\
+LSSTComCam/calib CALIBRATION\\
+LSSTComCam/calib/unbounded RUN
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 7 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 10 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2487,7 +2657,7 @@ Ingest {HSC RC2}⁠~raw data into repo
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Example Code \\
 {\footnotesize
-butler ingest-raws repo raw
+butler ingest-raws repo /path/to/raw/fitsfiles
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -2499,11 +2669,19 @@ Tool reports data ingest successful for {HSC RC2}⁠ into {url 1}⁠~
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\textgreater{} butler ingest-raws repo /path/to/raws --transfer
+link\\[2\baselineskip]lsst.ingest INFO: Successfully extracted metadata
+from 4144 files with 0 failures\\
+lsst.ingest INFO: Exposure HSC:HSCA00088200 ingested successfully\\
+\ldots{}\ldots{}\\
+lsst.ingest INFO: Successfully processed data from 37 exposures with 0
+failures from exposure registration and 0 failures from file ingest.\\
+lsst.ingest INFO: Ingested 4144 distinct Butler datasets
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 8 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 11 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2519,7 +2697,7 @@ Ingest {AuxTel/LATISS}⁠~raw data into repo
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Example Code \\
 {\footnotesize
-butler ingest-raws repo raw
+butler ingest-raws repo /path/to/raw/fitsfiles
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -2531,11 +2709,23 @@ Tool reports data ingest successful for {AuxTel/LATISS}⁠ into {url 2}⁠~
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\textgreater{} butler ingest-raws repo /path/to/raw/fits
+--transfer=link\\[2\baselineskip]lsst.ingest INFO: Successfully
+extracted metadata from 1126 files with 0 failures\\
+lsst.ingest INFO: Exposure LATISS:AT\_O\_20220406\_001090 ingested
+successfully\\
+\ldots{}\ldots{}\ldots{}.\\
+lsst.ingest INFO: Exposure LATISS:AT\_O\_20220406\_000108 ingested
+successfully\\
+lsst.ingest INFO: Successfully processed data from 1126 exposures with 0
+failures from exposure registration and 0 failures from file ingest.\\
+lsst.ingest INFO: Ingested 1126 distinct Butler
+datasets\\[2\baselineskip]No errors were reported in the ingest process
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 9 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 12 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2551,7 +2741,7 @@ Ingest {ComCam}⁠~raw data into repo
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Example Code \\
 {\footnotesize
-butler ingest-raws repo raw
+butler ingest-raws repo /path/to/raw/fitsfiles
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -2563,11 +2753,19 @@ Tool reports data ingest successful for {ComCam}⁠ into {url 3}⁠~
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\textgreater{} butler ingest-raws repo /path/to/raw/fitsfiles
+--transfer=link\\[2\baselineskip]lsst.ingest INFO: Successfully
+extracted metadata from 9 files with 0 failures\\
+lsst.ingest INFO: Exposure LSSTComCam:CC\_O\_20220505\_000005 ingested
+successfully\\
+lsst.ingest INFO: Successfully processed data from 1 exposure with 0
+failures from exposure registration and 0 failures from file ingest.\\
+lsst.ingest INFO: Ingested 9 distinct Butler datasets
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 10 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 13 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2581,6 +2779,18 @@ Query repository to verify that ingestion of {HSC RC2}⁠~ occurred.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\begin{verbatim}
+butler query-collections repo --chains=tree
+\end{verbatim}
+
+\begin{verbatim}
+butler query-dimension-records repo exposure
+\end{verbatim}
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
 {HSC RC2}⁠ data are found by query.~
@@ -2589,11 +2799,49 @@ Query repository to verify that ingestion of {HSC RC2}⁠~ occurred.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\textgreater{}~
+
+\begin{verbatim}
+butler query-collections repo --chains=tree
+\end{verbatim}
+
+Name Type\\
+---------------------------------- -----------\\
+HSC/calib CALIBRATION\\
+HSC/calib/curated/19700101T000000Z RUN\\
+HSC/calib/curated/20130131T000000Z RUN\\
+HSC/calib/curated/20140403T000000Z RUN\\
+HSC/calib/curated/20140601T000000Z RUN\\
+HSC/calib/curated/20151106T000000Z RUN\\
+HSC/calib/curated/20160401T000000Z RUN\\
+HSC/calib/curated/20161122T000000Z RUN\\
+HSC/calib/curated/20161223T000000Z RUN\\
+HSC/calib/unbounded RUN\\
+HSC/raw/all RUN\\[2\baselineskip]The HSC/raw/all and HSC/calib
+collections exist\\[2\baselineskip]
+
+\begin{verbatim}
+> butler query-dimension-records repo exposure
+\end{verbatim}
+
+instrument id physical\_filter obs\_id exposure\_time dark\_time
+observation\_type observation\_reason day\_obs seq\_num group\_name
+group\_id target\_name science\_program tracking\_ra tracking\_dec
+sky\_angle zenith\_angle timespan {[}2{]}\\
+---------- --- --------------- ------------ -----------------
+----------------- ---------------- ------------------ -------- -------
+---------- -------- ----------- --------------- ------------------
+------------------ --------- ------------------
+--------------------------------------------------------\\
+HSC 872 HSC-I HSCA00087200 30.0 30.0 science science 20140327 872 872
+872 COSMOS o14311 150.11877083333331 2.205855555555556 180.0 23.8768551
+2014-03-27 06:59:34.970000 .. 2014-03-27
+07:00:07.037000\\[2\baselineskip]\ldots{}.
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 11 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 14 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2607,6 +2855,18 @@ Query repository to verify that ingestion of {AuxTel/LATISS}⁠~ occurred.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\begin{verbatim}
+butler query-collections repo --chains=tree
+\end{verbatim}
+
+\begin{verbatim}
+butler query-dimension-records repo exposure
+\end{verbatim}
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
 {AuxTel/LATISS}⁠ data are found by query.~
@@ -2615,11 +2875,20 @@ Query repository to verify that ingestion of {AuxTel/LATISS}⁠~ occurred.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\textgreater{} butler query-collections \$REPO --chains=tree\\
+Name Type\\
+------------------------------------- -----------\\
+LATISS/calib CALIBRATION\\
+LATISS/calib/curated/19700101T000000Z RUN\\
+LATISS/calib/curated/20180101T000000Z RUN\\
+LATISS/calib/unbounded RUN\\
+LATISS/raw/all RUN\\[2\baselineskip]Check that ingesting the images has
+createsd a the ``all'' collection
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 12 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 15 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -2633,6 +2902,18 @@ Query repository to verify that ingestion of {ComCam}⁠~ occurred.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
+  Example Code \\
+{\footnotesize
+\begin{verbatim}
+butler query-collections repo --chains=tree
+\end{verbatim}
+
+\begin{verbatim}
+butler query-dimension-records repo exposure
+\end{verbatim}
+
+}
+\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
 {ComCam}⁠ data are found by query.~
@@ -2641,6 +2922,33 @@ Query repository to verify that ingestion of {ComCam}⁠~ occurred.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+\textgreater{} butler query-collections repo
+--chains=tree\\[2\baselineskip]Name Type\\
+-------------------------- -----------\\
+LSSTComCam/calib CALIBRATION\\
+LSSTComCam/calib/unbounded RUN\\
+LSSTComCam/raw/all RUN\\[2\baselineskip]The LSSTComCam/raw/all
+collection has been created\\[2\baselineskip]\textgreater{} butler
+query-dimension-records \$REPO exposure --where
+``instrument='LSSTComCam' AND
+exposure.observation\_type='bias'''\\[2\baselineskip]instrument id
+physical\_filter obs\_id exposure\_time dark\_time observation\_type
+observation\_reason day\_obs seq\_num group\_name group\_id target\_name
+science\_program tracking\_ra tracking\_dec sky\_angle zenith\_angle
+timespan {[}2{]}\\
+---------- ------------- --------------- --------------------
+------------- --------- ---------------- ------------------ --------
+------- ---------- ------------------- ----------- ---------------
+----------- ------------ --------- ------------
+--------------------------------------------------------\\
+LSSTComCam 2022050500005 i\_06 CC\_O\_20220505\_000005 5.0 6.15436 bias
+unknown 20220505 5 g 6221118600778448001 UNKNOWN unknown None None None
+None 2022-05-05 19:04:23.719980 .. 2022-05-05
+19:04:29.813000\\[2\baselineskip]\# There are no science images in this
+dataset\\
+\textgreater{} butler query-dimension-records \$REPO exposure --where
+``instrument='LSSTComCam' AND exposure.observation\_type='science'''\\
+No results. Try --help for more information.
 
 }
 
@@ -5384,7 +5692,7 @@ tooling to be written, and we do.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -5393,7 +5701,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -5408,6 +5716,28 @@ Print dimension metadata schema by walking through DimensionUniverse.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Logged into the RSP at \href{http://data.lsst.cloud}{data.lsst.cloud},
+opened a new notebook. Execute the following to initialize the butler
+pointing at the DP0.1 repository.\\[2\baselineskip]import
+lsst.daf.butler as dafButler\\
+repo = `s3://butler-us-central1-dp01'\\
+collection = `2.2i/runs/DP0.1'\\[2\baselineskip]\# Initialize the
+butler\\
+butler = dafButler.Butler(repo,
+collections=collection)\\[2\baselineskip]The following screenshot
+demonstrates that the `DimensionUniverse` and its set of
+`StaticElements` (i.e., ``table-like'' identifiers of things that can be
+used to build a DatasetExpression) can be exposed via methods in
+`lsst.daf.butler`:\\[2\baselineskip]\includegraphics[width=5.07292in]{jira_imgs/2385.png}\\
+Now, we illustrate that each of those `StaticElements` have
+``column-like'' things within them that can be exposed via
+`RecordClass.fields`:\\[2\baselineskip]\includegraphics[width=5.17708in]{jira_imgs/2386.png}The
+first few elements in the list are fairly simple, and we have truncated
+the list for brevity. For illustration, here is an element (``visit'')
+with a more complex set of fields:\\
+\includegraphics[width=6.05208in]{jira_imgs/2387.png}\\
+We have thus demonstrated the capability of exposing a DataRepository's
+schema in order that DatasetExpressions could be constructed.
 
 }
 
@@ -5630,7 +5960,7 @@ a notable instance of which is the LSST production system.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -5639,7 +5969,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -5654,6 +5984,17 @@ This is a fundamental part of the design of PipelineTask.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+As an example of a full pipeline specification, we inspect
+\href{https://github.com/lsst/drp_pipe/blob/main/pipelines/HSC/DRP-RC2.yaml}{DRP-RC2.yaml},
+which is the pipeline used for end-to-end processing of the RC2 dataset.
+The screenshot below shows a portion of DRP-RC2.yaml, in which subsets
+(``step1'' and ``step2'') of sequential pipelineTasks are
+specified:\\[2\baselineskip]\includegraphics[width=4.77083in]{jira_imgs/2413.png}By
+inspection (and the knowledge that this pipeline is regularly executed
+in campaigns such as that described in
+\href{https://jira.lsstcorp.org/browse/DM-34451}{DM-34451}), we have
+thus verified that a complete algorithmic work specification can be
+delivered to an execution system.
 
 }
 
@@ -5846,7 +6187,7 @@ in both development and production contexts.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -5855,7 +6196,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -5870,6 +6211,15 @@ This is a fundamental part of the design of PipelineTask.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+This is demonstrated by the fact that regular reprocessing of the RC2
+dataset (using BPS) uses the same DRP pipeline as CI jobs such as
+`ci\_hsc`, or small datasets such as
+\href{https://github.com/lsst-dm/rc2_subset}{rc2\_subset}, which are
+regularly run from the command line on lsst-devl machines for testing
+purposes. For example, note that the ``DRP.yaml'' pipeline from
+`rc2\_subset` imports directly from
+\href{https://github.com/lsst/drp_pipe/tree/main/pipelines}{drp\_pipe},
+which contains the main pipeline used for RC2 processing.
 
 }
 
@@ -5943,7 +6293,7 @@ specializations for different execution environments.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -5952,7 +6302,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -5968,6 +6318,17 @@ systems already.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+By examination of the
+\href{https://github.com/lsst/lsst_bps_plugins}{lsst\_bps\_plugins}
+package, which is a metapackage containing all of the various BPS
+plugins for the LSST Science Pipelines, we confirm that this requirement
+is met. Currently the
+\href{https://github.com/lsst/ctrl_bps_panda}{ctrl\_bps\_panda} plugin
+is being used for DP0.2 processing at the IDF, and
+\href{https://github.com/lsst/ctrl_bps_htcondor}{ctrl\_bps\_htcondor} is
+used for regular RC2 and DC2 reprocessing campaigns (see, e.g.,
+\href{https://jira.lsstcorp.org/browse/DM-34451}{Jira ticket
+DM-34451}~for details of recent RC2 processing).
 
 }
 
@@ -6196,29 +6557,72 @@ each unit of work.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\More detail about I/O handling via pipetask and runQuantum can be found
+by
+examining~\url{https://github.com/lsst/ctrl_mpexec/blob/main/python/lsst/ctrl/mpexec/singleQuantumExecutor.py}.
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Execute unit tests in~\\
+\url{https://github.com/lsst/pipe_base/blob/main/python/lsst/pipe/base/testUtils.py},
+which demonstrates that `pipetask` and the `runQuantum` method (i.e.,
+the ``supervisory framework'') instantiate the butler and handles all
+I/O.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+Unit test passes.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+On lsst-devl machines at NCSA, working in a cloned version of the
+`pipe\_base` repository:\\[2\baselineskip]pytest -s -vv --no-header
+--cache-clear tests/test\_testUtils.py\\[2\baselineskip]Output
+includes:\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testAssertValidInitOutputMissing~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testAssertValidInitOutputMultiple~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testAssertValidInitOutputPass~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testAssertValidInitOutputSingle~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testAssertValidOutputMissing~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testAssertValidOutputMultiple~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testAssertValidOutputPass~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testAssertValidOutputSingle~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testGetInitInputs~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testLintConnectionsExtraMultiple~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testLintConnectionsMissingMultiple~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testLintConnectionsOk~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testMakeQuantumCorruptedDataId~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testMakeQuantumExtraMultiple~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testMakeQuantumInvalidDimension~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testMakeQuantumMissingDataId~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testMakeQuantumMissingMultiple~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testMakeQuantumNoSuchDatatype~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testRunTestQuantumPatchMockRun~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testRunTestQuantumPatchOptionalInput~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testRunTestQuantumPatchWithRun~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testRunTestQuantumVisitMockRun~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testRunTestQuantumVisitWithRun~PASSED\\
+tests/test\_testUtils.py::PipelineTaskTestSuite::testSkypixHandling~PASSED\\
+tests/test\_testUtils.py::MyMemoryTestCase::testFileDescriptorLeaks
+\textless{}-
+../../../../../software/lsstsw/stack\_20220215/stack/miniconda3-py38\_4.9.2-2.0.0/Linux64/utils/g617c0b0dc2+9633a190c8/python/lsst/utils/tests.py
+PASSED\\[2\baselineskip]The unit tests, including many input/output and
+make/run quantum tests, have passed, demonstrating that the supervisory
+framework is capable of instantiating a butler and handling I/O during
+the ``Run'' phase of execution.
 
 }
 
@@ -6338,13 +6742,15 @@ SourceDetectionTask, which is imported in the notebook
 via:\\[2\baselineskip]from lsst.meas.algorithms.detection import
 SourceDetectionTask\\[2\baselineskip]The code must initialize a basic
 schema before execution:\\
-\includegraphics[width=5.97917in]{jira_imgs/2355.png}After executing
-some other tasks, the notebook initialized the configuration for
-`SourceDetectionTask` and changes some configuration values:\\
-\includegraphics[width=6.02083in]{jira_imgs/2356.png}Finally, the .run
-method of `SourceDetectionTask` is executed on an input `calexp`, and
-returns a Struct containing the source table and related objects:\\
-\includegraphics[width=6.85417in]{jira_imgs/2357.png}\\
+\includegraphics[width=5.97917in]{jira_imgs/2355.png}\\
+After executing some other tasks, the notebook initialized the
+configuration for `SourceDetectionTask` and changes some configuration
+values:\\
+\includegraphics[width=6.02083in]{jira_imgs/2356.png}\\
+Finally, the .run method of `SourceDetectionTask` is executed on an
+input `calexp`, and returns a Struct containing the source table and
+related objects:\\
+\includegraphics[width=6.06250in]{jira_imgs/2357.png}\\
 We have thus demonstrated that the Pipeline interface can be accessed
 via Python API.
 
