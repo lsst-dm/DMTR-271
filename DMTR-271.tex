@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-05-16 }
+\date{ 2022-05-17 }
 \author{ Jeffrey Carlin }
 
 \input{history_and_info.tex}
@@ -282,7 +282,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2501}{LVV-T2501}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -843,7 +843,7 @@ report github repository: ~https://github.com/lsst-dm/\citeds{DMTR-271}/,
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2501}{LVV-T2501}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -3071,14 +3071,12 @@ Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2501}{\te
 test case in Jira.
 
 Verify that the Data Output System interface is usable by algorithmic
-code being run as part of Data Release
-Production.\\[2\baselineskip]Demonstrated by regular reprocessing runs
-at NCSA and DP0.2 production.
+code being run as part of Data Release Production.
 
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -3087,20 +3085,69 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
+Demonstrated by regular reprocessing runs at NCSA.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+Output data products from processing are present, accessible, and
+well-formed.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+On lsst-devl machines at NCSA, with Science Pipelines set
+up:\\[2\baselineskip]Open an ipython session:\\[2\baselineskip]\$
+ipython\\[2\baselineskip]Import the butler, initialize it for a
+collection containing RC2 processing:\\[2\baselineskip]In
+{[}\textbf{1}{]}: \textbf{from} \textbf{lsst.daf.butler} \textbf{import}
+Butler\\
+In {[}\textbf{2}{]}: butler = Butler(``/repo/main'',
+collections={[}``HSC/runs/RC2/w\_2022\_12/DM-34125''{]})\\[2\baselineskip]Select
+a random dataId:\\
+In {[}\textbf{3}{]}: dataid = \{``visit'': 1230, ``instrument'':
+``HSC'', ``detector'': 43\}\\[2\baselineskip]Call Butler.get to retrieve
+the `calexp` and its associated `wcs`:\\
+In {[}\textbf{4}{]}:~calexp = butler.get(``calexp'', dataId=dataid)\\
+In {[}\textbf{5}{]}: wcs = butler.get(``calexp.wcs'',
+dataId=dataid)\\[2\baselineskip]Examine the `calexp` and `wcs` to
+confirm that they are different:\\
+In {[}\textbf{6}{]}:~calexp\\
+Out{[}\textbf{6}{]}: \textless{}lsst.afw.image.exposure.ExposureF at
+0x7fc6d9b83130\textgreater{}\\[2\baselineskip]As expected, the calexp is
+an ExposureF object.\\[2\baselineskip]In {[}\textbf{7}{]}:~wcs\\
+Out{[}\textbf{7}{]}:\\
+FITS standard SkyWcs:\\
+Sky Origin: (149.8520271457, +2.0585702399)\\
+Pixel Origin: (1003.05, 2415.24)\\
+Pixel Scale: 0.16713 arcsec/pixel\\[2\baselineskip]The WCS looks like a
+properly defined WCS. Now look at the image plane of the
+calexp:\\[2\baselineskip]In {[}\textbf{8}{]}:~calexp.image\\
+Out{[}\textbf{8}{]}:\\
+lsst.afw.image.image.ImageF={[}{[} -0.36441362 -0.3609193 -0.35746038
+\ldots{} -25.336197 -25.346905\\
+-25.357626 {]}\\
+{[} -0.3578999 -0.354396 -0.3511718 \ldots{} -25.327019 -25.337673\\
+-25.348345 {]}\\
+{[} -0.3513667 -0.34809738 -0.34461957 \ldots{} -25.317785 -25.328388\\
+-25.339252 {]}\\
+\ldots{}\\
+{[} 28.878033 28.84473 28.811472 \ldots{} 7.566758 7.5311904\\
+7.4954834 {]}\\
+{[} 28.914822 28.88162 28.848219 \ldots{} 7.5671864 7.5316124\\
+7.4958982 {]}\\
+{[} 28.951662 28.918072 28.884766 \ldots{} 7.567666 7.5320854\\
+7.4963655 {]}{]}, bbox=(minimum=(0, 0), maximum=(2047,
+4175))\\[2\baselineskip]These look good. We have thus demonstrated that
+the data products of Data Release Production performed on the Batch
+Processing System at NCSA can be retrieved on the LSST development
+machines at NCSA.
 
 }
 
@@ -7540,7 +7587,7 @@ Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Reuse test scirpt for DMS-MWBT-REQ-0012
+Reuse test script for DMS-MWBT-REQ-0012
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
