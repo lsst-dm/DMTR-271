@@ -54,8 +54,13 @@ def storeAndRetrieveDataset(repo: str) -> FileResourcePath:
 
     Parameters
     ----------
-    :param repo: the butler repository
-    :return: uri: the URI of the retrieved dataset
+    repo: 'str'
+        The butler repository
+
+    Returns
+    -------
+    uri: 'FileResourcePath'
+        The URI of the retrieved dataset
     """
     butler = Butler(repo, writeable=True)
     assert butler.registry.registerCollection("c", CollectionType.RUN) is True
