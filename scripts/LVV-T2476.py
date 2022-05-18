@@ -14,6 +14,7 @@ import shutil
 import re
 
 from lsst.daf.butler import CollectionType, DatasetType, Butler, ButlerConfig
+from lsst.resources.file import FileResourcePath
 
 
 def LVVT2496(dir):
@@ -48,7 +49,7 @@ def LVVT2496(dir):
     assert re.search('json$', uriModified.geturl()) is not None
 
 
-def storeAndRetrieveDataset(repo):
+def storeAndRetrieveDataset(repo: str) -> FileResourcePath:
     """ Store and retrieve a dataset in the repository
 
     Parameters
