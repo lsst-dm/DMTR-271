@@ -1378,12 +1378,37 @@ on the lsst-devl machines.
 \subsection{Overall Assessment}
 \label{sect:overallassessment}
 
-Not yet available.
+This test campaign goes a long way toward demonstrating that the Gen 3
+Middleware is meeting the requirements laid out in \citeds{LDM-556}. We have
+successfully executed 63 Test Cases, which together verify that 75 of
+the \citeds{LDM-556} requirements (59\% of the Middleware requirements) have been
+met by the current Gen 3 Middleware. The remaining requirements that
+were not verified in this campaign mostly relate to planned capabilities
+of the DM system that have not yet been developed. Many of the
+requirements that were verified in this campaign relate to basic,
+foundational properties of the Gen 3 Butler, and as such are included in
+the robust suite of unit tests in `daf\_butler` and other related
+packages. We can thus feel confident that these capabilities are ``baked
+in'' to the middleware, and will continue to be available (and regularly
+unit tested) going forward. Additionally, testing many of the Gen 3
+Middleware capabilities on the development machines and batch processing
+system at NCSA, as well as on the RSP at the Interim Data Facility,
+demonstrates the robustness and flexibility of the Middleware.~
 
 \subsection{Recommended Improvements}
 \label{sect:recommendations}
 
-Not yet available.
+There are few improvements to be recommended, as the comprehensive suite
+of unit tests made much of the testing straightforward. One improvement
+that may streamline the next Middleware acceptance test campaign would
+be to write scripts (either Python or shell scripts) to execute tasks in
+advance, which would save time compared to the manual, step-by-step
+execution of tasks that was used for many of the tests performed in this
+campaign. The testers who executed this campaign (and Rubin/LSST users)
+would greatly benefit from a Butler ``User's Guide,'' as well as a
+high-level overview of the design and structure of the Gen 3 Middleware.
+We recommend that these be developed and made available in the near
+future.
 
 \newpage
 \section{Detailed Test Results}
