@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-05-17 }
+\date{ 2022-05-19 }
 \author{ Jeffrey Carlin }
 
 \input{history_and_info.tex}
@@ -176,7 +176,9 @@ To LVV-C160 results &
   pipeline.png & \attachfile{attachments/pipeline.png}\\ \hline
 To LVV-C160 results &
   ci\_hsc\_log\_w\_2022\_05.log & \attachfile{attachments/ci_hsc_log_w_2022_05.log}\\ \hline
-                                                                     \end{longtable}
+                                To LVV-C190 results &
+  LVV-T2476.py & \attachfile{attachments/LVV-T2476.py}\\ \hline
+                                     \end{longtable}
 
 All documents provided as attachments in Jira are downloaded to Github and linked here for convenience.
 However, since they are not properly versioned, they should be considered informal and therefore
@@ -314,7 +316,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2496}{LVV-T2496}
-& {\small Leanne Guy } & {\small  } &
+& {\small Jeffrey Carlin } & {\small  } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -458,7 +460,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2476}{LVV-T2476}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Leanne Guy } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -562,7 +564,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2461}{LVV-T2461}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -674,7 +676,7 @@ Jeffrey Carlin }
 \end{minipage}
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2447}{LVV-T2447}
-& {\small Leanne Guy } & {\small  } &
+& {\small Leanne Guy } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -988,7 +990,7 @@ Working on lsst-devl machines in a cloned `daf\_butler` repository at
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2482}{LVV-T2482}
 &  1
-& In Progress &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1042,10 +1044,11 @@ Working on lsst-devl machines in a cloned `daf\_butler` repository at
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2476}{LVV-T2476}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
-
+All steps in this test case can be executed by running the test script
+https://github.com/lsst-dm/\citeds{DMTR-271}/tree/main/LVV-T2476/scripts/LVV-T2476.py
 \medskip
 \end{minipage}
 &   \\\hline
@@ -1165,7 +1168,7 @@ readily discovered.~
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2461}{LVV-T2461}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1297,7 +1300,7 @@ on the lsst-devl machines.
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2447}{LVV-T2447}
 &  1
-& Not Executed &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1324,7 +1327,7 @@ on the lsst-devl machines.
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2442}{LVV-T2442}
 &  1
-& Initial Pass &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -1333,7 +1336,7 @@ on the lsst-devl machines.
 &   \\\hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2443}{LVV-T2443}
 &  1
-& Initial Pass &
+& Pass &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -4473,7 +4476,7 @@ remote database connection)
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf In Progress }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -4486,44 +4489,39 @@ Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Manually create QG with execution butler
+Execute the unit tests in
+\href{https://github.com/lsst/pipelines_check}{pipelines\_check}, which
+include tests of the execution butler and its handling of datasets
+without accessing the database.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Expected Result \\
 {\footnotesize
+Unit tests pass.
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
-Create the quantum graph and execution butler for three visits from
-tract 9813 in HSC RC2 data located in /repo/main at
-NCSA.\\[2\baselineskip]pipetask qgraph -b /repo/main/butler.yaml -p
-\$OBS\_SUBARU\_DIR/pipelines/DRP.yaml\#step1\\
-\hspace*{0.333em} -i HSC/runs/RC2/w\_2022\_12/DM-34125 -o
-u/jcarlin/qgraph\_test\_LDM556 -d ``visit in (1230, 1232, 1240)''\\
--q test.qgraph --save-execution-butler test\_execution\_butler
-
-}
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
-{\footnotesize
-Run `butler.get` against execution butler.
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
-cd test\_execution\_butler/\\[3\baselineskip]
+In a cloned, built, and set up version of the pipelines\_check package
+on the lsst-devl machines at NCSA, execute the unit tests as
+follows:\\[2\baselineskip]pytest -s -vv --no-header --cache-clear
+tests/test\_butler.py\\[2\baselineskip]Results:\\
+tests/test\_butler.py::PiplinesCheckTestCase::testExecutionButler
+Retrieving datasets from run demo\_collection\\
+Retrieving datasets from run demo\_collection\_exe/YYYYMMDD\\
+PASSED\\
+tests/test\_butler.py::PiplinesCheckTestCase::testExecutionExistence
+Retrieving datasets from run demo\_collection\_exe/YYYYMMDD\\
+PASSED\\
+tests/test\_butler.py::PiplinesCheckTestCase::testLogDataset Retrieving
+datasets from run demo\_collection\\
+PASSED\\
+tests/test\_butler.py::PiplinesCheckTestCase::testMetadata
+PASSED\\[2\baselineskip]We have thus shown that the execution butler can
+create inMemoryDatasets from local files (i.e., without accessing the
+database).
 
 }
 
@@ -5051,21 +5049,22 @@ test case in Jira.
 Verify that it is possible to control the method used to read and write
 a particular DatasetType using a text configuration file such that the
 Python object and the form of the persisted dataset can be configured
-externally.
+externally.\\[3\baselineskip]
 
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
-Final comment:\\
+Final comment:\\All steps in this test case can be executed by running the test script
+https://github.com/lsst-dm/\citeds{DMTR-271}/tree/main/LVV-T2476/scripts/LVV-T2476.py
 
 
 Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -5080,11 +5079,12 @@ Make an empty repo with the default configuration.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+repo is created and can be accessed with the butler
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -5100,16 +5100,26 @@ formatter.\\[2\baselineskip]
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Extract the configuration file from the repo in step 1 and change~
+
+\begin{verbatim}
+[datastore']['formatters']['StructuredDataDict'] from 'lsst.daf.butler.formatters.json.YamlFormatter' to  'lsst.daf.butler.formatters.json.JsonFormatter'
+\end{verbatim}
+
+Create a second empty repository with this configuration
+file.\\[2\baselineskip]The repository is created and can be accessed
+with the butler. Extracting the configuration file for this repository
+shows a Json formatter for the StructuredDataDict
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 3 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 3 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
-Make an empty repo with configuration that changes a StorageClass's
-Python
+Put and get the same datasets to all repos. Check that the output file
+formats cirrespond to the choosen formatter
 
 }
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
@@ -5120,25 +5130,15 @@ Python
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
-
-}
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 4 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
-{\footnotesize
-Put and get the same datasets to all repos.
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
+A ~string ~\{``key'': ``value''\} is put to the butler of each
+repository and then retrieved.\\
+For the default repository, the file is a yaml file:~
+\textless{}test\_path\textgreater{}/
+LVV-T2476/repo/default/c/dt/dt\_c.yaml - corresponding to the configured
+YamlFormatter\\
+For the second repository. the file is a json file:
+\textless{}test\_path\textgreater{}/LVV-T2476/repo/modified/c/dt/dt\_c.json
+- corresponding to the configure JsonFormatter
 
 }
 
@@ -6282,7 +6282,7 @@ inputs for processing initiated in the Science Platform
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -6291,7 +6291,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -6306,11 +6306,68 @@ Run part of DRP pipeline in RSP.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+The following steps were executed from the command line in the Science
+Platform at the IDF (datat-int.lsst.cloud):\\[2\baselineskip]Navigate to
+the working directory, and initialize the Science Pipelines:\\
+{[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$ pwd\\
+/home/jeffcarlin\\
+{[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$ cd SVV\\
+{[}jeffcarlin@nb-jeffcarlin SVV{]}\$ cd
+gen3\_LDM-556\_acceptance\_testing/\\
+{[}jeffcarlin@nb-jeffcarlin gen3\_LDM-556\_acceptance\_testing{]}\$
+mkdir LVV-T2461\\
+{[}jeffcarlin@nb-jeffcarlin gen3\_LDM-556\_acceptance\_testing{]}\$ cd
+LVV-T2461/\\
+{[}jeffcarlin@nb-jeffcarlin LVV-T2461{]}\$ source
+/opt/lsst/software/stack/loadLSST.bash\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin LVV-T2461{]}\$ setup
+lsst\_distrib\\[2\baselineskip]Copy over the DRP pipeline file, which we
+will edit to include only a few steps for demonstration purposes:\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin LVV-T2461{]}\$ cp
+\$DRP\_PIPE\_DIR/ingredients/LSSTCam-imSim/DRP.yaml
+./\\[2\baselineskip]Now, run ``step1'' of the DRP.yaml pipeline. This
+step includes ISR, image characterization, and initial calibration. For
+brevity, we process only four i-band visits overlapping a single patch
+from the DC2 dataset. We take the DP0.2 raw frames as inputs, and create
+a new collection with processed, calibrated exposures and
+catalogs.\\[2\baselineskip]pipetask run -b
+s3://butler-us-central1-panda-dev/dc2/butler-external.yaml -p
+DRP.yaml\#step1 -i
+2.2i/runs/DP0.2/v23\_0\_1\_rc1/PREOPS-905/pilot\_tract4431 -o
+u/jcarlin/LVV-T2461step1 -d ``tract=4431 AND patch=17 AND visit IN
+(654498, 227891, 682821, 421694) AND skymap='DC2''' 2\textgreater{}\&1
+\textbar{} tee step1\_log\_LVV-T2461.txt\\[2\baselineskip]The final few
+lines of the log file appear as follows:\\[2\baselineskip]\$tail
+step1\_log\_LVV-T2461.txt\\
+lsst.transformSourceTable INFO: Transforming/standardizing the source
+table dataId: \{band: `i', instrument: `LSSTCam-imSim', detector: 38,
+physical\_filter: `i\_sim\_1.4', visit\_system: 1, visit: 421694\}\\
+lsst.transformSourceTable INFO: Made a table of 143 columns and 3226
+rows\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`transformSourceTable' on quantum \{instrument: `LSSTCam-imSim',
+detector: 38, visit: 421694, \ldots{}\} took 0.808 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 89 quanta successfully,
+0 failed and 1 remain out of total 90 quanta.\\
+lsst.transformSourceTable INFO: Loading tranform functor definitions
+from \$PIPE\_TASKS\_DIR/schemas/Source.yaml\\
+lsst.transformSourceTable INFO: Transforming/standardizing the source
+table dataId: \{band: `i', instrument: `LSSTCam-imSim', detector: 26,
+physical\_filter: `i\_sim\_1.4', visit\_system: 1, visit: 654498\}\\
+lsst.transformSourceTable INFO: Made a table of 143 columns and 2789
+rows\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`transformSourceTable' on quantum \{instrument: `LSSTCam-imSim',
+detector: 26, visit: 654498, \ldots{}\} took 0.679 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 90 quanta successfully,
+0 failed and 0 remain out of total 90 quanta.\\[2\baselineskip]We have
+thus successfully executed the ``step1'' subset of the DRP
+pipeline.\\[2\baselineskip]
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -6325,6 +6382,75 @@ Run a later part of DRP pipeline in RSP
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Now execute step2 from DRP.yaml, using the output collection from step1
+(``u/jcarlin/LVV-T2461step1'') as input, and writing to a new
+collection:\\[2\baselineskip]pipetask run -b
+s3://butler-us-central1-panda-dev/dc2/butler-external.yaml -p
+DRP.yaml\#step2 -i u/jcarlin/LVV-T2461step1 -o u/jcarlin/LVV-T2461step2
+-d ``tract=4431 AND patch=17 AND visit IN (654498, 227891, 682821,
+421694) AND skymap='DC2''' 2\textgreater{}\&1 \textbar{} tee
+step2\_log\_LVV-T2461.txt\\[2\baselineskip]\$ tail
+step2\_log\_LVV-T2461.txt\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 17 quanta successfully,
+0 failed and 3 remain out of total 20 quanta.\\
+lsst.consolidateSourceTable INFO: Concatenating 6 per-detector Source
+Tables\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`consolidateSourceTable' on quantum \{instrument: `LSSTCam-imSim',
+visit: 421694, \ldots{}\} took 1.999 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 18 quanta successfully,
+0 failed and 2 remain out of total 20 quanta.\\
+lsst.nsrcMeasVisit.measure INFO: Measuring nsrcMeasVisit\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`nsrcMeasVisit' on quantum \{instrument: `LSSTCam-imSim', visit: 654498,
+\ldots{}\} took 3.686 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 19 quanta successfully,
+0 failed and 1 remain out of total 20 quanta.\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`consolidateVisitSummary' on quantum \{instrument: `LSSTCam-imSim',
+visit: 654498, \ldots{}\} took 1.663 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 20 quanta successfully,
+0 failed and 0 remain out of total 20 quanta.\\[2\baselineskip]Step 2
+executed successfully. Because most of step2 is collection and
+consolidation of step1 results, we continue to a portion of
+step3.\\[2\baselineskip]First, we edit DRP.yaml so that ``step3'' looks
+like this:\\
+step3:\\
+subset:\\
+- makeWarp\\
+- assembleCoadd\\
+- detection\\
+- mergeDetections\\[2\baselineskip]Then, execute step3 with the step2
+collection as input:\\[2\baselineskip]pipetask run -b
+s3://butler-us-central1-panda-dev/dc2/butler-external.yaml -p
+DRP.yaml\#step2 -i u/jcarlin/LVV-T2461step2 -o u/jcarlin/LVV-T2461step3
+-d ``tract=4431 AND patch=17 AND visit IN (654498, 227891, 682821,
+421694) AND skymap='DC2''' 2\textgreater{}\&1 \textbar{} tee
+step3\_log\_LVV-T2461.txt\\[2\baselineskip]\$ tail
+step3\_log\_LVV-T2461.txt\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 17 quanta successfully,
+0 failed and 3 remain out of total 20 quanta.\\
+lsst.nsrcMeasVisit.measure INFO: Measuring nsrcMeasVisit\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`nsrcMeasVisit' on quantum \{instrument: `LSSTCam-imSim', visit: 682821,
+\ldots{}\} took 5.624 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 18 quanta successfully,
+0 failed and 2 remain out of total 20 quanta.\\
+lsst.TE3.measure INFO: Measuring TE3\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task `TE3' on
+quantum \{instrument: `LSSTCam-imSim', visit: 682821, \ldots{}\} took
+2.842 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 19 quanta successfully,
+0 failed and 1 remain out of total 20 quanta.\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`consolidateVisitSummary' on quantum \{instrument: `LSSTCam-imSim',
+visit: 654498, \ldots{}\} took 3.252 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 20 quanta successfully,
+0 failed and 0 remain out of total 20 quanta.\\[2\baselineskip]We have
+successfully executed the first three steps of the DRP pipeline on the
+Science Platform, using each step's output collection as input to the
+subsequent step(s). This demonstrates collection layering in the Science
+Platform.\\[2\baselineskip]
 
 }
 
@@ -7574,7 +7700,7 @@ initiated in the Science Platform.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Not Executed }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -7583,7 +7709,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -7598,11 +7724,42 @@ Reuse test script for DMS-MWBT-REQ-0012
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Rather than re-running a mini-DRP, we simply began with a repository of
+processed DP0.2 data accessible via data-int.lsst.cloud. This is
+equivalent to the test step as written, since the goal is to start with
+some DRP-processed data and demonstrate it can be used for further
+processing.\\[2\baselineskip]The following steps were executed from the
+command line in the Science Platform at the IDF
+(datat-int.lsst.cloud):\\[2\baselineskip]Navigate to the working
+directory, and initialize the Science Pipelines:\\
+{[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$ pwd\\
+/home/jeffcarlin\\
+{[}jeffcarlin@nb-jeffcarlin \textasciitilde{}{]}\$ cd SVV\\
+{[}jeffcarlin@nb-jeffcarlin SVV{]}\$ cd
+gen3\_LDM-556\_acceptance\_testing/\\
+{[}jeffcarlin@nb-jeffcarlin gen3\_LDM-556\_acceptance\_testing{]}\$
+mkdir LVV-T2447\\
+{[}jeffcarlin@nb-jeffcarlin gen3\_LDM-556\_acceptance\_testing{]}\$ cd
+LVV-T2447/\\
+{[}jeffcarlin@nb-jeffcarlin LVV-T2447{]}\$ source
+/opt/lsst/software/stack/loadLSST.bash\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin LVV-T2447{]}\$ setup
+lsst\_distrib\\[2\baselineskip]Copy over the DRP pipeline file, which we
+will edit to include only a few steps for demonstration purposes:\\
+(lsst-scipipe-3.0.0) {[}jeffcarlin@nb-jeffcarlin LVV-T2447{]}\$ cp
+\$DRP\_PIPE\_DIR/ingredients/LSSTCam-imSim/DRP.yaml
+./\\[2\baselineskip]Edit DRP.yaml so that ``step3'' looks like this:\\
+step3:\\
+\hspace*{0.333em} subset:\\
+\hspace*{0.333em} ~ - makeWarp\\
+\hspace*{0.333em} ~ - assembleCoadd\\
+\hspace*{0.333em} ~ - detection\\
+\hspace*{0.333em} ~ - mergeDetections\\[2\baselineskip]
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
+Step 2 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -7617,6 +7774,61 @@ Run a DRP pipeline subset in RSP, using DP0.x collections as inputs.
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+Execute the minimal ``step3'' subset of processing on a single tract
+(4431), patch (17), and band ('i'), taking the DP0.2 collection as
+input:\\[2\baselineskip]`pipetask run -b
+s3://butler-us-central1-panda-dev/dc2/butler-external.yaml -p
+DRP.yaml\#step3 -i
+2.2i/runs/DP0.2/v23\_0\_1\_rc1/PREOPS-905/pilot\_tract4431 -o
+u/jcarlin/LVV-T2447 -d ``tract=4431 AND patch=17 AND band='i' AND
+skymap='DC2''' 2\textgreater{}\&1 \textbar{} tee
+step3\_log\_LVV-T2447.txt`\\[2\baselineskip]This takes a few hours to
+run. Examine the log:\\[2\baselineskip]\$ head
+step3\_log\_LVV-T2447.txt\\
+\textbf{lsst.ctrl.mpexec.cmdLineFwk INFO: QuantumGraph contains 165
+quanta for 4 tasks, graph ID: `1652747458.2025254-11506'\\
+}lsst.makeWarp.select INFO: Selecting calexp \{instrument:
+`LSSTCam-imSim', detector: 118, visit: 635793, \ldots{}\}\\
+lsst.makeWarp.select INFO: Selecting calexp \{instrument:
+`LSSTCam-imSim', detector: 119, visit: 635793, \ldots{}\}\\
+lsst.makeWarp.select INFO: Selecting calexp \{instrument:
+`LSSTCam-imSim', detector: 121, visit: 635793, \ldots{}\}\\
+lsst.makeWarp.select INFO: Selecting calexp \{instrument:
+`LSSTCam-imSim', detector: 122, visit: 635793, \ldots{}\}\\
+lsst.makeWarp.select INFO: Selecting calexp \{instrument:
+`LSSTCam-imSim', detector: 126, visit: 635793, \ldots{}\}\\
+lsst.makeWarp.select INFO: Selecting calexp \{instrument:
+`LSSTCam-imSim', detector: 129, visit: 635793, \ldots{}\}\\
+lsst.makeWarp INFO: Processing calexp 1 of 6 for this Warp:
+id=\{instrument: `LSSTCam-imSim', detector: 118, visit: 635793,
+\ldots{}\}\\
+lsst.makeWarp.warpAndPsfMatch.psfMatch INFO: compute Psf-matching
+kernel\\
+\ldots{}\\
+\$ tail step3\_log\_LVV-T2447.txt\\
+lsst.detection.detection.skyObjects INFO: Added 1000 of 1000 requested
+sky sources (100\%)\\
+lsst.detection.detection.skyMeasurement INFO: Performing forced
+measurement on 1000 sources\\
+lsst.detection.detection INFO: Tweaking background by -0.014956 to match
+sky photometry\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`detection' on quantum \{band: `i', skymap: `DC2', tract: 4431, patch:
+17\} took 570.253 seconds\\
+lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 164 quanta successfully,
+0 failed and 1 remain out of total 165 quanta.\\
+lsst.mergeDetections.skyObjects INFO: Added 100 of 100 requested sky
+sources (100\%)\\
+lsst.mergeDetections INFO: Merged to 10674 sources\\
+lsst.mergeDetections INFO: Culled 1023 of 19902 peaks\\
+lsst.ctrl.mpexec.singleQuantumExecutor INFO: Execution of task
+`mergeDetections' on quantum \{skymap: `DC2', tract: 4431, patch: 17\}
+took 4.471 seconds\\
+\textbf{lsst.ctrl.mpexec.mpGraphExecutor INFO: Executed 165 quanta
+successfully, 0 failed and 0 remain out of total 165 quanta.\\
+}\\
+This demonstrates that we can successfully execute processing in the
+Science Platform using a Data Release as input.\\[2\baselineskip]
 
 }
 
@@ -7839,7 +8051,7 @@ authorized person.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Initial Pass }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -7848,7 +8060,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Initial Pass } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -7863,6 +8075,8 @@ Make example repo, one each,~ POSIX and S3
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
+To verify this for both POSIX and S3 file systems, we execute the test
+at NCSA (POSIX) and at the IDF (data.lsst.cloud; S3).
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
@@ -7886,8 +8100,8 @@ On lsst-devl machines at NCSA, in a cloned `daf\_butler` repository (at
 /project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/daf\_butler),
 execute:\\[2\baselineskip]pytest -s -vv --no-header --cache-clear
 tests/test\_cliCmdPruneDatasets.py\\[2\baselineskip]The results show
-that the deletion of datasets was
-successful:\\[2\baselineskip]tests/test\_cliCmdPruneDatasets.py::FLAKE8~PASSED\\
+that the deletion of datasets was successful on the POSIX datastore at
+NCSA:\\[2\baselineskip]tests/test\_cliCmdPruneDatasets.py::FLAKE8~PASSED\\
 tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_defaults\_doContinue~PASSED\\
 tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_defaults\_doNotContinue~PASSED\\
 tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_disassociateImpliedArgs~PASSED\\
@@ -7903,7 +8117,45 @@ tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_purgeImpliedArg
 tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_purgeOnNonRunCollection~PASSED\\
 tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_purgeWithDisassociate~PASSED\\
 tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_quiet~PASSED\\
-tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_quietWithDryRun~PASSED\\[2\baselineskip]
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_quietWithDryRun
+PASSED\\[2\baselineskip]Now, logged into the IDF at data.lsst.cloud,
+working in a cloned, built, and setup `daf\_butler` repository, execute
+the same command to confirm dataset deletion on the S3
+datastore:\\[2\baselineskip]pytest -s -vv --no-header --cache-clear
+tests/test\_cliCmdPruneDatasets.py\\[2\baselineskip]tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_defaults\_doContinue
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_defaults\_doNotContinue
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_disassociateImpliedArgs
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_disassociateImpliedArgsWithCollections
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_dryRun\_disassociate
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_dryRun\_unstore
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_dryRun\_unstoreAndDisassociate
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_noCollections
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_noConfirm
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_noDatasets
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_purgeImpliedArgs
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_purgeImpliedArgsWithCollections
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_purgeNoOp
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_purgeOnNonRunCollection
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_purgeWithDisassociate
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_quiet
+PASSED\\
+tests/test\_cliCmdPruneDatasets.py::PruneDatasetsTestCase::test\_quietWithDryRun
+PASSED
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
@@ -7941,7 +8193,7 @@ in the spirit of the requirement and covers our core needs.
 \textbf{ Preconditions}:\\
 
 
-Execution status: {\bf Initial Pass }
+Execution status: {\bf Pass }
 
 Final comment:\\
 
@@ -7950,7 +8202,7 @@ Detailed steps results:
 
 \begin{tabular}{p{2cm}p{14cm}}
 \toprule
-Step 1 & Step Execution Status: \textbf{ Initial Pass } \\ \hline
+Step 1 & Step Execution Status: \textbf{ Pass } \\ \hline
 \end{tabular}
  Description \\
 {\footnotesize
@@ -7965,7 +8217,8 @@ Make example repo, one each, ~POSIX and S3
 \hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
   Actual Result \\
 {\footnotesize
-Tested on a POSIX datastore at NCSA (lsst-devl machines).
+Tested on a POSIX datastore at NCSA (lsst-devl machines), and an S3
+datastore at the IDF (data.lsst.cloud).
 
 }
 \begin{tabular}{p{2cm}p{14cm}}
@@ -7989,11 +8242,19 @@ On lsst-devl machines at NCSA, in a cloned `daf\_butler` repository (at
 /project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/daf\_butler),
 execute:\\[2\baselineskip]pytest -s -vv --no-header --cache-clear
 tests/test\_cliCmdPruneCollection.py\\[2\baselineskip]The results show
-that the pruning of collections is
-successful:\\[2\baselineskip]tests/test\_cliCmdPruneCollection.py::FLAKE8
+that the pruning of collections was successful on the POSIX datastore at
+NCSA:\\[2\baselineskip]tests/test\_cliCmdPruneCollection.py::PruneCollectionsTest::testPruneCollections
 PASSED\\
-tests/test\_cliCmdPruneCollection.py::PruneCollectionsTest::testPruneCollections~PASSED\\
 tests/test\_cliCmdPruneCollection.py::PruneCollectionExecutionTest::testPruneRun~PASSED\\
+tests/test\_cliCmdPruneCollection.py::PruneCollectionExecutionTest::testPruneTagged
+PASSED\\[2\baselineskip]Now, logged into the IDF at data.lsst.cloud,
+working in a cloned, built, and setup `daf\_butler` repository, execute
+the same command to confirm pruning of collections on the S3
+datastore:\\[2\baselineskip]pytest -s -vv --no-header --cache-clear
+tests/test\_cliCmdPruneCollection.py\\[2\baselineskip]tests/test\_cliCmdPruneCollection.py::PruneCollectionsTest::testPruneCollections
+PASSED\\
+tests/test\_cliCmdPruneCollection.py::PruneCollectionExecutionTest::testPruneRun
+PASSED\\
 tests/test\_cliCmdPruneCollection.py::PruneCollectionExecutionTest::testPruneTagged
 PASSED
 
