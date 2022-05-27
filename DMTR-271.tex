@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-05-19 }
+\date{ 2022-05-27 }
 \author{ Jeffrey Carlin }
 
 \input{history_and_info.tex}
@@ -129,7 +129,7 @@ Section \ref{sect:overview} provides a summary of the test results, including an
 an overall assessment statement and suggestions for possible improvements.
 Section \ref{sect:detailedtestresults} provides detailed results for each step in each test case.
 
-The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77} in Jira is \textbf{ Approved }.
+The current status of test plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77} in Jira is \textbf{ Completed }.
 
 \subsection{References}
 \label{sect:references}
@@ -754,7 +754,7 @@ Jeffrey Carlin }
 \begin{longtable}{p{2cm}cp{2.3cm}p{8.6cm}p{2.3cm}}
 \toprule
 \multicolumn{2}{r}{ T. Plan \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testPlan/LVV-P77}{LVV-P77}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-GEN3: Gen 3 Butler Acceptance Testing }} & Approved \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ LDM-GEN3: Gen 3 Butler Acceptance Testing }} & Completed \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C160}{LVV-C160}:} &
 \multicolumn{2}{p{10.9cm}}{\textbf{ LDM-503-GEN3: Gen 3 Butler Acceptance Testing }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
@@ -1638,8 +1638,8 @@ lines:\\[2\baselineskip]python
 register-skymap
 /project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/ci\_hsc\_gen3/DATA
 -C
-/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/ci\_hsc\_gen3/configs/skymap.py\\
-lsst.pipe.tasks.script.registerSkymap INFO:~sky~map has 1 tracts\\
+/project/jcarlin/SVV/gen3\_middleware\_acceptance\_testing/ci\_hsc\_gen3/configs/skymap.py\\[2\baselineskip]lsst.pipe.tasks.script.registerSkymap
+INFO: sky map has 1 tracts\\
 lsst.pipe.tasks.script.registerSkymap INFO: tract 0 has corners
 (321.860, -1.179), (318.875, -1.179), (318.874, 1.806), (321.861, 1.806)
 (RA, Dec deg) and 16 x 16 patches\\[2\baselineskip]This demonstrates how
@@ -1775,10 +1775,10 @@ found in `drp\_pipe/ingredients/DRP.yaml` (see
 the ``transformDiaSourceCat'' task definition (lines 65-73) specifies
 the coaddName, diaSourceSchema, diaSourceCat, diffIm, and
 diaSourceTable. By examination of the source code
-(\url{https://github.com/lsst/ap_association/blob/78c54e57d4d6669e639377797599f186d046457c/python/lsst/ap/association/transformDiaSourceCatalog.py\#L41-L68}),
-one can see that the values in the pipeline are explicit configuration
-overrides to the connection defaults that are already defined in the
-Connections class for the `transformDiaSourceCatalog`
+(\href{https://github.com/lsst/ap_association/blob/78c54e57d4d6669e639377797599f186d046457c/python/lsst/ap/association/transformDiaSourceCatalog.py\#L41-L68}{at
+this link}), one can see that the values in the pipeline are explicit
+configuration overrides to the connection defaults that are already
+defined in the Connections class for the `transformDiaSourceCatalog`
 task.\\[2\baselineskip]\textbf{LVV-19859: DMS-MWST-REQ-0007-V-01:
 Changes of parallelization\\
 }\\
@@ -1977,10 +1977,10 @@ A master bias, dark, and flat calibration product.\\[2\baselineskip]
   Actual Result \\
 {\footnotesize
 For this test, we follow examples documented at
-\url{https://pipelines.lsst.io/v/daily/modules/lsst.cp.pipe/constructing-calibrations.html}.
-To confirm that each combined calibration frame is well-formed, we use
-the `cp\_verify` package, which determines the quality of newly produced
-calibrations in an automated way rather than visual
+\href{https://pipelines.lsst.io/v/daily/modules/lsst.cp.pipe/constructing-calibrations.html}{this
+link}. To confirm that each combined calibration frame is well-formed,
+we use the `cp\_verify` package, which determines the quality of newly
+produced calibrations in an automated way rather than visual
 inspection.\\[2\baselineskip]Create the master
 bias:\\[2\baselineskip]pipetask --long-log run -b /repo/main/butler.yaml
 -p \$CP\_PIPE\_DIR/pipelines/Latiss/cpBias.yaml -i
@@ -2014,12 +2014,11 @@ AND exposure IN (2021012000020, 2021012000032, 2021012000055,
 \textbar{} tee defect.20210706h.log\\[2\baselineskip]Verify the
 defects:\\[2\baselineskip]pipetask --long-log run -b
 /repo/main/butler.yaml -p \$CP\_VERIFY\_DIR/pipelines/VerifyDefect.yaml
--i LATISS/raw/all,u/jcarlin/defectGen\textbackslash{}\\
-.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/LATISS/calib -o
-u/jcarlin/verifyDefect.20210706h -d "instrument='LATISS' AND
-detecto\textbackslash{}\\
-r=0 AND exposure IN (2021012000020, 2021012000032, 2021012000055,
-2021012000061, 2021012100060, 2021031100010)" 2\textgreater{}\&1
+-i
+LATISS/raw/all,u/jcarlin/defectGen.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/LATISS/calib
+-o u/jcarlin/verifyDefect.20210706h -d ``instrument='LATISS' AND
+detector=0 AND exposure IN (2021012000020, 2021012000032, 2021012000055,
+2021012000061, 2021012100060, 2021031100010)'' 2\textgreater{}\&1
 \textbar{} tee defectVerify.20210706h.log\\[2\baselineskip]Rerun bias
 verification with the new defects:\\[2\baselineskip]pipetask --long-log
 run -b /repo/main/butler.yaml -p
@@ -2064,21 +2063,29 @@ dark:\\[2\baselineskip]butler certify-calibrations
 /repo/main/butler.yaml u/jcarlin/darkGen.20210707a
 u/jcarlin/LATISS/calib \textbackslash{}\\
 --begin-date 2020-01-01 --end-date 2050-01-01
-dark\\[2\baselineskip]Construct the flat frame:\\
-pipetask --long-log run -b /repo/main/butler.yaml -p
-\$CP\_PIPE\_DIR/pipelines/Latiss/cpFlat.yaml -i
-LATISS/raw/all,u/jcarlin/defectGen.\textbackslash{}\\
-20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/darkGen.20210707a,u/jcarlin/LATISS/calib
--o u/jcarlin/flatGen.20210707a -d "instrumen\textbackslash{}\\
-t='LATISS' AND detector=0 AND exposure IN (2021052500077, 2021052500078,
-2021052500079, 2021052500080, 2021052500081)" -j 4 2\textgreater{}\&1
-\textbar{} tee flat.20210707a.log\\[2\baselineskip]Verify the
+dark\\[2\baselineskip]Construct the flat
+frame:\\[2\baselineskip]pipetask --long-log run -b
+/repo/main/butler.yaml -p \$CP\_PIPE\_DIR/pipelines/Latiss/cpFlat.yaml
+\textbackslash{}\\
+-i
+LATISS/raw/all,u/jcarlin/defectGen.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/darkGen.20210707a,u/jcarlin/LATISS/calib
+\textbackslash{}\\
+-o u/jcarlin/flatGen.20210707a \textbackslash{}\\
+-d "instrument='LATISS' AND detector=0 AND \textbackslash{}\\
+exposure IN (2021052500077, 2021052500078, 2021052500079, 2021052500080,
+2021052500081)" \textbackslash{}\\
+-j 4 2\textgreater{}\&1 \textbar{} tee
+flat.20210707a.log\\[2\baselineskip]Verify the
 flat:\\[2\baselineskip]pipetask --long-log run -b /repo/main/butler.yaml
--p \$CP\_VERIFY\_DIR/pipelines/VerifyFlat.yaml -i
+-p \$CP\_VERIFY\_DIR/pipelines/VerifyFlat.yaml \textbackslash{}\\
+-i
 LATISS/raw/all,u/jcarlin/defectGen.20210706h,u/jcarlin/biasGen.20210702a,u/jcarlin/darkGen.20210707a,u/jcarlin/flatGen.20210707a,u/jcarlin/LATISS/calib
--o u/jcarlin/verifyFlat.20210707a -d ``instrument='LATISS' AND
-detector=0 AND exposure in (2021052500077, 2021052500078, 2021052500079,
-2021052500080, 2021052500081)'' -j 4 2\textgreater{}\&1 \textbar{} tee
+\textbackslash{}\\
+-o u/jcarlin/verifyFlat.20210707a \textbackslash{}\\
+-d "instrument='LATISS' AND detector=0 AND \textbackslash{}\\
+exposure in (2021052500077, 2021052500078, 2021052500079, 2021052500080,
+2021052500081)" \textbackslash{}\\
+-j 4 2\textgreater{}\&1 \textbar{} tee
 ./flatVerify.20210707a.log\\[2\baselineskip]Certify the
 flat:\\[2\baselineskip]butler certify-calibrations
 /repo/main/butler.yaml u/jcarlin/flatGen.20210707a
