@@ -1,6 +1,6 @@
 % generated from JIRA project LVV
 % using template at /usr/share/miniconda/envs/docsteady-env/lib/python3.7/site-packages/docsteady/templates/tpr.latex.jinja2.
-% using docsteady version 2.2.6
+% using docsteady version 2.2.7
 % Please do not edit -- update information in Jira instead
 \documentclass[dm,lsstdraft,STR,toc]{lsstdoc}
 \usepackage{geometry}
@@ -31,7 +31,7 @@
 
 \title{LDM-GEN3: Gen 3 Butler Acceptance Testing Test Plan and Report}
 \setDocRef{\lsstDocType-\lsstDocNum}
-\date{ 2022-05-27 }
+\date{ 2022-06-07 }
 \author{ Jeffrey Carlin }
 
 \input{history_and_info.tex}
@@ -176,7 +176,7 @@ To LVV-C160 results &
   pipeline.png & \attachfile{attachments/pipeline.png}\\ \hline
 To LVV-C160 results &
   ci\_hsc\_log\_w\_2022\_05.log & \attachfile{attachments/ci_hsc_log_w_2022_05.log}\\ \hline
-                                To LVV-C190 results &
+                              To LVV-C190 results &
   LVV-T2476.py & \attachfile{attachments/LVV-T2476.py}\\ \hline
                                      \end{longtable}
 
@@ -315,14 +315,6 @@ Jeffrey Carlin }
 \medskip
 \end{minipage}
 \\ \hline
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2496}{LVV-T2496}
-& {\small Jeffrey Carlin } & {\small  } &
-\begin{minipage}[]{6cm}
-\smallskip
-{\small  }
-\medskip
-\end{minipage}
-\\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2495}{LVV-T2495}
 & {\small Jeffrey Carlin } & {\small Jeffrey Carlin } &
 \begin{minipage}[]{6cm}
@@ -389,14 +381,6 @@ Jeffrey Carlin }
 \\ \hline
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2485}{LVV-T2485}
 & {\small Leanne Guy } & {\small Jeffrey Carlin } &
-\begin{minipage}[]{6cm}
-\smallskip
-{\small  }
-\medskip
-\end{minipage}
-\\ \hline
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2484}{LVV-T2484}
-& {\small Leanne Guy } & {\small  } &
 \begin{minipage}[]{6cm}
 \smallskip
 {\small  }
@@ -823,7 +807,7 @@ report github repository: ~https://github.com/lsst-dm/\citeds{DMTR-271}/,
 \end{minipage}
 &   \\\hline
 \multicolumn{2}{r}{ T. Cycle \href{https://jira.lsstcorp.org/secure/Tests.jspa\#/testCycle/LVV-C190}{LVV-C190}:} &
-\multicolumn{2}{p{10.9cm}}{\textbf{ \citeds{LDM-556}: Middleware Acceptance Testing }} & In Progress \\\hline
+\multicolumn{2}{p{10.9cm}}{\textbf{ \citeds{LDM-556}: Middleware Acceptance Testing }} & Done \\\hline
 \textbf{Test Cases} &  \textbf{Ver.} & \textbf{Status} & \textbf{Comment} & \textbf{Issues} \\\toprule
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2503}{LVV-T2503}
 &  1
@@ -873,15 +857,6 @@ report github repository: ~https://github.com/lsst-dm/\citeds{DMTR-271}/,
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2497}{LVV-T2497}
 &  1
 & Pass &
-\begin{minipage}[]{9cm}
-\smallskip
-
-\medskip
-\end{minipage}
-&   \\\hline
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2496}{LVV-T2496}
-&  1
-& Not Executed &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -964,15 +939,6 @@ Working on lsst-devl machines in a cloned `daf\_butler` repository at
 \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2485}{LVV-T2485}
 &  1
 & Pass &
-\begin{minipage}[]{9cm}
-\smallskip
-
-\medskip
-\end{minipage}
-&   \\\hline
-\href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2484}{LVV-T2484}
-&  1
-& Not Executed &
 \begin{minipage}[]{9cm}
 \smallskip
 
@@ -2993,7 +2959,7 @@ No results. Try --help for more information.
 Open test cycle {\it \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testrun/LVV-C190}{\citeds{LDM-556}: Middleware Acceptance Testing}} in Jira.
 
 Test Cycle name: \citeds{LDM-556}: Middleware Acceptance Testing\\
-Status: In Progress
+Status: Done
 
 
 
@@ -3457,47 +3423,6 @@ tests/test\_imageIo2.py::TestMemory::testFileDescriptorLeaks
 ../../../../../software/lsstsw/stack\_20220215/stack/miniconda3-py38\_4.9.2-2.0.0/Linux64/utils/g617c0b0dc2+9633a190c8/python/lsst/utils/tests.py
 P\\[2\baselineskip]We have now demonstrated the reading and writing of
 FITS images.
-
-}
-
-\paragraph{ LVV-T2496 - Verify filename invariance }\mbox{}\\
-
-Version \textbf{1}.
-Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2496}{\textit{ LVV-T2496 } }
-test case in Jira.
-
-Verify that for all datasets stored with unique filenames (or paths) as
-part of a Data Release, the name of the file retrieved by an external
-user is also unique and has a predictable name that is not dependent on
-data access mechanism\\[2\baselineskip]This behavior is not guaranteed
-by code, but it is the way we have configured our filename templates.
-
-\textbf{ Preconditions}:\\
-
-
-Execution status: {\bf Not Executed }
-
-Final comment:\\
-
-
-Detailed steps results:
-
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
 
 }
 
@@ -4332,66 +4257,6 @@ Note that the timing for the first butler.get() was 2.85 seconds, and
 for the second it was 1.11 seconds. The log statements demonstrate that
 this is the case because it found the cached file the second time. We
 have thus demonstrated local caching of remote resources.
-
-}
-
-\paragraph{ LVV-T2484 - Verify Local proxy }\mbox{}\\
-
-Version \textbf{1}.
-Open  \href{https://jira.lsstcorp.org/secure/Tests.jspa#/testCase/LVV-T2484}{\textit{ LVV-T2484 } }
-test case in Jira.
-
-Verify that it is possible to configure the Data Input system to use a
-local proxy to share remote retrievals of common Datasets
-
-\textbf{ Preconditions}:\\
-
-
-Execution status: {\bf Not Executed }
-
-Final comment:\\
-
-
-Detailed steps results:
-
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 1 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
-{\footnotesize
-Enable datastore caching in a Butler client in RSP (or any S3-backed
-repo).
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
-
-}
-\begin{tabular}{p{2cm}p{14cm}}
-\toprule
-Step 2 & Step Execution Status: \textbf{ Not Executed } \\ \hline
-\end{tabular}
- Description \\
-{\footnotesize
-Run `butler.get` twice, check (e.g. trace logs) that the second comes
-from the cache.
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Expected Result \\
-{\footnotesize
-
-}
-\hdashrule[0.5ex]{\textwidth}{1pt}{3mm}
-  Actual Result \\
-{\footnotesize
 
 }
 
